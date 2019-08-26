@@ -4,5 +4,6 @@ node_js:
 cache: 
   directories:
     - node_modules
+before_script: cd UI/task-tracker
 script:
  - npm run test:unit
