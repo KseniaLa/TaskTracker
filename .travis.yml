@@ -1,11 +1,19 @@
-language: node_js
-node_js: 
-  - 10.15.1
-cache: 
-  directories:
-    - node_modules
-before_install: cd UI/task-tracker
-install:
-    - npm install
-script:
- - npm run test:unit
+matrix:
+  include:
+    - language: node_js
+      node_js: 
+        - 10.15.1
+      cache: 
+        directories:
+          - node_modules
+      before_install: cd UI/task-tracker
+      install:
+        - npm install
+      script:
+        - npm run test:unit
+
+    - language: csharp
+      mono: none
+      dotnet: 2.1.502
+      script:
+        - dotnet restore
