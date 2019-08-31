@@ -1,16 +1,22 @@
 <template>
   <div id="app">
-    <Header v-bind:isDemo="true" />
+    <AppHeader v-bind:isDemo="isBadge" />
     <router-view />
   </div>
 </template>
 
 <script>
-import Header from "@/components/Header.vue";
+import AppHeader from "@/components/Header.vue";
+
 export default {
   name: "header",
   components: {
-    Header
+    AppHeader
+  },
+  computed: {    
+    isBadge () {
+      return this.$store.state.isDemo && !this.$store.state.isLanding;
+    }
   }
 };
 </script>
