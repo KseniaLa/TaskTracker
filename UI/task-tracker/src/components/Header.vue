@@ -1,5 +1,5 @@
 <template>
-	<header class="header">
+	<header class="app-header">
 		<div class="app-name">
 			<router-link to="/">TaskTracker</router-link>
 		</div>
@@ -17,7 +17,7 @@ export default {
 </script>
 
 <style lang="scss">
-.header {
+.app-header {
   display: flex;
   flex-direction: row;
 	align-items: center;
@@ -25,6 +25,12 @@ export default {
   padding: 10px;
   background-color: #005eda;
   color: #ffffff;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+	@media screen and (max-width: 400px) {
+    flex-direction: column;
+		justify-content: center;
+  }
 }
 
 .app-name {

@@ -9,7 +9,7 @@
 import AppHeader from "@/components/Header.vue";
 
 export default {
-  name: "header",
+  name: "app",
   components: {
     AppHeader
   },
