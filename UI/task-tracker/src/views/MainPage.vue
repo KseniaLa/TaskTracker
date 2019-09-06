@@ -1,5 +1,27 @@
 <template>
-	<div>
-		Main Page
-	</div>
+  <div class="sections-container">
+    <DashBoard/>
+		<TaskList/>
+  </div>
 </template>
+
+<script>
+import DashBoard from "@/components/Dashboard.vue";
+import TaskList from "@/components/TaskList.vue";
+
+export default {
+  name: "MainPage",
+  components: {
+	DashBoard,
+	TaskList
+  },
+};
+</script>
+
+<style lang="scss">
+.sections-container {
+	display: flex;
+	flex-direction: row;
+	height: 100%;
+}
+</style>
