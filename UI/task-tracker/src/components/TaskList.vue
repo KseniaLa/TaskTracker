@@ -2,17 +2,25 @@
 	<div class="task-list">
 	  <div class="section-header">
 			<span>Tasks</span>
-			<button class="two-colored-button">Add</button>
+			<button class="two-colored-button"  v-on:click="openModal">Add</button>
 		</div>
 
 		widgets
 
+		<modal name="task" :adaptive="true">
+			add task
+		</modal>
   </div>
 </template>
 
 <script>
 export default {
-  name: "TaskList",
+	name: "TaskList",
+	methods: {
+    openModal: function() {
+      this.$modal.show('task');
+    }
+  },
 };
 </script>
 
