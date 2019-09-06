@@ -2,10 +2,9 @@
 	<div class="task-list">
 	  <div class="section-header">
 			<span>Tasks</span>
-			<button class="two-colored-button"  v-on:click="openModal">Add</button>
+			<button class="add-button"  v-on:click="openModal">Add</button>
 		</div>
 
-		widgets
 
 		<modal name="task" :adaptive="true">
 			add task
