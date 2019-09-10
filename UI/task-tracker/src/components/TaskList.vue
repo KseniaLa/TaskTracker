@@ -6,15 +6,19 @@
 		</div>
 
 
-		<modal name="task" :adaptive="true">
-			add task
+		<modal name="task" height="auto" width="50%">
+			<TaskModal />
 		</modal>
   </div>
 </template>
 
 <script>
+import TaskModal from "./AddTaskModal";
 export default {
 	name: "TaskList",
+	components: {
+		TaskModal
+	},
 	methods: {
     openModal: function() {
       this.$modal.show('task');
