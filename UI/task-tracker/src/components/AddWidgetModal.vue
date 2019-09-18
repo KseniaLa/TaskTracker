@@ -67,10 +67,10 @@ export default {
   z-index: 1000000000;
 
   button {
-    margin: 0;
+    margin: 10px;
     position: absolute;
-    right: 0;
-    bottom: 0;
+    right: 10px;
+    bottom: 10px;
   }
 }
 
@@ -83,7 +83,7 @@ export default {
 .dropdown {
   position: relative;
   display: inline-block;
-  width: 32px;;
+  width: 32px;
 }
 
 .dropdown-content {

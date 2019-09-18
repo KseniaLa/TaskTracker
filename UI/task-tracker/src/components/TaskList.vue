@@ -5,7 +5,6 @@
 			<button class="add-button"  v-on:click="openModal">Add</button>
 		</div>
 
-
 		<modal name="task" height="90%" width="50%">
 			<TaskModal />
 		</modal>
@@ -19,6 +18,9 @@ export default {
 	components: {
 		TaskModal
 	},
+	props: {
+    tasks: Object
+  },
 	methods: {
     openModal: function() {
       this.$modal.show('task');
