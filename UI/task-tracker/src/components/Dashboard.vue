@@ -4,8 +4,8 @@
 			<span>Dashboard</span>
 			
 			<button class="add-button" v-on:click="openModal">Add</button>
-			<modal name="widget" :adaptive="true">
-      	add widget
+			<modal name="widget" height="90%" width="50%">
+      	<WidgetModal />
     	</modal>
 		</div>
 
@@ -13,8 +13,12 @@
 </template>
 
 <script>
+import WidgetModal from "./AddWidgetModal";
 export default {
 	name: "Dashboard",
+	components: {
+		WidgetModal
+	},
 	methods: {
     openModal: function() {
       this.$modal.show('widget');

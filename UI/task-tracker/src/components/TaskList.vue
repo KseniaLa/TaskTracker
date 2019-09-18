@@ -6,7 +6,7 @@
 		</div>
 
 
-		<modal name="task" height="auto" width="50%">
+		<modal name="task" height="90%" width="50%">
 			<TaskModal />
 		</modal>
   </div>
