@@ -1,7 +1,7 @@
 <template>
   <div class="sections-container">
     <DashBoard/>
-		<TaskList/>
+		<TaskList :tasks="tasks"/>
   </div>
 </template>
 
@@ -14,6 +14,15 @@ export default {
   components: {
 	DashBoard,
 	TaskList
+  },
+  data: function () {
+    return {
+      tasks: [
+        {id: 1, title:"hello"},
+        {id: 2, title:"apple"},
+        {id: 3, title:"qwerty"}
+      ]
+    }
   },
 };
 </script>

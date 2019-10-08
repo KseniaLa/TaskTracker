@@ -4,6 +4,11 @@
 			<span>Tasks</span>
 			<button class="add-button"  v-on:click="openModal">Add</button>
 		</div>
+		<div class="task-set">
+    <div v-for="task in tasks" v-bind:key="task.id">
+			<TaskListItem :task="task"/>
+		</div>
+		</div>
 
 		<modal name="task" height="90%" width="50%">
 			<TaskModal />
@@ -13,17 +18,28 @@
 
 <script>
 import TaskModal from "./AddTaskModal";
+import TaskListItem from "./TaskListItem";
+
 export default {
 	name: "TaskList",
 	components: {
-		TaskModal
+		TaskModal,
+		TaskListItem
 	},
 	props: {
-    tasks: Object
+    tasks: {
+      type: Array,
+      required: true
+    },
   },
 	methods: {
     openModal: function() {
       this.$modal.show('task');
+    }
+  },
+	data: function () {
+    return {
+      
     }
   },
 };
