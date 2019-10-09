@@ -5,7 +5,15 @@
 			<button class="add-button" v-on:click="openModal">Add</button>
 		</div>
 		<div class="chart-area">
-			<bar-chart></bar-chart>
+			<div class="chart-item">
+				<bar-chart :chartData="chartData"></bar-chart>
+			</div>
+			<div class="chart-item">
+				<pie-chart :chartData="chartData"></pie-chart>
+			</div>
+			<div class="chart-item">
+				<bar-chart></bar-chart>
+			</div>
 		</div>
 
 		<modal name="widget" height="90%" width="50%">
@@ -17,11 +25,14 @@
 <script>
 import WidgetModal from "./AddWidgetModal";
 import BarChart from "./BarChart.js";
+import PieChart from "./PieChart.js";
+
 export default {
   name: "Dashboard",
   components: {
     WidgetModal,
-    BarChart
+		BarChart,
+		PieChart
   },
   methods: {
     openModal: function() {
@@ -30,7 +41,29 @@ export default {
   },
   data: function() {
     return {
-      
+      chartData: {
+        labels: [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December"
+        ],
+        datasets: [
+          {
+            label: "GitHub Commits",
+            backgroundColor: ["#f87979", "#ff0000"],
+            data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11]
+          }
+        ]
+      }
     };
   }
 };
@@ -46,6 +79,8 @@ export default {
 }
 
 .chart-area {
+	display: grid;
+  grid-template-columns: 50% 50%;
   overflow: hidden;
   overflow-y: scroll;
 
@@ -59,5 +94,9 @@ export default {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     background-color: #555;
   }
+}
+
+.chart-item {
+	margin: 20px;
 }
 </style>
