@@ -15,6 +15,8 @@ export default {
 
 <style lang="scss">
 .task-item {
+	padding: 5px;
+	border: 1px solid #e8e9eb;
 	width: 100%;
 	height: 80px;
 }

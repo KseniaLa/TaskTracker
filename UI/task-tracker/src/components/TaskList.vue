@@ -5,9 +5,9 @@
 			<button class="add-button"  v-on:click="openModal">Add</button>
 		</div>
 		<div class="task-set">
-    <div v-for="task in tasks" v-bind:key="task.id">
-			<TaskListItem :task="task"/>
-		</div>
+			<div v-for="task in tasks" v-bind:key="task.id">
+				<TaskListItem :task="task"/>
+			</div>
 		</div>
 
 		<modal name="task" height="90%" width="50%">
@@ -21,36 +21,49 @@ import TaskModal from "./AddTaskModal";
 import TaskListItem from "./TaskListItem";
 
 export default {
-	name: "TaskList",
-	components: {
-		TaskModal,
-		TaskListItem
-	},
-	props: {
+  name: "TaskList",
+  components: {
+    TaskModal,
+    TaskListItem
+  },
+  props: {
     tasks: {
       type: Array,
       required: true
-    },
+    }
   },
-	methods: {
+  methods: {
     openModal: function() {
-      this.$modal.show('task');
+      this.$modal.show("task");
     }
   },
-	data: function () {
-    return {
-      
-    }
-  },
+  data: function() {
+    return {};
+  }
 };
 </script>
 
 <style lang="scss">
 .task-list {
-	display: flex;
-	flex-direction: column;
-	width: 40%;
-	border-right: solid 1px #a8a8a8;
-	height: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  border-right: solid 1px #a8a8a8;
+  height: 100%;
+}
+.task-set {
+  overflow: hidden;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    background-color: #f5f5f5;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #555;
+  }
 }
 </style>
