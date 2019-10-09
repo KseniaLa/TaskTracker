@@ -16,17 +16,22 @@
 
 <script>
 import WidgetModal from "./AddWidgetModal";
-import BarChart from "./BarChart";
+import BarChart from "./BarChart.js";
 export default {
   name: "Dashboard",
   components: {
-		WidgetModal,
-		BarChart
+    WidgetModal,
+    BarChart
   },
   methods: {
     openModal: function() {
       this.$modal.show("widget");
     }
+  },
+  data: function() {
+    return {
+      
+    };
   }
 };
 </script>
