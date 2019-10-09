@@ -5,14 +5,10 @@
 			<button class="add-button" v-on:click="openModal">Add</button>
 		</div>
 		<div class="chart-area">
-			<div class="chart-item">
-				<bar-chart :chartData="chartData"></bar-chart>
-			</div>
-			<div class="chart-item">
-				<pie-chart :chartData="chartData"></pie-chart>
-			</div>
-			<div class="chart-item">
-				<bar-chart></bar-chart>
+			<div v-for="data in chartData" v-bind:key="data.id">
+				<div class="chart-item">
+					<chart :title="data.title" :chartType="data.chartType" :data="data.data" ></chart>
+				</div>
 			</div>
 		</div>
 
@@ -24,15 +20,13 @@
 
 <script>
 import WidgetModal from "./AddWidgetModal";
-import BarChart from "./BarChart.js";
-import PieChart from "./PieChart.js";
+import Chart from "./Chart";
 
 export default {
   name: "Dashboard",
   components: {
     WidgetModal,
-		BarChart,
-		PieChart
+    Chart
   },
   methods: {
     openModal: function() {
@@ -41,29 +35,68 @@ export default {
   },
   data: function() {
     return {
-      chartData: {
-        labels: [
-          "January",
-          "February",
-          "March",
-          "April",
-          "May",
-          "June",
-          "July",
-          "August",
-          "September",
-          "October",
-          "November",
-          "December"
-        ],
-        datasets: [
-          {
-            label: "GitHub Commits",
-            backgroundColor: ["#f87979", "#ff0000"],
-            data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11]
+      chartData: [
+        {
+          id: 1,
+          title: "test1",
+          chartType: "bar",
+          data: {
+            labels: ["January", "February", "March"],
+            datasets: [
+              {
+                label: "GitHub Commits",
+                backgroundColor: ["#f87979", "#ff0000"],
+                data: [40, 20, 12]
+              }
+            ]
           }
-        ]
-      }
+        },
+        {
+          id: 2,
+          title: "test1",
+          chartType: "pie",
+          data: {
+            labels: ["January", "February", "March"],
+            datasets: [
+              {
+                label: "GitHub Commits",
+                backgroundColor: ["#f87979", "#ff0000", "#00ff00"],
+                data: [40, 20, 12]
+              }
+            ]
+          }
+				},
+				{
+          id: 3,
+          title: "test1",
+          chartType: "bar",
+          data: {
+            labels: ["January", "February", "March"],
+            datasets: [
+              {
+                label: "GitHub Commits",
+                backgroundColor: ["#ff0000", "#00ff00", "#0000ff"],
+                data: [40, 20, 12]
+              }
+            ]
+          }
+				},
+				{
+          id: 2,
+          title: "test1",
+          chartType: "pie",
+          data: {
+            labels: ["January", "February", "March"],
+            datasets: [
+              {
+                label: "GitHub Commits",
+                backgroundColor: ["#f87979", "#ff0000", "#00ff00"],
+                data: [40, 20, 12]
+              }
+            ]
+          }
+				}
+      ]
     };
   }
 };
@@ -79,8 +112,8 @@ export default {
 }
 
 .chart-area {
-	display: grid;
-  grid-template-columns: 50% 50%;
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
   overflow: hidden;
   overflow-y: scroll;
 
@@ -91,12 +124,12 @@ export default {
 
   &::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    background-color: #555;
+    -webkit-box-shadow: inset 0 0 6px #a0a0a0;
+    background-color: rgb(161, 161, 161);
   }
 }
 
 .chart-item {
-	margin: 20px;
+  margin: 20px;
 }
 </style>
