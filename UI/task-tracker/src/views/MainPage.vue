@@ -18,9 +18,9 @@ export default {
   data: function () {
     return {
       tasks: [
-        {id: 1, title:"hello1"},
-        {id: 2, title:"apple2"},
-        {id: 3, title:"qwerty3"},
+        {id: 1, title:"hello1", date: "und", state: 0, priority: 1, description: "test task"},
+        {id: 2, title:"apple2", date: "und", state: 0, priority: 1, description: "test task"},
+        {id: 3, title:"qwerty3", date: "und", state: 0, priority: 1, description: "test task"},
         {id: 4, title:"hello"},
         {id: 5, title:"apple"},
         {id: 6, title:"qwerty"},

@@ -82,7 +82,7 @@ export default {
           }
 				},
 				{
-          id: 2,
+          id: 4,
           title: "test1",
           chartType: "pie",
           data: {
