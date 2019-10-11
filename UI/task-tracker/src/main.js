@@ -38,6 +38,7 @@ Vue.component("v-icon", Icon);
 Vue.config.productionTip = false;
 
 Vue.use(VModal);
+Vue.use(require("vue-moment"));
 
 new Vue({
   router,

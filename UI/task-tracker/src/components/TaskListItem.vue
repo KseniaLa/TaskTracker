@@ -1,7 +1,7 @@
 <template>
 	<div class="task-item" v-on:click="edit">
 		<div class="title">{{task.title}}</div>
-		<div class="date">{{task.date}}</div>
+		<div class="date">{{task.date | moment("DD MMM YY")}}</div>
 		<div class="priority">
 			<div v-bind:class="['round', priorityClass]"></div>
 			<span>{{priority}}</span>
@@ -19,7 +19,7 @@ import { stateMap, priorityMap } from "../mappings/NameMapping.js";
 import { stateClassMap, priorityClassMap } from "../mappings/ClassMapping.js";
 
 export default {
-  name: "TaskListItem",
+	name: "TaskListItem",
   props: {
     task: Object
   },

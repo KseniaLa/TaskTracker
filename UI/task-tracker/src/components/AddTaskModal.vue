@@ -3,13 +3,13 @@
 	  <div class="modal-title">
 			{{isEdit ? 'Edit' : 'Add'}} Task
 		</div>
-		<input class="modal-input" type="text" placeholder="Task title"/>
-		<datepicker placeholder="Due date" input-class="date-input" :clear-button="true"></datepicker>
+		<input class="modal-input" type="text" v-model="taskTitle" placeholder="Task title"/>
+		<datepicker placeholder="Due date" v-model="dueDate" input-class="date-input" :clear-button="true"></datepicker>
 		<div class="select-box">
 			<multiselect v-model="priorityValue" :options="priorityOptions" :searchable="false" :close-on-select="true" :show-labels="false" placeholder="Priority"></multiselect>
 			<multiselect v-model="stateValue" :options="stateOptions" :searchable="false" :close-on-select="true" :show-labels="false" placeholder="State"></multiselect>
 		</div>
-		<textarea class="modal-input modal-textarea" placeholder="Task description"></textarea>
+		<textarea class="modal-input modal-textarea" v-model="taskDescription" placeholder="Task description"></textarea>
 
 		<div class="button-set">
 			<button class="delete-button" v-if="isEdit">Delete</button>
@@ -22,6 +22,7 @@
 import Multiselect from "vue-multiselect";
 import "vue-multiselect\\dist\\vue-multiselect.min.css";
 import Datepicker from "vuejs-datepicker";
+import { stateMap, priorityMap } from "../mappings/NameMapping.js";
 
 export default {
   name: "TaskModal",
@@ -35,11 +36,21 @@ export default {
   },
   data() {
     return {
+      taskTitle: "",
+      taskDescription: "",
       priorityValue: "",
       stateValue: "",
+      dueDate: null,
       priorityOptions: ["Low", "Medium", "High", "Critical"],
       stateOptions: ["ToDo", "InProgress", "Done"]
     };
+  },
+  mounted: function() {
+    this.taskTitle = this.isEdit ? this.task.title : "";
+    this.taskDescription = this.isEdit ? this.task.description : "";
+    this.stateValue = this.isEdit ? stateMap[this.task.state] : null;
+    this.priorityValue = this.isEdit ? priorityMap[this.task.priority] : null;
+    this.dueDate = this.isEdit ? this.task.date : null;
   }
 };
 </script>
