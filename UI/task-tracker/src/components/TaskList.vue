@@ -10,8 +10,8 @@
 			</div>
 		</div>
 
-		<modal name="task" height="90%" width="50%">
-			<TaskModal />
+		<modal name="task" height="90%" width="50%" @before-open="beforeOpen">
+			<TaskModal :isEdit="isEdit" :task="task"/>
 		</modal>
   </div>
 </template>
@@ -34,11 +34,19 @@ export default {
   },
   methods: {
     openModal: function() {
-      this.$modal.show("task");
+      this.$modal.show("task", { isEdit: false, task: {} });
+    },
+    beforeOpen(event) {
+			this.isEdit = event.params.isEdit;
+			this.task = event.params.task;
+      //console.log(event.params.isEdit);
     }
   },
   data: function() {
-    return {};
+    return {
+			isEdit: Boolean,
+			task: Object
+		};
   }
 };
 </script>

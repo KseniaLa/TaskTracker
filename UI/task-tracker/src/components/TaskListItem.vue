@@ -39,7 +39,7 @@ export default {
 	},
 	methods: {
 		edit: function() {
-			this.$modal.show("task");
+			this.$modal.show("task", { isEdit: true, task: this.task });
 		}
 	}
 };
