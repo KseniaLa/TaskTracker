@@ -1,5 +1,5 @@
 <template>
-	<div class="task-item">
+	<div class="task-item" v-on:click="edit">
 		<div class="title">{{task.title}}</div>
 		<div class="date">{{task.date}}</div>
 		<div class="priority">
@@ -36,7 +36,12 @@ export default {
 		priorityClass: function() {
       return priorityClassMap[this.task.priority];
     }
-  }
+	},
+	methods: {
+		edit: function() {
+			this.$modal.show("task");
+		}
+	}
 };
 </script>
 
