@@ -48,7 +48,12 @@ export default {
   },
   methods: {
     saveTask: function() {
-      TaskRepository.instance.addTask(false);
+      TaskRepository.instance.addTask(this.isDemo);
+    }
+  },
+  computed: {    
+    isDemo () {
+      return this.$store.state.isDemo;
     }
   },
   mounted: function() {
