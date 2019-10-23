@@ -1,6 +1,6 @@
-import { TaskWorker } from "./TaskWorkerInterface";
-import { TaskApiWorker } from "./TaskApiWorker";
-import { TaskLsWorker } from "./TaskLsWorker";
+import TaskWorker from "./TaskWorkerInterface";
+import TaskApiWorker from "./TaskApiWorker";
+import TaskLsWorker from "./TaskLsWorker";
 
 class TaskWorkerFactory {
   constructor() {}

@@ -1,5 +1,5 @@
-import { TaskContext } from "./TaskContext";
-import { TaskWorkerFactory } from "./TaskWorkerFactory";
+import TaskContext from "./TaskContext";
+import TaskWorkerFactory from "./TaskWorkerFactory";
 
 let singleton = Symbol();
 let singletonEnforcer = Symbol();
@@ -7,7 +7,7 @@ let singletonEnforcer = Symbol();
 class TaskRepository {
   constructor(enforcer) {
     if (enforcer !== singletonEnforcer)
-      throw "Instantiation failed: use Singleton.getInstance() instead of new.";
+      throw "Instantiation failed: cannot create singleton with new";
 
     this._context = new TaskContext();
     this._factory = new TaskWorkerFactory();
@@ -20,7 +20,7 @@ class TaskRepository {
   }
 
   static set instance(v) {
-    throw "Can't change constant property!";
+    throw "Cannot change property";
   }
 
   addTask(isDemo) {

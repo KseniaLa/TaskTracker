@@ -13,7 +13,7 @@
 
 		<div class="button-set">
 			<button class="delete-button" v-if="isEdit">Delete</button>
-			<button class="add-button">Save</button>
+			<button class="add-button" v-on:click="saveTask">Save</button>
 		</div>
   </div>
 </template>
@@ -23,6 +23,7 @@ import Multiselect from "vue-multiselect";
 import "vue-multiselect\\dist\\vue-multiselect.min.css";
 import Datepicker from "vuejs-datepicker";
 import { stateMap, priorityMap } from "../mappings/NameMapping.js";
+import TaskRepository from "../dataWorker/TaskRepository.js";
 
 export default {
   name: "TaskModal",
@@ -44,6 +45,11 @@ export default {
       priorityOptions: ["Low", "Medium", "High", "Critical"],
       stateOptions: ["ToDo", "InProgress", "Done"]
     };
+  },
+  methods: {
+    saveTask: function() {
+      TaskRepository.instance.addTask(false);
+    }
   },
   mounted: function() {
     this.taskTitle = this.isEdit ? this.task.title : "";
