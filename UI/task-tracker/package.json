@@ -24,7 +24,8 @@
     "vue-router": "^3.0.3",
     "vue-simple-line": "^1.1.1",
     "vuejs-datepicker": "^1.6.2",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "vuex-persistedstate": "^2.5.4"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.11.0",
