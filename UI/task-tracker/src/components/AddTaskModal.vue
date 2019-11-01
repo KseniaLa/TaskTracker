@@ -15,6 +15,10 @@
 			<button class="delete-button" v-if="isEdit">Delete</button>
 			<button class="add-button" v-on:click="saveTask">Save</button>
 		</div>
+
+    <modal name="task-error" height="20%" width="40%">
+			<error-message v-bind:message="'Cannot save task: some fields are empty'"/>
+		</modal>
   </div>
 </template>
 
@@ -24,12 +28,14 @@ import "vue-multiselect\\dist\\vue-multiselect.min.css";
 import Datepicker from "vuejs-datepicker";
 import { stateMap, priorityMap } from "../mappings/NameMapping.js";
 import TaskRepository from "../dataWorker/TaskRepository.js";
+import ErrorMessage from "./ErrorMessage.vue";
 
 export default {
   name: "TaskModal",
   components: {
     Multiselect,
-    Datepicker
+    Datepicker,
+    ErrorMessage
   },
   props: {
     isEdit: Boolean,
@@ -48,7 +54,15 @@ export default {
   },
   methods: {
     saveTask: function() {
-      TaskRepository.instance.addTask(this.isDemo);
+      if (this.inputsValid()) {
+        TaskRepository.instance.addTask(this.isDemo);
+        return;
+      }
+      this.$modal.show("task-error");
+    },
+
+    inputsValid() {
+      return this.taskTitle && this.dueDate && this.priorityValue && this.stateValue;
     }
   },
   computed: {    
@@ -121,6 +135,10 @@ export default {
 	.add-button {
 		margin: 0
 	}
+}
+
+.v--modal-overlay[data-modal="task-error"] {
+  background: transparent;
 }
 
 .delete-button {

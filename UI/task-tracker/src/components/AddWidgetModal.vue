@@ -3,7 +3,7 @@
 	  <div class="modal-title">
 			Add Widget
 		</div>
-		<input class="modal-input" type="text" placeholder="Widget title"/>
+		<input class="modal-input" type="text" v-model="widgetTitle" placeholder="Widget title"/>
 		
 		<div class="select-box">
 			<multiselect v-model="priorityValue" :options="priorityOptions" :searchable="false" :close-on-select="true" :show-labels="false" placeholder="Priority"></multiselect>
@@ -27,7 +27,11 @@
 			</div>
 		</div>
 
-		<button class="add-button">Save</button>
+		<button class="add-button" v-on:click="saveWidget">Save</button>
+
+    <modal name="widget-error" height="20%" width="40%">
+			<error-message v-bind:message="'Cannot save widget: some fields are empty'"/>
+		</modal>
   </div>
 </template>
 
@@ -35,15 +39,18 @@
 import Multiselect from "vue-multiselect";
 import "vue-multiselect\\dist\\vue-multiselect.min.css";
 import ColorPicker from "vue-color-picker-wheel";
+import ErrorMessage from "./ErrorMessage.vue";
 
 export default {
   name: "TaskModal",
   components: {
     Multiselect,
-    ColorPicker
+    ColorPicker,
+    ErrorMessage
   },
   data() {
     return {
+      widgetTitle: "",
       chartValue: "",
       colorValue: "",
       priorityValue: "",
@@ -54,6 +61,19 @@ export default {
       priorityOptions: ["Low", "Medium", "High", "Critical"],
       stateOptions: ["ToDo", "InProgress", "Done"]
     };
+  },
+  methods: {
+    saveWidget: function() {
+      if (this.inputsValid()) {
+        console.log('save widget');
+        return;
+      }
+      this.$modal.show("widget-error");
+    },
+
+    inputsValid() {
+      return this.widgetTitle && this.chartValue && (this.priorityValue || this.stateValue);
+    }
   }
 };
 </script>
@@ -72,6 +92,10 @@ export default {
     right: 10px;
     bottom: 10px;
   }
+}
+
+.v--modal-overlay[data-modal="widget-error"] {
+  background: transparent;
 }
 
 .color-box {
