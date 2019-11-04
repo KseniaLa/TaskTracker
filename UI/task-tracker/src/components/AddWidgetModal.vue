@@ -6,12 +6,21 @@
 		<input class="modal-input" type="text" v-model="widgetTitle" placeholder="Widget title"/>
 		
 		<div class="select-box">
-			<multiselect v-model="priorityValue" :options="priorityOptions" :searchable="false" :close-on-select="true" :show-labels="false" placeholder="Priority"></multiselect>
-			<multiselect v-model="stateValue" :options="stateOptions" :searchable="false" :close-on-select="true" :show-labels="false" placeholder="State"></multiselect>
+			<multiselect v-model="priorityValue" :options="priorityOptions" :searchable="false" :close-on-select="true" :show-labels="false" placeholder="Priority">
+        <template slot="singleLabel" slot-scope="props">{{props.option.name}}</template>
+        <template slot="option" slot-scope="props">{{props.option.name}}</template>
+      </multiselect>
+			<multiselect v-model="stateValue" :options="stateOptions" :searchable="false" :close-on-select="true" :show-labels="false" placeholder="State">
+        <template slot="singleLabel" slot-scope="props">{{props.option.name}}</template>
+        <template slot="option" slot-scope="props">{{props.option.name}}</template>
+      </multiselect>
 		</div>
 
 		<div class="select-box">
-			<multiselect v-model="chartValue" :options="chartOptions" :searchable="false" :close-on-select="true" :show-labels="false" placeholder="Chart type"></multiselect>
+			<multiselect v-model="chartValue" :options="chartOptions" :searchable="false" :close-on-select="true" :show-labels="false" placeholder="Chart type">
+        <template slot="singleLabel" slot-scope="props">{{props.option.name}}</template>
+        <template slot="option" slot-scope="props">{{props.option.name}}</template>
+      </multiselect>
 			<multiselect v-model="colorValue" :options="colorOptions" :searchable="false" :close-on-select="true" :show-labels="false" placeholder="Color scheme"></multiselect>
 		</div>
 
@@ -56,10 +65,10 @@ export default {
       priorityValue: "",
       stateValue: "",
       borderColor: "",
-      chartOptions: ["List", "Pie chart", "Bar chart"],
+      chartOptions: [{name: "List", id: 0}, {name: "Pie chart", id: 1}, {name: "Bar chart", id : 2}],
       colorOptions: ["1", "2", "3"],
-      priorityOptions: ["Low", "Medium", "High", "Critical"],
-      stateOptions: ["ToDo", "InProgress", "Done"]
+      priorityOptions: [{name: "Low", id: 0}, {name: "Medium", id: 1}, {name: "High", id: 2}, {name: "Critical", id: 3}],
+      stateOptions: [{name: "ToDo", id: 0}, {name: "InProgress", id: 1}, {name: "Done", id: 2}]
     };
   },
   methods: {

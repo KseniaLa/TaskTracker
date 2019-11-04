@@ -11,8 +11,12 @@ class TaskWorker {
     return this._worker;
   }
 
-  addTask() {
-    this._worker.addTask();
+  addTask(task) {
+    this._worker.addTask(task);
+  }
+
+  getTasks() {
+    return this._worker.getTasks();
   }
 }
 

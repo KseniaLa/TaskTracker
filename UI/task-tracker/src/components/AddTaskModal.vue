@@ -6,8 +6,14 @@
 		<input class="modal-input" type="text" v-model="taskTitle" placeholder="Task title"/>
 		<datepicker placeholder="Due date" v-model="dueDate" input-class="date-input" :clear-button="true"></datepicker>
 		<div class="select-box">
-			<multiselect v-model="priorityValue" :options="priorityOptions" :searchable="false" :close-on-select="true" :show-labels="false" placeholder="Priority"></multiselect>
-			<multiselect v-model="stateValue" :options="stateOptions" :searchable="false" :close-on-select="true" :show-labels="false" placeholder="State"></multiselect>
+			<multiselect v-model="priorityValue" :options="priorityOptions" :searchable="false" :close-on-select="true" :show-labels="false" placeholder="Priority">
+        <template slot="singleLabel" slot-scope="props">{{props.option.name}}</template>
+        <template slot="option" slot-scope="props">{{props.option.name}}</template>
+      </multiselect>
+			<multiselect v-model="stateValue" :options="stateOptions" :searchable="false" :close-on-select="true" :show-labels="false" placeholder="State">
+        <template slot="singleLabel" slot-scope="props">{{props.option.name}}</template>
+        <template slot="option" slot-scope="props">{{props.option.name}}</template>
+      </multiselect>
 		</div>
 		<textarea class="modal-input modal-textarea" v-model="taskDescription" placeholder="Task description"></textarea>
 
@@ -43,19 +49,28 @@ export default {
   },
   data() {
     return {
+      taskId: -1,
       taskTitle: "",
       taskDescription: "",
       priorityValue: "",
       stateValue: "",
       dueDate: null,
-      priorityOptions: ["Low", "Medium", "High", "Critical"],
-      stateOptions: ["ToDo", "InProgress", "Done"]
+      priorityOptions: [{name: "Low", id: 0}, {name: "Medium", id: 1}, {name: "High", id: 2}, {name: "Critical", id: 3}],
+      stateOptions: [{name: "ToDo", id: 0}, {name: "InProgress", id: 1}, {name: "Done", id: 2}]
     };
   },
   methods: {
     saveTask: function() {
       if (this.inputsValid()) {
-        TaskRepository.instance.addTask(this.isDemo);
+        let task = {
+          id: this.taskId,
+          title: this.taskTitle,
+          description: this.taskDescription,
+          priority: this.priorityValue.id,
+          state: this.stateValue.id,
+          date: this.dueDate,
+        }
+        TaskRepository.instance.addTask(this.isDemo, task);
         return;
       }
       this.$modal.show("task-error");
@@ -71,10 +86,11 @@ export default {
     }
   },
   mounted: function() {
+    this.taskId = this.isEdit ? this.task.id : -1;
     this.taskTitle = this.isEdit ? this.task.title : "";
     this.taskDescription = this.isEdit ? this.task.description : "";
-    this.stateValue = this.isEdit ? stateMap[this.task.state] : null;
-    this.priorityValue = this.isEdit ? priorityMap[this.task.priority] : null;
+    this.stateValue = this.isEdit ? {name: stateMap[this.task.state], id: this.task.state} : null;
+    this.priorityValue = this.isEdit ? {name: priorityMap[this.task.priority], id: this.task.priority} : null;
     this.dueDate = this.isEdit ? this.task.date : null;
   }
 };

@@ -8,6 +8,10 @@ class TaskApiWorker {
   addTask() {
     this._apiWorker.addTask();
   }
+
+  getTasks() {
+    return this._apiWorker.getTasks();
+  }
 }
 
 export default TaskApiWorker;

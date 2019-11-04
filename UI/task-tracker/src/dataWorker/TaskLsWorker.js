@@ -5,8 +5,12 @@ class TaskLsWorker {
     this._lsWorker = new LocalStorageWorker();
   }
 
-  addTask() {
-    this._lsWorker.addTask();
+  addTask(task) {
+    this._lsWorker.addTask(task);
+  }
+
+  getTasks() {
+    return this._lsWorker.getTasks();
   }
 }
 

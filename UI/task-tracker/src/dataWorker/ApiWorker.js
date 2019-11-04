@@ -10,6 +10,12 @@ class ApiWorker {
       .then(response => console.log(response));
   }
 
+  getTasks() {
+    console.log("I request api for task list");
+    let tasks = [];
+    return tasks;
+  }
+
   addWidget() {
     console.log("I request api for widget!");
   }

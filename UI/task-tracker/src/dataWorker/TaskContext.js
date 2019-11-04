@@ -7,8 +7,12 @@ class TaskContext {
     this._worker = worker;
   }
 
-  addTask() {
-    this._worker.addTask();
+  addTask(task) {
+    this._worker.addTask(task);
+  }
+
+  getTasks() {
+    return this._worker.getTasks();
   }
 }
 

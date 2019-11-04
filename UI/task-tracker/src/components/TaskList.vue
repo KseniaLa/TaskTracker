@@ -19,18 +19,13 @@
 <script>
 import TaskModal from "./AddTaskModal";
 import TaskListItem from "./TaskListItem";
+import TaskRepository from "../dataWorker/TaskRepository.js";
 
 export default {
   name: "TaskList",
   components: {
     TaskModal,
     TaskListItem
-  },
-  props: {
-    tasks: {
-      type: Array,
-      required: true
-    }
   },
   methods: {
     openModal: function() {
@@ -39,14 +34,25 @@ export default {
     beforeOpen(event) {
 			this.isEdit = event.params.isEdit;
 			this.task = event.params.task;
-      //console.log(event.params.isEdit);
+    },
+    getData() {
+      this.tasks = TaskRepository.instance.getTasks(this.isDemo);
     }
   },
   data: function() {
     return {
 			isEdit: Boolean,
-			task: Object
+      task: Object,
+      tasks: []
 		};
+  },
+  computed: {    
+    isDemo () {
+      return this.$store.state.isDemo;
+    }
+  },
+  mounted: function() {
+    this.getData();
   }
 };
 </script>

@@ -23,10 +23,16 @@ class TaskRepository {
     throw "Cannot change property";
   }
 
-  addTask(isDemo) {
+  addTask(isDemo, task) {
     let worker = this._factory.getWorker(isDemo);
     this._context.setWorker(worker);
-    this._context.addTask();
+    this._context.addTask(task);
+  }
+
+  getTasks(isDemo) {
+    let worker = this._factory.getWorker(isDemo);
+    this._context.setWorker(worker);
+    return this._context.getTasks();
   }
 }
 
