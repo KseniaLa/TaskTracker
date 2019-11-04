@@ -6,11 +6,11 @@
 		<input class="modal-input" type="text" v-model="widgetTitle" placeholder="Widget title"/>
 		
 		<div class="select-box">
-			<multiselect v-model="priorityValue" :options="priorityOptions" :searchable="false" :close-on-select="true" :show-labels="false" placeholder="Priority">
+			<multiselect v-model="priorityValue" :options="priorityOptions" :searchable="false" :multiple="true" :close-on-select="false" :clear-on-select="false" track-by="name" label="name" placeholder="Priority">
         <template slot="singleLabel" slot-scope="props">{{props.option.name}}</template>
         <template slot="option" slot-scope="props">{{props.option.name}}</template>
       </multiselect>
-			<multiselect v-model="stateValue" :options="stateOptions" :searchable="false" :close-on-select="true" :show-labels="false" placeholder="State">
+			<multiselect v-model="stateValue" :options="stateOptions" :searchable="false" :multiple="true" :close-on-select="false" :clear-on-select="false" track-by="name" label="name" placeholder="State">
         <template slot="singleLabel" slot-scope="props">{{props.option.name}}</template>
         <template slot="option" slot-scope="props">{{props.option.name}}</template>
       </multiselect>
@@ -62,8 +62,8 @@ export default {
       widgetTitle: "",
       chartValue: "",
       colorValue: "",
-      priorityValue: "",
-      stateValue: "",
+      priorityValue: [],
+      stateValue: [],
       borderColor: "",
       chartOptions: [{name: "List", id: 0}, {name: "Pie chart", id: 1}, {name: "Bar chart", id : 2}],
       colorOptions: ["1", "2", "3"],
@@ -81,7 +81,7 @@ export default {
     },
 
     inputsValid() {
-      return this.widgetTitle && this.chartValue && (this.priorityValue || this.stateValue);
+      return this.widgetTitle && this.chartValue && this.priorityValue && this.stateValue && (this.priorityValue.length > 0) && (this.stateValue.length > 0);
     }
   }
 };
