@@ -18,7 +18,7 @@
 		<textarea class="modal-input modal-textarea" v-model="taskDescription" placeholder="Task description"></textarea>
 
 		<div class="button-set">
-			<button class="delete-button" v-if="isEdit">Delete</button>
+			<button class="delete-button" v-if="isEdit" v-on:click="deleteTask">Delete</button>
 			<button class="add-button" v-on:click="saveTask">Save</button>
 		</div>
 
@@ -71,11 +71,17 @@ export default {
           date: this.dueDate,
         }
         TaskRepository.instance.addTask(this.isDemo, task);
+        this.$emit("tasks-refresh");
+        this.$modal.hide("task");
         return;
       }
       this.$modal.show("task-error");
     },
-
+    deleteTask() {
+      TaskRepository.instance.deleteTask(this.isDemo, this.taskId);
+      this.$emit("tasks-refresh");
+      this.$modal.hide("task");
+    },
     inputsValid() {
       return this.taskTitle && this.dueDate && this.priorityValue && this.stateValue;
     }

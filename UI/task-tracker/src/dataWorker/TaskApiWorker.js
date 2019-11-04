@@ -12,6 +12,10 @@ class TaskApiWorker {
   getTasks() {
     return this._apiWorker.getTasks();
   }
+
+  deleteTask() {
+    this._apiWorker.deleteTask();
+  }
 }
 
 export default TaskApiWorker;

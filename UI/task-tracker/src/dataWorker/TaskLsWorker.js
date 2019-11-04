@@ -12,6 +12,10 @@ class TaskLsWorker {
   getTasks() {
     return this._lsWorker.getTasks();
   }
+
+  deleteTask(id) {
+    this._lsWorker.deleteTask(id);
+  }
 }
 
 export default TaskLsWorker;

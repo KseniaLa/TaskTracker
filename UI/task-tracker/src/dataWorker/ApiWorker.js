@@ -16,6 +16,10 @@ class ApiWorker {
     return tasks;
   }
 
+  deleteTask() {
+    console.log("I request api for task deletion");
+  }
+
   addWidget() {
     console.log("I request api for widget!");
   }

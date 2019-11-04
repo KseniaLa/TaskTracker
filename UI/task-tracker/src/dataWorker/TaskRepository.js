@@ -34,6 +34,12 @@ class TaskRepository {
     this._context.setWorker(worker);
     return this._context.getTasks();
   }
+
+  deleteTask(isDemo, id) {
+    let worker = this._factory.getWorker(isDemo);
+    this._context.setWorker(worker);
+    return this._context.deleteTask(id);
+  }
 }
 
 export default TaskRepository;

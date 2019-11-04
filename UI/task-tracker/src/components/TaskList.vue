@@ -11,7 +11,7 @@
 		</div>
 
 		<modal name="task" height="90%" width="50%" @before-open="beforeOpen">
-			<TaskModal :isEdit="isEdit" :task="task"/>
+			<TaskModal :isEdit="isEdit" :task="task" v-on:tasks-refresh="getData"/>
 		</modal>
   </div>
 </template>
@@ -36,6 +36,7 @@ export default {
 			this.task = event.params.task;
     },
     getData() {
+      console.log("123")
       this.tasks = TaskRepository.instance.getTasks(this.isDemo);
     }
   },

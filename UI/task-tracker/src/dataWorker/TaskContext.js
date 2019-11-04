@@ -14,6 +14,10 @@ class TaskContext {
   getTasks() {
     return this._worker.getTasks();
   }
+
+  deleteTask(id) {
+    this._worker.deleteTask(id);
+  }
 }
 
 export default TaskContext;

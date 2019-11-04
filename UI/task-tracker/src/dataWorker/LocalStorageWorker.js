@@ -37,6 +37,17 @@ class LsWorker {
     return tasks;
   }
 
+  deleteTask(id) {
+    let tasks = [];
+    if (localStorage.getItem("tasks")) {
+      tasks = JSON.parse(localStorage.getItem("tasks"));
+    }
+
+    tasks = tasks.filter(t => t.id !== id);
+
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }
+
   addWidget() {
     console.log("I request ls for widget!");
   }
