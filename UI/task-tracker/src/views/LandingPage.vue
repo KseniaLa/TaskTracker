@@ -37,6 +37,7 @@ export default {
     }
   },
   mounted: function() {
+    this.$log.info('Application (Landing page) loaded.');
     this.$store.commit("setLanding", true);
   }
 };

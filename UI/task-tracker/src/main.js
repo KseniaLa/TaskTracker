@@ -6,6 +6,8 @@ import VModal from "vue-js-modal";
 import "./registerServiceWorker";
 import "./styles/common.scss";
 import Icon from "vue-awesome/components/Icon";
+import log from "loglevel";
+import remote from "loglevel-plugin-remote";
 
 Icon.register({
   plus: {
@@ -39,6 +41,22 @@ Vue.config.productionTip = false;
 
 Vue.use(VModal);
 Vue.use(require("vue-moment"));
+
+const customJSON = log => ({
+  msg: log.message,
+  level: log.level.label,
+  stacktrace: log.stacktrace
+});
+
+remote.apply(log, { format: customJSON, url: "/logger", interval: 10000 });
+
+log.enableAll();
+
+Vue.use({
+  install: function(Vue) {
+    Vue.prototype.$log = log;
+  }
+});
 
 new Vue({
   router,

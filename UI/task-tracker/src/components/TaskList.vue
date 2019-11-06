@@ -53,7 +53,9 @@ export default {
     }
   },
   mounted: function() {
+    this.$log.info(`Start retrieving tasks data. Running in ${this.isDemo ? 'Demo' : 'Real'} mode`);
     this.getData();
+    this.$log.info('Finish retrieving tasks data.');
   }
 };
 </script>

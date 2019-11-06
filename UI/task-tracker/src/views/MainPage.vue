@@ -20,6 +20,14 @@ export default {
       
     }
   },
+  computed: {    
+    isDemo () {
+      return this.$store.state.isDemo;
+    }
+  },
+  mounted: function() {
+    this.$log.info(`Main page loaded. Running in ${this.isDemo ? 'Demo' : 'Real'} mode`);
+  }
 };
 </script>
 
