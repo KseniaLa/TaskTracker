@@ -33,7 +33,7 @@ import Multiselect from "vue-multiselect";
 import "vue-multiselect\\dist\\vue-multiselect.min.css";
 import Datepicker from "vuejs-datepicker";
 import { stateMap, priorityMap } from "../mappings/NameMapping.js";
-import TaskRepository from "../dataWorker/TaskRepository.js";
+import TaskRepository from "../dataWorker/task/TaskRepository.js";
 import ErrorMessage from "./ErrorMessage.vue";
 
 export default {

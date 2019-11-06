@@ -42,13 +42,12 @@ Vue.config.productionTip = false;
 Vue.use(VModal);
 Vue.use(require("vue-moment"));
 
-const customJSON = log => ({
-  msg: log.message,
-  level: log.level.label,
-  stacktrace: log.stacktrace
+remote.apply(log, {
+  format: remote.json,
+  url: "/logger",
+  timestamp: () => new Date().toISOString(),
+  interval: 10000
 });
-
-remote.apply(log, { format: customJSON, url: "/logger", interval: 10000 });
 
 log.enableAll();
 

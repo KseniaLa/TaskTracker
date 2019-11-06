@@ -48,8 +48,48 @@ class LsWorker {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }
 
-  addWidget() {
+  addWidget(widget) {
+    let widgets = [];
+    if (localStorage.getItem("widgets")) {
+      widgets = JSON.parse(localStorage.getItem("widgets"));
+    }
+    if (widget.id < 0) {
+      var ids = widgets.map(function(w) {
+        return w.id;
+      });
+      var maxId = 0;
+      if (widgets.length > 0) {
+        maxId = Math.max(...ids);
+      }
+      widget.id = ++maxId;
+      widgets.push(widget);
+
+      localStorage.setItem("widgets", JSON.stringify(widgets));
+    }
+
     console.log("I request ls for widget!");
+  }
+
+  getWidgets() {
+    console.log("I request ls for widget list");
+    let widgets = [];
+    if (localStorage.getItem("widgets")) {
+      widgets = JSON.parse(localStorage.getItem("widgets"));
+    }
+
+    return widgets;
+  }
+
+  deleteWidget(id) {
+    console.log(id);
+    let widgets = [];
+    if (localStorage.getItem("widgets")) {
+      widgets = JSON.parse(localStorage.getItem("widgets"));
+    }
+
+    widgets = widgets.filter(w => w.id !== id);
+
+    localStorage.setItem("widgets", JSON.stringify(widgets));
   }
 }
 

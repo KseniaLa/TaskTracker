@@ -49,9 +49,10 @@ import Multiselect from "vue-multiselect";
 import "vue-multiselect\\dist\\vue-multiselect.min.css";
 import ColorPicker from "vue-color-picker-wheel";
 import ErrorMessage from "./ErrorMessage.vue";
+import WidgetRepository from "../dataWorker/widget/WidgetRepository.js";
 
 export default {
-  name: "TaskModal",
+  name: "WidgetModal",
   components: {
     Multiselect,
     ColorPicker,
@@ -64,7 +65,7 @@ export default {
       colorValue: "",
       priorityValue: [],
       stateValue: [],
-      borderColor: "",
+      borderColor: "#0000ff",
       chartOptions: [{name: "List", id: 0}, {name: "Pie chart", id: 1}, {name: "Bar chart", id : 2}],
       colorOptions: ["1", "2", "3"],
       priorityOptions: [{name: "Low", id: 0}, {name: "Medium", id: 1}, {name: "High", id: 2}, {name: "Critical", id: 3}],
@@ -75,6 +76,7 @@ export default {
     saveWidget: function() {
       if (this.inputsValid()) {
         console.log('save widget');
+        WidgetRepository.instance.addWidget(this.isDemo, {id: -1});
         return;
       }
       this.$modal.show("widget-error");
@@ -83,7 +85,12 @@ export default {
     inputsValid() {
       return this.widgetTitle && this.chartValue && this.priorityValue && this.stateValue && (this.priorityValue.length > 0) && (this.stateValue.length > 0);
     }
-  }
+  },
+  computed: {    
+    isDemo () {
+      return this.$store.state.isDemo;
+    }
+  },
 };
 </script>
 

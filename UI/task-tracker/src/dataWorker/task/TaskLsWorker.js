@@ -1,4 +1,4 @@
-import LocalStorageWorker from "./LocalStorageWorker";
+import LocalStorageWorker from "../common/LocalStorageWorker";
 
 class TaskLsWorker {
   constructor() {

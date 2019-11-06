@@ -19,7 +19,7 @@
 <script>
 import TaskModal from "./AddTaskModal";
 import TaskListItem from "./TaskListItem";
-import TaskRepository from "../dataWorker/TaskRepository.js";
+import TaskRepository from "../dataWorker/task/TaskRepository.js";
 
 export default {
   name: "TaskList",
@@ -36,7 +36,6 @@ export default {
 			this.task = event.params.task;
     },
     getData() {
-      console.log("123")
       this.tasks = TaskRepository.instance.getTasks(this.isDemo);
     }
   },

@@ -7,7 +7,7 @@
 		<div class="chart-area">
 			<div v-for="data in chartData" v-bind:key="data.id">
 				<div class="chart-item">
-					<chart :title="data.title" :chartType="data.chartType" :data="data.data" ></chart>
+					<chart :id="data.id" :title="data.title" :chartType="data.chartType" :data="data.data" :borderColor="'#ff0000'" v-on:delete-widget="deleteWidget"></chart>
 				</div>
 			</div>
 		</div>
@@ -21,6 +21,7 @@
 <script>
 import WidgetModal from "./AddWidgetModal";
 import Chart from "./Chart";
+import WidgetRepository from "../dataWorker/widget/WidgetRepository.js";
 
 export default {
   name: "Dashboard",
@@ -31,6 +32,12 @@ export default {
   methods: {
     openModal: function() {
       this.$modal.show("widget");
+    },
+    deleteWidget: function(id) {
+      WidgetRepository.instance.deleteWidget(this.isDemo, id);
+    },
+    getData() {
+      WidgetRepository.instance.getWidgets(this.isDemo);
     }
   },
   data: function() {
@@ -98,6 +105,16 @@ export default {
 				}
       ]
     };
+  },
+  computed: {    
+    isDemo () {
+      return this.$store.state.isDemo;
+    }
+  },
+  mounted: function() {
+    this.$log.info(`Start retrieving widgets data. Running in ${this.isDemo ? 'Demo' : 'Real'} mode`);
+    this.getData();
+    this.$log.info('Finish retrieving widgets data.');
   }
 };
 </script>
@@ -116,6 +133,14 @@ export default {
   grid-template-columns: 33% 33% 33%;
   overflow: hidden;
   overflow-y: scroll;
+
+  @media screen and (max-width: 1200px) {
+    grid-template-columns: 50% 50%;
+  }
+
+  @media screen and (max-width: 800px) {
+    grid-template-columns: 100%;
+  }
 
   &::-webkit-scrollbar {
     width: 8px;

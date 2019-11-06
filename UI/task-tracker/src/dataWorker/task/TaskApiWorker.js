@@ -1,4 +1,4 @@
-import ApiWorker from "./ApiWorker";
+import ApiWorker from "../common/ApiWorker";
 
 class TaskApiWorker {
   constructor() {
