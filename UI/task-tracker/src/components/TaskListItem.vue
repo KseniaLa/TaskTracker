@@ -4,11 +4,11 @@
 		<div class="date">{{task.date | moment("DD MMM YY")}}</div>
 		<div class="priority">
 			<div v-bind:class="['round', priorityClass]"></div>
-			<span>{{priority}}</span>
+			<span class="round-title">{{priority}}</span>
 		</div>
 		<div class="state">
 			<div v-bind:class="['round', stateClass]"></div>
-			<span>{{state}}</span>
+			<span class="round-title">{{state}}</span>
 		</div>
 		<div class="description">{{task.description}}</div>
 	</div>
@@ -59,6 +59,22 @@ export default {
   width: 100%;
   height: 80px;
 
+	@media screen and (max-width: 1200px) {
+    grid-template-areas:
+			"title title title title"
+			"priority state . ."
+			". . . .";
+		grid-template-rows: 50% 50%;
+  }
+
+	@media screen and (max-width: 900px) {
+    grid-template-columns: 70% 15% 15%;
+		grid-template-areas:
+			"title priority state";
+		grid-template-rows: 100%;
+		height: 30px;
+  }
+
 	&:hover{
 		background-color: #f0f0f0;
 	}
@@ -107,6 +123,12 @@ export default {
 	height: 20px;
 	border-radius: 50%;
 	margin-right: 5px;
+}
+
+.round-title {
+	@media screen and (max-width: 900px) {
+		display: none;
+	}
 }
 
 .low {
