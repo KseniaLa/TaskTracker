@@ -9,6 +9,7 @@ matrix:
       before_install: cd UI/task-tracker
       install:
         - npm install
+        - npm install --save vue-multiselect\dist\vue-multiselect.min.css
       script:
         - npm run test:unit
         - npm run build
