@@ -7,7 +7,7 @@
 		<div class="chart-area">
 			<div v-for="data in chartData" v-bind:key="data.id">
 				<div class="chart-item">
-					<chart :id="data.id" :title="data.title" :chartType="data.chartType" :data="data.data" :borderColor="'#ff0000'" v-on:delete-widget="deleteWidget"></chart>
+					<chart :id="data.id" :title="data.title" :chartType="data.chartType" :data="data.data" :borderColor="'#0000ff'" v-on:delete-widget="deleteWidget"></chart>
 				</div>
 			</div>
 		</div>
