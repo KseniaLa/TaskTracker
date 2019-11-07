@@ -24,11 +24,11 @@ class LsWorker {
     }
 
     localStorage.setItem("tasks", JSON.stringify(tasks));
-    console.log("I request ls for task!");
+    //console.log("I request ls for task!");
   }
 
   getTasks() {
-    console.log("I request ls for task list");
+    //console.log("I request ls for task list");
     let tasks = [];
     if (localStorage.getItem("tasks")) {
       tasks = JSON.parse(localStorage.getItem("tasks"));
@@ -67,11 +67,11 @@ class LsWorker {
       localStorage.setItem("widgets", JSON.stringify(widgets));
     }
 
-    console.log("I request ls for widget!");
+    //console.log("I request ls for widget!");
   }
 
   getWidgets() {
-    console.log("I request ls for widget list");
+    //console.log("I request ls for widget list");
     let widgets = [];
     if (localStorage.getItem("widgets")) {
       widgets = JSON.parse(localStorage.getItem("widgets"));
@@ -81,7 +81,7 @@ class LsWorker {
   }
 
   deleteWidget(id) {
-    console.log(id);
+    //console.log(id);
     let widgets = [];
     if (localStorage.getItem("widgets")) {
       widgets = JSON.parse(localStorage.getItem("widgets"));

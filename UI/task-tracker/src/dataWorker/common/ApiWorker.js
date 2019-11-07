@@ -4,10 +4,8 @@ class ApiWorker {
   constructor() {}
 
   addTask() {
-    console.log("I request api for task!");
-    axios
-      .get("http://localhost:52779/api/task")
-      .then(response => console.log(response));
+    // console.log("I request api for task!");
+    axios.get("http://localhost:52779/api/task").then(response => response);
   }
 
   getTasks() {
@@ -17,11 +15,11 @@ class ApiWorker {
   }
 
   deleteTask() {
-    console.log("I request api for task deletion");
+    //console.log("I request api for task deletion");
   }
 
   addWidget() {
-    console.log("I request api for widget!");
+    //console.log("I request api for widget!");
   }
 }
 

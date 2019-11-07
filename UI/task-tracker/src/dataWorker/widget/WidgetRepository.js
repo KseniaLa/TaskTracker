@@ -24,8 +24,8 @@ class WidgetRepository {
   }
 
   addWidget(isDemo, widget) {
-    console.log(isDemo)
-    console.log(widget)
+    //console.log(isDemo)
+    //console.log(widget)
     let worker = this._factory.getWorker(isDemo);
     this._context.setWorker(worker);
     this._context.addWidget(widget);
