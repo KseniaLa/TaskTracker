@@ -11,6 +11,12 @@ matrix:
         - npm install
       script:
         - npm run test:unit
+        - npm run build
+      deploy:
+        provider: firebase
+        token:
+          secure: "RYk+adJ0VSDJm7365EPciukAupAAYLRIjhmdpbb5MXSsRo+Z/9ewJiIvz7FqYje1TbAFVJzycpOoOHWd7/4bFsGjVn6gwnPQm9joLMxTUQnpDqSJeZX1Clkh7b9e4feYUT60Hin9xIa0Y93aC7iWH+Au9xsNaUBCapEO68K7u4o6Baq7QMLOZMuQD3Ja7N+LPTXqg+r3ykouVxXc61fj+uaEBFWlDlj4fYSr4hcQNzxSaX5gzHnhql5YASp3CkyVjrI0lO6y6M1vUgS8cyBZKqgOxB6bIdergBfdvRpwSXuVbkbzU7FYvn2TGokmC2i4adw4TxLSOkXGNB84YXX9i6hAdgsbMEmcdI4IEd39ipmNzEweF6im9HMJVWlEdfzmOlI/9Fmvx55GrhpqfPApXvhUKaF2/QOkttKfCfhkvlk9dP0JDWU0Wr+9CXLAXnwG7ngMiAU0vWyTLud7szhOnbGI+a3aWgzlkBPmA6ToqaSfD37w8+X0ye2E8UT5BcJzMv3uqybSgETlN/tGwKH07NB3UE0ATNbglIN5m/Ujb3vWH65cs8coR+1IKFp6YBv/11GAbiakS15rUO88DRUTKLHf74amsPkRVcNFvC6TA4RHdAyPfZAEF/zKP8TtubVa0pFQ6xwSsST3w9/C3bQDDw9VRbssqL67nytcSPUc6Y4="
+        message: "this is an automatic deployment by TravisCI as a result of pushing to master"
 
     - language: csharp
       mono: none
