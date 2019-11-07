@@ -75,7 +75,6 @@ export default {
   methods: {
     saveWidget: function() {
       if (this.inputsValid()) {
-        console.log('save widget');
         WidgetRepository.instance.addWidget(this.isDemo, {id: -1});
         return;
       }
