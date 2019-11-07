@@ -46,7 +46,7 @@
 
 <script>
 import Multiselect from "vue-multiselect";
-import "vue-multiselect\\dist\\vue-multiselect.min.css";
+//import "vue-multiselect\\dist\\vue-multiselect.min.css";
 import ColorPicker from "vue-color-picker-wheel";
 import ErrorMessage from "./ErrorMessage.vue";
 import WidgetRepository from "../dataWorker/widget/WidgetRepository.js";
@@ -93,6 +93,8 @@ export default {
   },
 };
 </script>
+
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 
 <style lang="scss">
 .modal {
