@@ -35,10 +35,15 @@ export default {
 			this.isEdit = event.params.isEdit;
 			this.task = event.params.task;
     },
-    getData() {
+    getData(isDelete, id) {
       let tasks = TaskRepository.instance.getTasks(this.isDemo);
       this.tasks = tasks;
       this.$store.commit("setTasks", tasks);
+      if (isDelete && id > 0) {
+        this.$bus.$emit(`task${id}`)
+      } else {
+        this.$bus.$emit('full-update')
+      }
     }
   },
   data: function() {

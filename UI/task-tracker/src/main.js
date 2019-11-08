@@ -57,6 +57,14 @@ Vue.use({
   }
 });
 
+const eventBus = new Vue();
+
+Vue.use({
+  install: function(Vue) {
+    Vue.prototype.$bus = eventBus;
+  }
+});
+
 new Vue({
   router,
   store,

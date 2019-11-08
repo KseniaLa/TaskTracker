@@ -31,20 +31,11 @@ export default {
   },
   props: {
     id: Number,
-    item: Object,
-    tasks: Array
+    item: Object
   },
   data: function() {
     return {
-      data: {
-        labels: ["a", "b", "c"],
-        datasets: [
-          {
-            backgroundColor: ["#ff0000", "#ff0000", "#ff0000"],
-            data: [20, 30, 40]
-          }
-        ]
-      }
+      data: {}
     };
   },
   methods: {
@@ -53,15 +44,31 @@ export default {
     },
     getChartData() {
       return ChartDataProcessor.getData(
-        this.tasks,
+        this.$store.state.tasks,
         this.item.states,
         this.item.priorities
       );
+    },
+    updateData() {
+      var newData = this.getChartData();
+      this.data = newData.data;
+      newData.ids.forEach(e => {
+        this.$bus.$on(`task${e}`, () => {
+					console.log('local')
+          this.data = this.getChartData().data;
+        });
+      });
     }
   },
   mounted: function() {
-    this.data = this.getChartData();
-	}
+		this.updateData();
+  },
+  created: function() {
+    this.$bus.$on("full-update", () => {
+			console.log('global')
+			this.updateData();
+    });
+  }
 };
 </script>
 

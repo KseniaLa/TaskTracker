@@ -2,8 +2,8 @@ import { stateMap } from "../mappings/NameMapping.js";
 
 class ChartDataProcessor {
   static getData(tasks, states, priorities) {
-		let tasksbyPrior = tasks.filter(t => priorities.includes(t.priority));
-		
+    let tasksbyPrior = tasks.filter(t => priorities.includes(t.priority));
+
     let colors = {
       0: "#ff0000",
       1: "#00ff00",
@@ -16,14 +16,17 @@ class ChartDataProcessor {
     let data = states.map(s => tasksbyPrior.filter(t => t.state === s).length);
 
     let result = {
-      labels,
-      datasets: [
-        {
-          label: "Lol",
-          backgroundColor,
-          data
-        }
-      ]
+      data: {
+        labels,
+        datasets: [
+          {
+            label: "Lol",
+            backgroundColor,
+            data
+          }
+        ]
+      },
+      ids: tasksbyPrior.map(t => t.id)
     };
 
     return result;

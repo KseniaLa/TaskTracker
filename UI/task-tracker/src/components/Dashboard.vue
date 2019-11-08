@@ -7,7 +7,7 @@
 		<div class="chart-area">
 			<div v-for="widget in widgets" v-bind:key="widget.id">
 				<div class="chart-item">
-					<chart :id="widget.id" :item="widget" :tasks="appTasks" v-on:delete-widget="deleteWidget"></chart>
+					<chart :id="widget.id" :item="widget" v-on:delete-widget="deleteWidget"></chart>
 				</div>
 			</div>
 		</div>

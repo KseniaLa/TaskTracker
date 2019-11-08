@@ -71,7 +71,7 @@ export default {
           date: this.dueDate,
         }
         TaskRepository.instance.addTask(this.isDemo, task);
-        this.$emit("tasks-refresh");
+        this.$emit("tasks-refresh", false);
         this.$modal.hide("task");
         return;
       }
@@ -79,7 +79,7 @@ export default {
     },
     deleteTask() {
       TaskRepository.instance.deleteTask(this.isDemo, this.taskId);
-      this.$emit("tasks-refresh");
+      this.$emit("tasks-refresh", true, this.taskId);
       this.$modal.hide("task");
     },
     inputsValid() {
