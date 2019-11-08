@@ -5,9 +5,9 @@
 			<button class="add-button" v-on:click="openModal">Add</button>
 		</div>
 		<div class="chart-area">
-			<div v-for="data in chartData" v-bind:key="data.id">
+			<div v-for="widget in widgets" v-bind:key="widget.id">
 				<div class="chart-item">
-					<chart :id="data.id" :title="data.title" :chartType="data.chartType" :data="data.data" :borderColor="'#00ff00'" v-on:delete-widget="deleteWidget"></chart>
+					<chart :id="widget.id" :item="widget" :tasks="appTasks" v-on:delete-widget="deleteWidget"></chart>
 				</div>
 			</div>
 		</div>
@@ -37,78 +37,22 @@ export default {
       WidgetRepository.instance.deleteWidget(this.isDemo, id);
     },
     getData() {
-      WidgetRepository.instance.getWidgets(this.isDemo);
+      let widgets = WidgetRepository.instance.getWidgets(this.isDemo);
+      this.widgets = widgets;
+      this.$store.commit("setWidgets", widgets);
     }
   },
   data: function() {
     return {
-      chartData: [
-        {
-          id: 1,
-          title: "test1",
-          chartType: "bar",
-          data: {
-            labels: ["January", "February", "March"],
-            datasets: [
-              {
-                label: "GitHub Commits",
-                backgroundColor: ["#f87979", "#ff0000"],
-                data: [40, 20, 12]
-              }
-            ]
-          }
-        },
-        {
-          id: 2,
-          title: "test1",
-          chartType: "pie",
-          data: {
-            labels: ["January", "February", "March"],
-            datasets: [
-              {
-                label: "GitHub Commits",
-                backgroundColor: ["#f87979", "#ff0000", "#00ff00"],
-                data: [40, 20, 12]
-              }
-            ]
-          }
-				},
-				{
-          id: 3,
-          title: "test1",
-          chartType: "bar",
-          data: {
-            labels: ["January", "February", "March"],
-            datasets: [
-              {
-                label: "GitHub Commits",
-                backgroundColor: ["#ff0000", "#00ff00", "#0000ff"],
-                data: [40, 20, 12]
-              }
-            ]
-          }
-				},
-				{
-          id: 4,
-          title: "test1",
-          chartType: "pie",
-          data: {
-            labels: ["January", "February", "March"],
-            datasets: [
-              {
-                label: "GitHub Commits",
-                backgroundColor: ["#f87979", "#ff0000", "#00ff00"],
-                data: [40, 20, 12]
-              }
-            ]
-          }
-				}
-      ]
+      widgets: [],
     };
   },
   computed: {    
     isDemo () {
       return this.$store.state.isDemo;
+    },
+    appTasks() {
+      return this.$store.state.tasks;
     }
   },
   mounted: function() {

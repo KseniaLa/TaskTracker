@@ -7,7 +7,9 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     isDemo: false,
-    isLanding: true
+    isLanding: true,
+    tasks: [],
+    widgets: []
   },
   plugins: [createPersistedState()],
   mutations: {
@@ -16,10 +18,18 @@ export default new Vuex.Store({
     },
     setLanding(state, isLanding) {
       state.isLanding = isLanding;
+    },
+    setTasks(state, tasks) {
+      state.tasks = tasks;
+    },
+    setWidgets(state, widgets) {
+      state.widgets = widgets;
     }
   },
   actions: {
     isDemo: state => state.isDemo,
-    isLanding: state => state.isLanding
+    isLanding: state => state.isLanding,
+    tasks: state => state.tasks,
+    widgets: state => state.widgets
   }
 });

@@ -75,7 +75,16 @@ export default {
   methods: {
     saveWidget: function() {
       if (this.inputsValid()) {
-        WidgetRepository.instance.addWidget(this.isDemo, {id: -1});
+        let widget = {
+          id: -1,
+          title: this.widgetTitle,
+          states: this.stateValue.map(s => s.id),
+          priorities: this.priorityValue.map(p => p.id),
+          chartType: this.chartValue.id,
+          colorScheme: this.colorValue,
+          borderColor: this.borderColor
+        }
+        WidgetRepository.instance.addWidget(this.isDemo, widget);
         return;
       }
       this.$modal.show("widget-error");
@@ -116,9 +125,9 @@ export default {
 }
 
 .color-box {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .dropdown {

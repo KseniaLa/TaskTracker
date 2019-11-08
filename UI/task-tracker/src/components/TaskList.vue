@@ -36,7 +36,9 @@ export default {
 			this.task = event.params.task;
     },
     getData() {
-      this.tasks = TaskRepository.instance.getTasks(this.isDemo);
+      let tasks = TaskRepository.instance.getTasks(this.isDemo);
+      this.tasks = tasks;
+      this.$store.commit("setTasks", tasks);
     }
   },
   data: function() {
