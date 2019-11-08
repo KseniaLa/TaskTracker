@@ -85,6 +85,8 @@ export default {
           borderColor: this.borderColor
         }
         WidgetRepository.instance.addWidget(this.isDemo, widget);
+        this.$emit("widgets-refresh");
+        this.$modal.hide("widget");
         return;
       }
       this.$modal.show("widget-error");

@@ -13,7 +13,7 @@
 		</div>
 
 		<modal name="widget" height="90%" width="50%">
-      <WidgetModal />
+      <WidgetModal v-on:widgets-refresh="getData"/>
     </modal>
   </div>
 </template>
@@ -35,6 +35,7 @@ export default {
     },
     deleteWidget: function(id) {
       WidgetRepository.instance.deleteWidget(this.isDemo, id);
+      this.getData();
     },
     getData() {
       let widgets = WidgetRepository.instance.getWidgets(this.isDemo);
