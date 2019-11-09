@@ -9,8 +9,8 @@ class TaskApiWorker {
     this._apiWorker.addTask();
   }
 
-  getTasks() {
-    return this._apiWorker.getTasks();
+  async getTasks() {
+    return await this._apiWorker.getTasks();
   }
 
   deleteTask() {

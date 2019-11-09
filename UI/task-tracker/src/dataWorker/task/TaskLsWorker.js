@@ -9,8 +9,8 @@ class TaskLsWorker {
     this._lsWorker.addTask(task);
   }
 
-  getTasks() {
-    return this._lsWorker.getTasks();
+  async getTasks() {
+    return await this._lsWorker.getTasks();
   }
 
   deleteTask(id) {

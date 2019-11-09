@@ -15,8 +15,8 @@ class TaskWorker {
     this._worker.addTask(task);
   }
 
-  getTasks() {
-    return this._worker.getTasks();
+  async getTasks() {
+    return await this._worker.getTasks();
   }
 
   deleteTask(id) {

@@ -3,13 +3,14 @@ import axios from "axios";
 class ApiWorker {
   constructor() {}
 
-  addTask() {
-    axios.get("http://localhost:52779/api/task").then(response => response);
+  async addTask() {
+    let result = await axios.get("http://localhost:52779/api/task");
+    return result.data.tasks;
   }
 
-  getTasks() {
-    let tasks = [];
-    return tasks;
+  async getTasks() {
+    let result = await axios.get("http://localhost:52779/api/task");
+    return result.data.tasks;
   }
 
   deleteTask() {

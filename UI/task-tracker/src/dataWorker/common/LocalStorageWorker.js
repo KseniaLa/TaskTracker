@@ -27,8 +27,7 @@ class LsWorker {
     //console.log("I request ls for task!");
   }
 
-  getTasks() {
-    //console.log("I request ls for task list");
+  async getTasks() {
     let tasks = [];
     if (localStorage.getItem("tasks")) {
       tasks = JSON.parse(localStorage.getItem("tasks"));

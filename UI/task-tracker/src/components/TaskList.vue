@@ -35,8 +35,9 @@ export default {
 			this.isEdit = event.params.isEdit;
 			this.task = event.params.task;
     },
-    getData(isDelete, id) {
-      let tasks = TaskRepository.instance.getTasks(this.isDemo);
+    getData: async function(isDelete, id) {
+      let tasks = await TaskRepository.instance.getTasks(this.isDemo);
+      console.log(tasks);
       this.tasks = tasks;
       this.$store.commit("setTasks", tasks);
       if (isDelete && id > 0) {
