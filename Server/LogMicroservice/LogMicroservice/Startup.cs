@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LogMicroservice.Config;
+using LogMicroservice.DataAccess;
+using LogMicroservice.DataAccess.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -24,9 +28,18 @@ namespace LogMicroservice
           // This method gets called by the runtime. Use this method to add services to the container.
           public void ConfigureServices(IServiceCollection services)
           {
+               services.AddCors();
+
+               services.AddTransient<IConfig, Config.Config>();
+               services.AddTransient<ITaskTrackerContext, TaskTrackerContext>();
+               services.AddDbContext<TaskTrackerContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")), ServiceLifetime.Singleton);
+
+               services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+               services.AddTransient<IUnitOfWork, TaskTrackerUnitOfWork>();
+
                services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-               services.AddCors();
           }
 
           // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
