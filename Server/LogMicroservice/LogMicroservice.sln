@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogMicroservice.DataAccess"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogMicroservice.Config", "LogMicroservice.Config\LogMicroservice.Config.csproj", "{597A6743-83BB-4E5A-ACFC-2B2F96CFCFAF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogMicroservice.Services", "LogMicroservice.Services\LogMicroservice.Services.csproj", "{987FA388-9BFA-4641-8B16-D0A5628E6FAC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogMicroservice.DataPresentation", "LogMicroservice.DataPresentation\LogMicroservice.DataPresentation.csproj", "{74A15CAB-318F-4AB7-B90D-C83D240252D3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{597A6743-83BB-4E5A-ACFC-2B2F96CFCFAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{597A6743-83BB-4E5A-ACFC-2B2F96CFCFAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{597A6743-83BB-4E5A-ACFC-2B2F96CFCFAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{987FA388-9BFA-4641-8B16-D0A5628E6FAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{987FA388-9BFA-4641-8B16-D0A5628E6FAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{987FA388-9BFA-4641-8B16-D0A5628E6FAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{987FA388-9BFA-4641-8B16-D0A5628E6FAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74A15CAB-318F-4AB7-B90D-C83D240252D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74A15CAB-318F-4AB7-B90D-C83D240252D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74A15CAB-318F-4AB7-B90D-C83D240252D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74A15CAB-318F-4AB7-B90D-C83D240252D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

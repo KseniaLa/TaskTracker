@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using LogMicroservice.Config;
 using LogMicroservice.DataAccess;
 using LogMicroservice.DataAccess.Repositories;
+using LogMicroservice.Services;
+using LogMicroservice.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -37,6 +39,13 @@ namespace LogMicroservice
 
                services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
                services.AddTransient<IUnitOfWork, LogDbUnitOfWork>();
+
+               services.Scan(scan => scan
+                 .FromAssembliesOf(new List<Type> { typeof(IClientLogService), typeof(ClientLogService) })
+                 .AddClasses(classes => classes.AssignableTo<IScopedService>())
+                 .AsImplementedInterfaces()
+                 .WithScopedLifetime()
+               );
 
                services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 

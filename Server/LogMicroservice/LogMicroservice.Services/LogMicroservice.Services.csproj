@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LogMicroservice.DataAccess\LogMicroservice.DataAccess.csproj" />
+    <ProjectReference Include="..\LogMicroservice.DataPresentation\LogMicroservice.DataPresentation.csproj" />
+  </ItemGroup>
+
+</Project>
