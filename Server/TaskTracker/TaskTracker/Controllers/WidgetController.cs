@@ -9,29 +9,29 @@ using TaskTracker.Models;
 
 namespace TaskTracker.Controllers
 {
-     [Route("api/task")]
-     public class TaskController : Controller
+     [Route("api/widget")]
+     public class WidgetController : Controller
      {
-          // GET: api/task
+          // GET: api/widget
           [HttpGet]
-          public IActionResult GetTasks()
+          public IActionResult GetWidgets()
           {
-               return Ok(new { tasks = Data.Tasks });
+               return Ok(new { widgets = Data.Widgets });
           }
 
-          // POST api/task/add
+          // POST api/widget/add
           [HttpPost("add")]
-          public IActionResult SaveTask([FromBody]Models.Task value)
+          public IActionResult AddWidget([FromBody]Widget value)
           {
-               Data.Tasks.Add(value);
+               Data.Widgets.Add(value);
                return Ok();
           }
 
-          // DELETE api/task/delete/5
+          // DELETE api/widget/delete/5
           [HttpDelete("delete/{id}")]
-          public void DeleteTask(int id)
+          public void DeleteWWidget(int id)
           {
-               Data.Tasks = Data.Tasks.Where(t => t.Id != id).ToList();
+               Data.Widgets = Data.Widgets.Where(t => t.Id != id).ToList();
           }
      }
 }
