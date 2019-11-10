@@ -7,15 +7,15 @@ using System.Text;
 
 namespace LogMicroservice.DataAccess
 {
-     public class TaskTrackerContext : DbContext, ITaskTrackerContext
+     public class LogDbContext : DbContext, ILogDbContext
      {
           private readonly IConfig _config;
 
-          public TaskTrackerContext()
+          public LogDbContext()
           {
           }
 
-          public TaskTrackerContext(DbContextOptions options, IConfig config) : base(options)
+          public LogDbContext(DbContextOptions options, IConfig config) : base(options)
           {
                _config = config;
           }

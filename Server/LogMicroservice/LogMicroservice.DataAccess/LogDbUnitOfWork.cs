@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace LogMicroservice.DataAccess
 {
-     public class TaskTrackerUnitOfWork : IUnitOfWork
+     public class LogDbUnitOfWork : IUnitOfWork
      {
-          private readonly TaskTrackerContext _db;
+          private readonly LogDbContext _db;
           private readonly IServiceProvider _serviceProvider;
 
           public IGenericRepository<ClientLog> ClientLogs => GetGenericRepository<ClientLog>();
           
 
-          public TaskTrackerUnitOfWork(TaskTrackerContext context, IServiceProvider serviceProvider)
+          public LogDbUnitOfWork(LogDbContext context, IServiceProvider serviceProvider)
           {
                _db = context;
                _serviceProvider = serviceProvider;

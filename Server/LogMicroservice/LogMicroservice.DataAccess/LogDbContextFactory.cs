@@ -7,16 +7,16 @@ using System.Text;
 
 namespace LogMicroservice.DataAccess
 {
-     public class TaskTrackerContextFactory : IDesignTimeDbContextFactory<TaskTrackerContext>
+     public class LogDbContextFactory : IDesignTimeDbContextFactory<LogDbContext>
      {
-          public TaskTrackerContext CreateDbContext(string[] args)
+          public LogDbContext CreateDbContext(string[] args)
           {
                var environmentName = Environment.GetEnvironmentVariable("Hosting:Environment");
                var basePath = AppContext.BaseDirectory;
                return Create(basePath, environmentName);
           }
 
-          private TaskTrackerContext Create(string basePath, string environmentName)
+          private LogDbContext Create(string basePath, string environmentName)
           {
                var builder = Config.Config.GetBuilder(basePath);
 
@@ -32,7 +32,7 @@ namespace LogMicroservice.DataAccess
                return Create(connectionString);
           }
 
-          private TaskTrackerContext Create(string connectionString)
+          private LogDbContext Create(string connectionString)
           {
                if (string.IsNullOrEmpty(connectionString))
                     throw new ArgumentException(
@@ -41,7 +41,7 @@ namespace LogMicroservice.DataAccess
 
                var optionsBuilder = new DbContextOptionsBuilder();
                optionsBuilder.UseSqlServer(connectionString);
-               return new TaskTrackerContext(optionsBuilder.Options, new Config.Config());
+               return new LogDbContext(optionsBuilder.Options, new Config.Config());
           }
      }
 }

@@ -10,7 +10,7 @@ namespace LogMicroservice.DataAccess.Repositories
      {
           private readonly DbSet<T> _dbSet;
 
-          public GenericRepository(TaskTrackerContext context)
+          public GenericRepository(LogDbContext context)
           {
                _dbSet = context.Set<T>();
           }

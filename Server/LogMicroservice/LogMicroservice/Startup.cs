@@ -31,12 +31,12 @@ namespace LogMicroservice
                services.AddCors();
 
                services.AddTransient<IConfig, Config.Config>();
-               services.AddTransient<ITaskTrackerContext, TaskTrackerContext>();
-               services.AddDbContext<TaskTrackerContext>(options =>
+               services.AddTransient<ILogDbContext, LogDbContext>();
+               services.AddDbContext<LogDbContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")), ServiceLifetime.Singleton);
 
                services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-               services.AddTransient<IUnitOfWork, TaskTrackerUnitOfWork>();
+               services.AddTransient<IUnitOfWork, LogDbUnitOfWork>();
 
                services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace LogMicroservice.DataAccess
 {
-     public interface ITaskTrackerContext
+     public interface ILogDbContext
      {
           DbSet<ClientLog> ClientLogs { get; set; }
      }
