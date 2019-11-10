@@ -73,7 +73,7 @@ export default {
     };
   },
   methods: {
-    saveWidget: function() {
+    saveWidget: async function() {
       if (this.inputsValid()) {
         let widget = {
           id: -1,
@@ -84,7 +84,7 @@ export default {
           colorScheme: this.colorValue,
           borderColor: this.borderColor
         }
-        WidgetRepository.instance.addWidget(this.isDemo, widget);
+        await WidgetRepository.instance.addWidget(this.isDemo, widget);
         this.$emit("widgets-refresh");
         this.$modal.hide("widget");
         return;

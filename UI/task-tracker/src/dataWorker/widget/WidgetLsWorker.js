@@ -5,8 +5,8 @@ class WidgetLsWorker {
     this._lsWorker = new LocalStorageWorker();
   }
 
-  addWidget(widget) {
-    this._lsWorker.addWidget(widget);
+  async addWidget(widget) {
+    await this._lsWorker.addWidget(widget);
   }
 
   async getWidgets() {

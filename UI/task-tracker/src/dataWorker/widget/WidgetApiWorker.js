@@ -5,8 +5,8 @@ class WidgetApiWorker {
     this._apiWorker = new ApiWorker();
   }
 
-  addWidget() {
-    this._apiWorker.addWidget();
+  async addWidget(task) {
+    await this._apiWorker.addWidget(task);
   }
 
   async getWidgets() {

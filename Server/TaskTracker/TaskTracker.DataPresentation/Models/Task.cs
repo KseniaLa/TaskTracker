@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
-namespace TaskTracker.Models
+namespace TaskTracker.DataPresentation.Models
 {
      public class Task
      {
@@ -12,5 +11,6 @@ namespace TaskTracker.Models
           public string Description { get; set; }
           public int Priority { get; set; }
           public int State { get; set; }
+          public DateTime Date { get; set; }
      }
 }

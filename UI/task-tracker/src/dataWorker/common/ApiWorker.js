@@ -57,7 +57,26 @@ class ApiWorker {
     return result.data.widgets;
   }
 
-  addWidget() {}
+  async addWidget(widget) {
+    let data = JSON.stringify(widget);
+
+    let result = null;
+    try {
+      result = await axios.post("http://localhost:52779/api/widget/add", data, {
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+    } catch {
+      return false;
+    }
+
+    if (result.status === 200) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
 
 export default ApiWorker;

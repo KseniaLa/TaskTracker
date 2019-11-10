@@ -13,6 +13,8 @@ using Microsoft.Extensions.Options;
 using TaskTracker.Config;
 using TaskTracker.DataAccess;
 using TaskTracker.DataAccess.Repositories;
+using TaskTracker.Services;
+using TaskTracker.Services.Interfaces;
 
 namespace TaskTracker
 {
@@ -28,8 +30,6 @@ namespace TaskTracker
           // This method gets called by the runtime. Use this method to add services to the container.
           public void ConfigureServices(IServiceCollection services)
           {
-               services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
                services.AddCors();
 
                services.AddTransient<IConfig, Config.Config>();
@@ -39,6 +39,15 @@ namespace TaskTracker
 
                services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
                services.AddTransient<IUnitOfWork, TaskTrackerUnitOfWork>();
+
+               services.Scan(scan => scan
+                 .FromAssembliesOf(new List<Type> { typeof(ITaskService), typeof(TaskService) })
+                 .AddClasses(classes => classes.AssignableTo<IScopedService>())
+                 .AsImplementedInterfaces()
+                 .WithScopedLifetime()
+               );
+
+               services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
           }
 
           // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -11,8 +11,8 @@ class WidgetWorker {
     return this._worker;
   }
 
-  addWidget(widget) {
-    this._worker.addWidget(widget);
+  async addWidget(widget) {
+    await this._worker.addWidget(widget);
   }
 
   async getWidgets() {

@@ -23,12 +23,12 @@ class WidgetRepository {
     throw "Cannot change property";
   }
 
-  addWidget(isDemo, widget) {
+  async addWidget(isDemo, widget) {
     //console.log(isDemo)
     //console.log(widget)
     let worker = this._factory.getWorker(isDemo);
     this._context.setWorker(worker);
-    this._context.addWidget(widget);
+    await this._context.addWidget(widget);
   }
 
   async getWidgets(isDemo) {

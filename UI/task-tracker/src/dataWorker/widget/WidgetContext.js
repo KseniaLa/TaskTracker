@@ -7,8 +7,8 @@ class WidgetContext {
     this._worker = worker;
   }
 
-  addWidget(task) {
-    this._worker.addWidget(task);
+  async addWidget(widget) {
+    await this._worker.addWidget(widget);
   }
 
   async getWidgets() {
