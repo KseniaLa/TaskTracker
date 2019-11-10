@@ -31,10 +31,10 @@ class WidgetRepository {
     this._context.addWidget(widget);
   }
 
-  getWidgets(isDemo) {
+  async getWidgets(isDemo) {
     let worker = this._factory.getWorker(isDemo);
     this._context.setWorker(worker);
-    return this._context.getWidgets();
+    return await this._context.getWidgets();
   }
 
   deleteWidget(isDemo, id) {

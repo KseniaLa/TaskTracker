@@ -13,8 +13,8 @@ class TaskLsWorker {
     return await this._lsWorker.getTasks();
   }
 
-  deleteTask(id) {
-    this._lsWorker.deleteTask(id);
+  async deleteTask(id) {
+    await this._lsWorker.deleteTask(id);
   }
 }
 

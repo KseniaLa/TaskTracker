@@ -16,39 +16,43 @@ namespace TaskTracker.Controllers
           [HttpGet]
           public IActionResult Get()
           {
-               var result = new List<Models.Task>
-               {
-                    new Models.Task { Id = 1, Title = "hello"},
-                    new Models.Task { Id = 2, Title = "qwerty"},
-                    new Models.Task { Id = 3, Title = "good"},
-               };
-
-               return Ok(new { tasks = result });
-          }
-
-          // GET api/<controller>/5
-          [HttpGet("{id}")]
-          public string Get(int id)
-          {
-               return "value";
+               return Ok(new { tasks = Data.Tasks });
           }
 
           // POST api/<controller>
-          [HttpPost]
-          public void Post([FromBody]string value)
+          [HttpPost("add")]
+          public IActionResult Post([FromBody]Models.Task value)
           {
-          }
-
-          // PUT api/<controller>/5
-          [HttpPut("{id}")]
-          public void Put(int id, [FromBody]string value)
-          {
+               Data.Tasks.Add(value);
+               return Ok();
           }
 
           // DELETE api/<controller>/5
-          [HttpDelete("{id}")]
+          [HttpDelete("delete/{id}")]
           public void Delete(int id)
           {
+               Data.Tasks = Data.Tasks.Where(t => t.Id != id).ToList();
+          }
+
+          [HttpGet("widgets")]
+          public IActionResult GetW()
+          {
+               return Ok(new { widgets = Data.Widgets });
+          }
+
+          // POST api/<controller>
+          [HttpPost("add/widget")]
+          public IActionResult PostW([FromBody]Widget value)
+          {
+               Data.Widgets.Add(value);
+               return Ok();
+          }
+
+          // DELETE api/<controller>/5
+          [HttpDelete("delete/widget/{id}")]
+          public void DeleteW(int id)
+          {
+               Data.Widgets = Data.Widgets.Where(t => t.Id != id).ToList();
           }
      }
 }

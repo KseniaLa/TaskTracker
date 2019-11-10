@@ -60,7 +60,7 @@ export default {
     };
   },
   methods: {
-    saveTask: function() {
+    saveTask: async function() {
       if (this.inputsValid()) {
         let task = {
           id: this.taskId,
@@ -70,15 +70,15 @@ export default {
           state: this.stateValue.id,
           date: this.dueDate,
         }
-        TaskRepository.instance.addTask(this.isDemo, task);
+        await TaskRepository.instance.addTask(this.isDemo, task);
         this.$emit("tasks-refresh", false);
         this.$modal.hide("task");
         return;
       }
       this.$modal.show("task-error");
     },
-    deleteTask() {
-      TaskRepository.instance.deleteTask(this.isDemo, this.taskId);
+    deleteTask: async function() {
+      await TaskRepository.instance.deleteTask(this.isDemo, this.taskId);
       this.$emit("tasks-refresh", true, this.taskId);
       this.$modal.hide("task");
     },

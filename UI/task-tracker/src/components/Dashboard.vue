@@ -37,8 +37,8 @@ export default {
       WidgetRepository.instance.deleteWidget(this.isDemo, id);
       this.getData();
     },
-    getData() {
-      let widgets = WidgetRepository.instance.getWidgets(this.isDemo);
+    getData: async function() {
+      let widgets = await WidgetRepository.instance.getWidgets(this.isDemo);
       this.widgets = widgets;
       this.$store.commit("setWidgets", widgets);
     }

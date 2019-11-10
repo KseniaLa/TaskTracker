@@ -5,16 +5,16 @@ class TaskApiWorker {
     this._apiWorker = new ApiWorker();
   }
 
-  addTask() {
-    this._apiWorker.addTask();
+  async addTask(task) {
+    await this._apiWorker.addTask(task);
   }
 
   async getTasks() {
     return await this._apiWorker.getTasks();
   }
 
-  deleteTask() {
-    this._apiWorker.deleteTask();
+  async deleteTask(id) {
+    await this._apiWorker.deleteTask(id);
   }
 }
 

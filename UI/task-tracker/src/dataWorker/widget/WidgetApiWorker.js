@@ -9,8 +9,8 @@ class WidgetApiWorker {
     this._apiWorker.addWidget();
   }
 
-  getWidgets() {
-    return this._apiWorker.getWidgets();
+  async getWidgets() {
+    return await this._apiWorker.getWidgets();
   }
 
   deleteWidget() {

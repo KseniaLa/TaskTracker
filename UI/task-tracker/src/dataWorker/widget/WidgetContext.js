@@ -11,8 +11,8 @@ class WidgetContext {
     this._worker.addWidget(task);
   }
 
-  getWidgets() {
-    return this._worker.getWidgets();
+  async getWidgets() {
+    return await this._worker.getWidgets();
   }
 
   deleteWidget(id) {
