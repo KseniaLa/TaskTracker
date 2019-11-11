@@ -24,8 +24,6 @@ class WidgetRepository {
   }
 
   async addWidget(isDemo, widget) {
-    //console.log(isDemo)
-    //console.log(widget)
     let worker = this._factory.getWorker(isDemo);
     this._context.setWorker(worker);
     await this._context.addWidget(widget);
@@ -37,10 +35,10 @@ class WidgetRepository {
     return await this._context.getWidgets();
   }
 
-  deleteWidget(isDemo, id) {
+  async deleteWidget(isDemo, id) {
     let worker = this._factory.getWorker(isDemo);
     this._context.setWorker(worker);
-    return this._context.deleteWidget(id);
+    return await this._context.deleteWidget(id);
   }
 }
 

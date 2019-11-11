@@ -13,8 +13,8 @@ class WidgetApiWorker {
     return await this._apiWorker.getWidgets();
   }
 
-  deleteWidget() {
-    this._apiWorker.deleteWidget();
+  async deleteWidget(id) {
+    await this._apiWorker.deleteWidget(id);
   }
 }
 

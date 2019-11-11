@@ -24,16 +24,17 @@ namespace TaskTracker.Services
                     Description = task.Description,
                     State = task.State,
                     Priority = task.Priority,
-                    DateTime = DateTime.Now ///////////////////////////////
+                    DateTime = task.Date
                };
 
                await Db.Tasks.Add(dbTask);
                await Db.Save();
           }
 
-          public Task DeleteTask(int id)
+          public async Task DeleteTask(int id)
           {
-               throw new NotImplementedException();
+               Db.Tasks.Delete(id);
+               await Db.Save();
           }
 
           public async Task<List<DataPresentation.Models.Task>> GetTasks()
@@ -51,9 +52,20 @@ namespace TaskTracker.Services
                }).ToList();
           }
 
-          public Task UpdateTask(DataPresentation.Models.Task task)
+          public async Task UpdateTask(DataPresentation.Models.Task task)
           {
-               throw new NotImplementedException();
+               var editTask = await Db.Tasks.GetItem(task.Id);
+
+               if (editTask == null) return;
+               
+               editTask.Title = task.Title;
+               editTask.Description = task.Description;
+               editTask.Priority = task.Priority;
+               editTask.State = task.State;
+               editTask.DateTime = task.Date;
+
+               Db.Tasks.Update(editTask);
+               await Db.Save();
           }
      }
 }

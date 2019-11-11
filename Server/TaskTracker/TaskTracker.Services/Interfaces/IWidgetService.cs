@@ -9,8 +9,6 @@ namespace TaskTracker.Services.Interfaces
      {
           Task AddWidget(DataPresentation.Models.Widget widget);
 
-          Task UpdateWidget(DataPresentation.Models.Widget widget);
-
           Task DeleteWidget(int id);
 
           Task<List<DataPresentation.Models.Widget>> GetWidgets();

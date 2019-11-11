@@ -65,12 +65,9 @@ class LsWorker {
 
       localStorage.setItem("widgets", JSON.stringify(widgets));
     }
-
-    //console.log("I request ls for widget!");
   }
 
   getWidgets() {
-    //console.log("I request ls for widget list");
     let widgets = [];
     if (localStorage.getItem("widgets")) {
       widgets = JSON.parse(localStorage.getItem("widgets"));
@@ -80,7 +77,6 @@ class LsWorker {
   }
 
   deleteWidget(id) {
-    //console.log(id);
     let widgets = [];
     if (localStorage.getItem("widgets")) {
       widgets = JSON.parse(localStorage.getItem("widgets"));

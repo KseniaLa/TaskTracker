@@ -42,7 +42,15 @@ namespace TaskTracker.Controllers
           {
                try
                {
-                    await _taskService.AddTask(value);
+                    if (value.Id < 0)
+                    {
+                         await _taskService.AddTask(value);
+                    }
+                    else
+                    {
+                         await _taskService.UpdateTask(value);
+                    }
+                    
                }
                catch
                {
@@ -54,9 +62,18 @@ namespace TaskTracker.Controllers
 
           // DELETE api/task/delete/5
           [HttpDelete("delete/{id}")]
-          public void DeleteTask(int id)
+          public async Task<IActionResult> DeleteTask(int id)
           {
-               //Data.Tasks = Data.Tasks.Where(t => t.Id != id).ToList();
+               try
+               {
+                    await _taskService.DeleteTask(id);
+               }
+               catch
+               {
+                    return BadRequest();
+               }
+
+               return Ok();
           }
      }
 }

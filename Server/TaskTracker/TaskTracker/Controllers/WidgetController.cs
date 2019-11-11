@@ -53,9 +53,18 @@ namespace TaskTracker.Controllers
 
           // DELETE api/widget/delete/5
           [HttpDelete("delete/{id}")]
-          public void DeleteWWidget(int id)
+          public async Task<IActionResult> DeleteWWidget(int id)
           {
-               //Data.Widgets = Data.Widgets.Where(t => t.Id != id).ToList();
+               try
+               {
+                    await _widgetService.DeleteWidget(id);
+               }
+               catch
+               {
+                    return BadRequest();
+               }
+
+               return Ok();
           }
      }
 }

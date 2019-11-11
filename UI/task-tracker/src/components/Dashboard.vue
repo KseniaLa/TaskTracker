@@ -33,8 +33,8 @@ export default {
     openModal: function() {
       this.$modal.show("widget");
     },
-    deleteWidget: function(id) {
-      WidgetRepository.instance.deleteWidget(this.isDemo, id);
+    deleteWidget: async function(id) {
+      await WidgetRepository.instance.deleteWidget(this.isDemo, id);
       this.getData();
     },
     getData: async function() {

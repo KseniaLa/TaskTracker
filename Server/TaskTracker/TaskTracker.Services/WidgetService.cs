@@ -34,9 +34,10 @@ namespace TaskTracker.Services
                await Db.Save();
           }
 
-          public Task DeleteWidget(int id)
+          public async Task DeleteWidget(int id)
           {
-               throw new NotImplementedException();
+               Db.Widgets.Delete(id);
+               await Db.Save();
           }
 
           public async Task<List<Widget>> GetWidgets()
@@ -53,11 +54,6 @@ namespace TaskTracker.Services
                     ChartType = t.ChartType,
                     ColorScheme = t.ColorScheme
                }).ToList();
-          }
-
-          public Task UpdateWidget(Widget widget)
-          {
-               throw new NotImplementedException();
           }
      }
 }

@@ -77,6 +77,23 @@ class ApiWorker {
       return false;
     }
   }
+
+  async deleteWidget(id) {
+    let result = null;
+    try {
+      result = await axios.delete(
+        `http://localhost:52779/api/widget/delete/${id}`
+      );
+    } catch {
+      return false;
+    }
+
+    if (result.status === 200) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
 
 export default ApiWorker;
