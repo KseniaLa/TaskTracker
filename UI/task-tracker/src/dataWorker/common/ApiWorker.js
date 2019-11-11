@@ -8,7 +8,7 @@ class ApiWorker {
 
     let result = null;
     try {
-      result = await axios.post("http://localhost:52779/api/task/add", data, {
+      result = await axios.post("http://localhost:9000/api/task/add", data, {
         headers: {
           "Content-Type": "application/json"
         }
@@ -27,7 +27,7 @@ class ApiWorker {
   async getTasks() {
     let result = null;
     try {
-      result = await axios.get("http://localhost:52779/api/task");
+      result = await axios.get("http://localhost:9000/api/task");
     } catch {
       return [];
     }
@@ -39,7 +39,7 @@ class ApiWorker {
     let result = null;
     try {
       result = await axios.delete(
-        `http://localhost:52779/api/task/delete/${id}`
+        `http://localhost:9000/api/task/delete/${id}`
       );
     } catch {
       return false;
@@ -53,7 +53,7 @@ class ApiWorker {
   }
 
   async getWidgets() {
-    let result = await axios.get("http://localhost:52779/api/widget");
+    let result = await axios.get("http://localhost:9000/api/widget");
     return result.data.widgets;
   }
 
@@ -62,7 +62,7 @@ class ApiWorker {
 
     let result = null;
     try {
-      result = await axios.post("http://localhost:52779/api/widget/add", data, {
+      result = await axios.post("http://localhost:9000/api/widget/add", data, {
         headers: {
           "Content-Type": "application/json"
         }
@@ -82,7 +82,7 @@ class ApiWorker {
     let result = null;
     try {
       result = await axios.delete(
-        `http://localhost:52779/api/widget/delete/${id}`
+        `http://localhost:9000/api/widget/delete/${id}`
       );
     } catch {
       return false;

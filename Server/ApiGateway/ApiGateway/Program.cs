@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace LogMicroservice
+namespace ApiGateway
 {
      public class Program
      {
@@ -19,7 +19,8 @@ namespace LogMicroservice
 
           public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
               WebHost.CreateDefaultBuilder(args)
-                  .UseStartup<Startup>()
-                  .UseUrls("http://localhost:9002");
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                    .UseStartup<Startup>()
+                    .UseUrls("http://localhost:9000");
      }
 }
