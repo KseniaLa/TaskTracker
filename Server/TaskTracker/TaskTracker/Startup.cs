@@ -35,7 +35,7 @@ namespace TaskTracker
                services.AddTransient<IConfig, Config.Config>();
                services.AddTransient<ITaskTrackerContext, TaskTrackerContext>();
                services.AddDbContext<TaskTrackerContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")), ServiceLifetime.Singleton);
+                    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")), ServiceLifetime.Scoped);
 
                services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
                services.AddTransient<IUnitOfWork, TaskTrackerUnitOfWork>();
