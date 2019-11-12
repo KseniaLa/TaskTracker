@@ -66,7 +66,7 @@ export default {
       priorityValue: [],
       stateValue: [],
       borderColor: "#0000ff",
-      chartOptions: [{name: "List", id: 0}, {name: "Pie chart", id: 1}, {name: "Bar chart", id : 2}],
+      chartOptions: [{name: "List chart", id: 0}, {name: "Pie chart", id: 1}, {name: "Bar chart", id : 2}],
       colorOptions: ["1", "2", "3"],
       priorityOptions: [{name: "Low", id: 0}, {name: "Medium", id: 1}, {name: "High", id: 2}, {name: "Critical", id: 3}],
       stateOptions: [{name: "ToDo", id: 0}, {name: "InProgress", id: 1}, {name: "Done", id: 2}]

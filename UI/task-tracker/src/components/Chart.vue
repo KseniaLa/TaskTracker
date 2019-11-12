@@ -5,7 +5,7 @@
 			<button class="chart-delete-button" v-on:click="deleteWidget">Delete</button>
 		</div>
 		<div v-if="item.chartType === 0">
-			list
+			<list-chart :chartData="data"></list-chart>
 		</div>
 		<div v-else-if="item.chartType === 1">
 			<pie-chart :chartData="data"></pie-chart>
@@ -21,13 +21,15 @@
 <script>
 import BarChart from "./BarChart.js";
 import PieChart from "./PieChart.js";
+import ListChart from "./ListChart.vue";
 import ChartDataProcessor from "../utils/ChartDataProcessor.js";
 
 export default {
   name: "Chart",
   components: {
     BarChart,
-    PieChart
+    PieChart,
+    ListChart
   },
   props: {
     id: Number,
@@ -46,7 +48,8 @@ export default {
       return ChartDataProcessor.getData(
         this.$store.state.tasks,
         this.item.states,
-        this.item.priorities
+        this.item.priorities,
+        this.item.chartType
       );
     },
     updateData() {
