@@ -57,7 +57,6 @@ export default {
       this.data = newData.data;
       newData.ids.forEach(e => {
         this.$bus.$on(`task${e}`, () => {
-					console.log('local')
           this.data = this.getChartData().data;
         });
       });
@@ -68,7 +67,6 @@ export default {
   },
   created: function() {
     this.$bus.$on("full-update", () => {
-			console.log('global')
 			this.updateData();
     });
   }

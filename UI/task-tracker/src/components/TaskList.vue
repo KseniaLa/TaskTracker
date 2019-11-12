@@ -63,13 +63,13 @@ export default {
     }
   },
   mounted: function() {
-    this.$log.info(
+    this.$log.info(!this.isDemo,
       `Start retrieving tasks data. Running in ${
         this.isDemo ? "Demo" : "Real"
       } mode`
     );
     this.getData();
-    this.$log.info("Finish retrieving tasks data.");
+    this.$log.info(!this.isDemo, "Finish retrieving tasks data.");
   }
 };
 </script>

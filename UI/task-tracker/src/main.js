@@ -8,7 +8,8 @@ import "./styles/common.scss";
 import Icon from "vue-awesome/components/Icon";
 import log from "loglevel";
 import remote from "loglevel-plugin-remote";
-import vDialogs from 'v-dialogs'
+import vDialogs from 'v-dialogs';
+import Logger from "./utils/Logger.js";
 
 Icon.register({
   plus: {
@@ -52,9 +53,11 @@ remote.apply(log, {
 
 log.enableAll();
 
+let logger = new Logger(log);
+
 Vue.use({
   install: function(Vue) {
-    Vue.prototype.$log = log;
+    Vue.prototype.$log = logger;
   }
 });
 
