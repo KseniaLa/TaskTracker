@@ -8,6 +8,7 @@ import "./styles/common.scss";
 import Icon from "vue-awesome/components/Icon";
 import log from "loglevel";
 import remote from "loglevel-plugin-remote";
+import vDialogs from 'v-dialogs'
 
 Icon.register({
   plus: {
@@ -64,6 +65,8 @@ Vue.use({
     Vue.prototype.$bus = eventBus;
   }
 });
+
+Vue.use(vDialogs);
 
 new Vue({
   router,

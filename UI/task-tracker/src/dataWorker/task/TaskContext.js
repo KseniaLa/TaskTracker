@@ -8,7 +8,7 @@ class TaskContext {
   }
 
   async addTask(task) {
-    await this._worker.addTask(task);
+    return await this._worker.addTask(task);
   }
 
   async getTasks() {
@@ -16,7 +16,7 @@ class TaskContext {
   }
 
   async deleteTask(id) {
-    await this._worker.deleteTask(id);
+    return await this._worker.deleteTask(id);
   }
 }
 

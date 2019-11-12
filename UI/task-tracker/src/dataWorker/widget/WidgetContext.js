@@ -8,7 +8,7 @@ class WidgetContext {
   }
 
   async addWidget(widget) {
-    await this._worker.addWidget(widget);
+    return await this._worker.addWidget(widget);
   }
 
   async getWidgets() {
@@ -16,7 +16,7 @@ class WidgetContext {
   }
 
   async deleteWidget(id) {
-    await this._worker.deleteWidget(id);
+    return await this._worker.deleteWidget(id);
   }
 }
 

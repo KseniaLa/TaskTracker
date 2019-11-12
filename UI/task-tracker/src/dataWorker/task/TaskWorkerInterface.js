@@ -12,7 +12,7 @@ class TaskWorker {
   }
 
   async addTask(task) {
-    await this._worker.addTask(task);
+    return await this._worker.addTask(task);
   }
 
   async getTasks() {
@@ -20,7 +20,7 @@ class TaskWorker {
   }
 
   async deleteTask(id) {
-    await this._worker.deleteTask(id);
+    return await this._worker.deleteTask(id);
   }
 }
 

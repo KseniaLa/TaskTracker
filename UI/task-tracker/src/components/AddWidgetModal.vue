@@ -46,10 +46,10 @@
 
 <script>
 import Multiselect from "vue-multiselect";
-//import "vue-multiselect\\dist\\vue-multiselect.min.css";
 import ColorPicker from "vue-color-picker-wheel";
 import ErrorMessage from "./ErrorMessage.vue";
 import WidgetRepository from "../dataWorker/widget/WidgetRepository.js";
+import { toastConfig } from "../utils/Config.js";
 
 export default {
   name: "WidgetModal",
@@ -66,10 +66,23 @@ export default {
       priorityValue: [],
       stateValue: [],
       borderColor: "#0000ff",
-      chartOptions: [{name: "List chart", id: 0}, {name: "Pie chart", id: 1}, {name: "Bar chart", id : 2}],
+      chartOptions: [
+        { name: "List chart", id: 0 },
+        { name: "Pie chart", id: 1 },
+        { name: "Bar chart", id: 2 }
+      ],
       colorOptions: ["1", "2", "3"],
-      priorityOptions: [{name: "Low", id: 0}, {name: "Medium", id: 1}, {name: "High", id: 2}, {name: "Critical", id: 3}],
-      stateOptions: [{name: "ToDo", id: 0}, {name: "InProgress", id: 1}, {name: "Done", id: 2}]
+      priorityOptions: [
+        { name: "Low", id: 0 },
+        { name: "Medium", id: 1 },
+        { name: "High", id: 2 },
+        { name: "Critical", id: 3 }
+      ],
+      stateOptions: [
+        { name: "ToDo", id: 0 },
+        { name: "InProgress", id: 1 },
+        { name: "Done", id: 2 }
+      ]
     };
   },
   methods: {
@@ -83,8 +96,14 @@ export default {
           chartType: this.chartValue.id,
           colorScheme: this.colorValue,
           borderColor: this.borderColor
+        };
+        let success = await WidgetRepository.instance.addWidget(
+          this.isDemo,
+          widget
+        );
+        if (!success) {
+          this.$dlg.toast("Failed to add widget", toastConfig);
         }
-        await WidgetRepository.instance.addWidget(this.isDemo, widget);
         this.$emit("widgets-refresh");
         this.$modal.hide("widget");
         return;
@@ -93,14 +112,21 @@ export default {
     },
 
     inputsValid() {
-      return this.widgetTitle && this.chartValue && this.priorityValue && this.stateValue && (this.priorityValue.length > 0) && (this.stateValue.length > 0);
+      return (
+        this.widgetTitle &&
+        this.chartValue &&
+        this.priorityValue &&
+        this.stateValue &&
+        this.priorityValue.length > 0 &&
+        this.stateValue.length > 0
+      );
     }
   },
-  computed: {    
-    isDemo () {
+  computed: {
+    isDemo() {
       return this.$store.state.isDemo;
     }
-  },
+  }
 };
 </script>
 

@@ -36,4 +36,11 @@ body{
   -moz-osx-font-smoothing: grayscale;
   height: 100%;
 }
+
+div.v-dialog-toast__container .v-dialog-toast__content {
+    padding: 12px 10px 0 70px;
+    font-size: 14px;
+    overflow: hidden;
+    min-height: 68px !important;
+}
 </style>

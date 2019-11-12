@@ -26,7 +26,7 @@ class TaskRepository {
   async addTask(isDemo, task) {
     let worker = this._factory.getWorker(isDemo);
     this._context.setWorker(worker);
-    await this._context.addTask(task);
+    return await this._context.addTask(task);
   }
 
   async getTasks(isDemo) {

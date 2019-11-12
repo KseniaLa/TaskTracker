@@ -6,7 +6,7 @@ class WidgetLsWorker {
   }
 
   async addWidget(widget) {
-    await this._lsWorker.addWidget(widget);
+    return await this._lsWorker.addWidget(widget);
   }
 
   async getWidgets() {
@@ -14,7 +14,7 @@ class WidgetLsWorker {
   }
 
   async deleteWidget(id) {
-    await this._lsWorker.deleteWidget(id);
+    return await this._lsWorker.deleteWidget(id);
   }
 }
 

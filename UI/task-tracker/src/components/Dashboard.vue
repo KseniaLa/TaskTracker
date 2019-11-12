@@ -22,6 +22,7 @@
 import WidgetModal from "./AddWidgetModal";
 import Chart from "./Chart";
 import WidgetRepository from "../dataWorker/widget/WidgetRepository.js";
+import { toastConfig } from "../utils/Config.js";
 
 export default {
   name: "Dashboard",
@@ -34,13 +35,19 @@ export default {
       this.$modal.show("widget");
     },
     deleteWidget: async function(id) {
-      await WidgetRepository.instance.deleteWidget(this.isDemo, id);
+      let success = await WidgetRepository.instance.deleteWidget(this.isDemo, id);
+      if (!success) {
+        this.$dlg.toast("Failed to delete widget", toastConfig);
+      }
       this.getData();
     },
     getData: async function() {
       let widgets = await WidgetRepository.instance.getWidgets(this.isDemo);
-      this.widgets = widgets;
-      this.$store.commit("setWidgets", widgets);
+      this.widgets = widgets.data;
+      this.$store.commit("setWidgets", widgets.data);
+      if (!widgets.success) {
+        this.$dlg.toast("Failed to get widgets", toastConfig);
+      }
     }
   },
   data: function() {

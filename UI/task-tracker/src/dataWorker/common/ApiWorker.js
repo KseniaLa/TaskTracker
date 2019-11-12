@@ -29,10 +29,10 @@ class ApiWorker {
     try {
       result = await axios.get("http://localhost:9000/api/task");
     } catch {
-      return [];
+      return { data: [], success: false };
     }
 
-    return result.data.tasks;
+    return { data: result.data.tasks, success: true };
   }
 
   async deleteTask(id) {
@@ -53,8 +53,14 @@ class ApiWorker {
   }
 
   async getWidgets() {
-    let result = await axios.get("http://localhost:9000/api/widget");
-    return result.data.widgets;
+    let result = null;
+    try {
+      result = await axios.get("http://localhost:9000/api/widget");
+    } catch {
+      return { data: [], success: false };
+    }
+
+    return { data: result.data.widgets, success: true };
   }
 
   async addWidget(widget) {

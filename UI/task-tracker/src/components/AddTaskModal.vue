@@ -30,11 +30,11 @@
 
 <script>
 import Multiselect from "vue-multiselect";
-//import "vue-multiselect\\dist\\vue-multiselect.min.css";
 import Datepicker from "vuejs-datepicker";
 import { stateMap, priorityMap } from "../mappings/NameMapping.js";
 import TaskRepository from "../dataWorker/task/TaskRepository.js";
 import ErrorMessage from "./ErrorMessage.vue";
+import { toastConfig } from "../utils/Config.js";
 
 export default {
   name: "TaskModal",
@@ -55,8 +55,17 @@ export default {
       priorityValue: "",
       stateValue: "",
       dueDate: null,
-      priorityOptions: [{name: "Low", id: 0}, {name: "Medium", id: 1}, {name: "High", id: 2}, {name: "Critical", id: 3}],
-      stateOptions: [{name: "ToDo", id: 0}, {name: "InProgress", id: 1}, {name: "Done", id: 2}]
+      priorityOptions: [
+        { name: "Low", id: 0 },
+        { name: "Medium", id: 1 },
+        { name: "High", id: 2 },
+        { name: "Critical", id: 3 }
+      ],
+      stateOptions: [
+        { name: "ToDo", id: 0 },
+        { name: "InProgress", id: 1 },
+        { name: "Done", id: 2 }
+      ]
     };
   },
   methods: {
@@ -68,9 +77,12 @@ export default {
           description: this.taskDescription,
           priority: this.priorityValue.id,
           state: this.stateValue.id,
-          date: this.dueDate,
+          date: this.dueDate
+        };
+        let success = await TaskRepository.instance.addTask(this.isDemo, task);
+        if (!success) {
+          this.$dlg.toast("Failed to add task", toastConfig);
         }
-        await TaskRepository.instance.addTask(this.isDemo, task);
         this.$emit("tasks-refresh", false);
         this.$modal.hide("task");
         return;
@@ -78,16 +90,24 @@ export default {
       this.$modal.show("task-error");
     },
     deleteTask: async function() {
-      await TaskRepository.instance.deleteTask(this.isDemo, this.taskId);
+      let success = await TaskRepository.instance.deleteTask(
+        this.isDemo,
+        this.taskId
+      );
+      if (!success) {
+        this.$dlg.toast("Failed to delete task", toastConfig);
+      }
       this.$emit("tasks-refresh", true, this.taskId);
       this.$modal.hide("task");
     },
     inputsValid() {
-      return this.taskTitle && this.dueDate && this.priorityValue && this.stateValue;
+      return (
+        this.taskTitle && this.dueDate && this.priorityValue && this.stateValue
+      );
     }
   },
-  computed: {    
-    isDemo () {
+  computed: {
+    isDemo() {
       return this.$store.state.isDemo;
     }
   },
@@ -95,8 +115,12 @@ export default {
     this.taskId = this.isEdit ? this.task.id : -1;
     this.taskTitle = this.isEdit ? this.task.title : "";
     this.taskDescription = this.isEdit ? this.task.description : "";
-    this.stateValue = this.isEdit ? {name: stateMap[this.task.state], id: this.task.state} : null;
-    this.priorityValue = this.isEdit ? {name: priorityMap[this.task.priority], id: this.task.priority} : null;
+    this.stateValue = this.isEdit
+      ? { name: stateMap[this.task.state], id: this.task.state }
+      : null;
+    this.priorityValue = this.isEdit
+      ? { name: priorityMap[this.task.priority], id: this.task.priority }
+      : null;
     this.dueDate = this.isEdit ? this.task.date : null;
   }
 };
@@ -151,14 +175,14 @@ export default {
 }
 
 .button-set {
-	margin: 0;
-	position: absolute;
-	right: 10px;
-	bottom: 10px;
+  margin: 0;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
 
-	.add-button {
-		margin: 0
-	}
+  .add-button {
+    margin: 0;
+  }
 }
 
 .v--modal-overlay[data-modal="task-error"] {
@@ -166,19 +190,19 @@ export default {
 }
 
 .delete-button {
-	padding: 10px;
+  padding: 10px;
   margin-right: 15px;
   border-radius: 10px;
   font-size: 20px;
   transition: 500ms;
   border: none;
   background-color: #ffffff;
-	color: #ff0000;
-	border: solid 1px #ff0000;
-	outline: none;
+  color: #ff0000;
+  border: solid 1px #ff0000;
+  outline: none;
 
   &:hover {
     background-color: #f1d9d9;
-	}
+  }
 }
 </style>

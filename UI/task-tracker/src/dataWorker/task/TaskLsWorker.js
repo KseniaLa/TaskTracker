@@ -5,8 +5,8 @@ class TaskLsWorker {
     this._lsWorker = new LocalStorageWorker();
   }
 
-  addTask(task) {
-    this._lsWorker.addTask(task);
+  async addTask(task) {
+    return await this._lsWorker.addTask(task);
   }
 
   async getTasks() {
@@ -14,7 +14,7 @@ class TaskLsWorker {
   }
 
   async deleteTask(id) {
-    await this._lsWorker.deleteTask(id);
+    return await this._lsWorker.deleteTask(id);
   }
 }
 

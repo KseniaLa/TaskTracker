@@ -6,7 +6,7 @@ class WidgetApiWorker {
   }
 
   async addWidget(task) {
-    await this._apiWorker.addWidget(task);
+    return await this._apiWorker.addWidget(task);
   }
 
   async getWidgets() {
@@ -14,7 +14,7 @@ class WidgetApiWorker {
   }
 
   async deleteWidget(id) {
-    await this._apiWorker.deleteWidget(id);
+    return await this._apiWorker.deleteWidget(id);
   }
 }
 

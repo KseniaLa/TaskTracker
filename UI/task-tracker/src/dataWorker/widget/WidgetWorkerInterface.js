@@ -12,7 +12,7 @@ class WidgetWorker {
   }
 
   async addWidget(widget) {
-    await this._worker.addWidget(widget);
+    return await this._worker.addWidget(widget);
   }
 
   async getWidgets() {
@@ -20,7 +20,7 @@ class WidgetWorker {
   }
 
   async deleteWidget(id) {
-    await this._worker.deleteWidget(id);
+    return await this._worker.deleteWidget(id);
   }
 }
 

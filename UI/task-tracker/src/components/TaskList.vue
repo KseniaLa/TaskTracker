@@ -20,6 +20,7 @@
 import TaskModal from "./AddTaskModal";
 import TaskListItem from "./TaskListItem";
 import TaskRepository from "../dataWorker/task/TaskRepository.js";
+import { toastConfig } from "../utils/Config.js";
 
 export default {
   name: "TaskList",
@@ -32,37 +33,43 @@ export default {
       this.$modal.show("task", { isEdit: false, task: {} });
     },
     beforeOpen(event) {
-			this.isEdit = event.params.isEdit;
-			this.task = event.params.task;
+      this.isEdit = event.params.isEdit;
+      this.task = event.params.task;
     },
     getData: async function(isDelete, id) {
       let tasks = await TaskRepository.instance.getTasks(this.isDemo);
-      console.log(tasks);
-      this.tasks = tasks;
-      this.$store.commit("setTasks", tasks);
+      this.tasks = tasks.data;
+      this.$store.commit("setTasks", tasks.data);
+      if (!tasks.success) {
+        this.$dlg.toast("Failed to load tasks", toastConfig);
+      }
       if (isDelete && id > 0) {
-        this.$bus.$emit(`task${id}`)
+        this.$bus.$emit(`task${id}`);
       } else {
-        this.$bus.$emit('full-update')
+        this.$bus.$emit("full-update");
       }
     }
   },
   data: function() {
     return {
-			isEdit: Boolean,
+      isEdit: Boolean,
       task: Object,
       tasks: []
-		};
+    };
   },
-  computed: {    
-    isDemo () {
+  computed: {
+    isDemo() {
       return this.$store.state.isDemo;
     }
   },
   mounted: function() {
-    this.$log.info(`Start retrieving tasks data. Running in ${this.isDemo ? 'Demo' : 'Real'} mode`);
+    this.$log.info(
+      `Start retrieving tasks data. Running in ${
+        this.isDemo ? "Demo" : "Real"
+      } mode`
+    );
     this.getData();
-    this.$log.info('Finish retrieving tasks data.');
+    this.$log.info("Finish retrieving tasks data.");
   }
 };
 </script>
@@ -89,5 +96,9 @@ export default {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     background-color: #555;
   }
+}
+
+.some {
+  height: 70px;
 }
 </style>

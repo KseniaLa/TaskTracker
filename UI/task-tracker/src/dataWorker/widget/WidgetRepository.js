@@ -26,7 +26,7 @@ class WidgetRepository {
   async addWidget(isDemo, widget) {
     let worker = this._factory.getWorker(isDemo);
     this._context.setWorker(worker);
-    await this._context.addWidget(widget);
+    return await this._context.addWidget(widget);
   }
 
   async getWidgets(isDemo) {
