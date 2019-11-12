@@ -46,7 +46,7 @@ Vue.use(require("vue-moment"));
 
 remote.apply(log, {
   format: remote.json,
-  url: "http://localhost:9000/api/log/client",
+  url: "http://localhost:49546/api/log/client",
   timestamp: () => new Date().toISOString(),
   interval: 10000
 });

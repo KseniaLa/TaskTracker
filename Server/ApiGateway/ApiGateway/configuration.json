@@ -6,7 +6,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 9001
+          "Port": 52779
         }
       ],
       "UpstreamPathTemplate": "/api/task",
@@ -18,7 +18,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 9001
+          "Port": 52779
         }
       ],
       "UpstreamPathTemplate": "/api/task/{everything}",
@@ -30,7 +30,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 9001
+          "Port": 52779
         }
       ],
       "UpstreamPathTemplate": "/api/widget",
@@ -42,7 +42,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 9001
+          "Port": 52779
         }
       ],
       "UpstreamPathTemplate": "/api/widget/{everything}",
@@ -54,7 +54,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 9002
+          "Port": 59949
         }
       ],
       "UpstreamPathTemplate": "/api/log/client",
