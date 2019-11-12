@@ -1,3 +1,5 @@
+import { taskSeed } from "../../utils/TaskSeed.js";
+
 class LsWorker {
   constructor() { }
 
@@ -37,6 +39,9 @@ class LsWorker {
       let tasks = [];
       if (localStorage.getItem("tasks")) {
         tasks = JSON.parse(localStorage.getItem("tasks"));
+      } else {
+        localStorage.setItem("tasks", JSON.stringify(taskSeed));
+        tasks = taskSeed;
       }
 
       return { data: tasks, success: true };

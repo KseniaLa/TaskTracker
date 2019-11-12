@@ -31,7 +31,33 @@ namespace TaskTracker.DataAccess
 
           protected override void OnModelCreating(ModelBuilder modelBuilder)
           {
-               
+               modelBuilder.Entity<Task>().HasData(new Task
+               {
+                    Id = 1,
+                    Title = "Test task",
+                    Description = "Test task description",
+                    Priority = 0,
+                    State = 0,
+                    DateTime = DateTime.Now
+               },
+               new Task
+               {
+                    Id = 2,
+                    Title = "Hello task",
+                    Description = "description",
+                    Priority = 1,
+                    State = 1,
+                    DateTime = DateTime.Now
+               },
+               new Task
+               {
+                    Id = 3,
+                    Title = "Critical task",
+                    Description = "task description",
+                    Priority = 3,
+                    State = 1,
+                    DateTime = DateTime.Now
+               });
           }
      }
 }
