@@ -34,7 +34,7 @@
 					<circle cx="16" cy="16" r="15" :fill="borderColor" />
 				</svg>
 				<div class="dropdown-content">
-					<color-picker v-model="borderColor" width="120" height="120"></color-picker>
+					<color-picker v-model="borderColor" :width="120" :height="120"></color-picker>
 				</div>
 			</div>
 		</div>
