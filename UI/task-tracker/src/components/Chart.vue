@@ -49,7 +49,8 @@ export default {
         this.$store.state.tasks,
         this.item.states,
         this.item.priorities,
-        this.item.chartType
+        this.item.chartType,
+        this.item.colorScheme
       );
     },
     updateData() {

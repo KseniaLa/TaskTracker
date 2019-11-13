@@ -1,14 +1,11 @@
 import { stateMap } from "../mappings/NameMapping.js";
+import { colorMap } from "../mappings/ColorMappings.js";
 
 class ChartDataProcessor {
-  static getData(tasks, states, priorities, chartType) {
+  static getData(tasks, states, priorities, chartType, colorScheme) {
     let tasksbyPrior = tasks.filter(t => priorities.includes(t.priority));
 
-    let colors = {
-      0: "#ff0000",
-      1: "#00ff00",
-      2: "#0000ff"
-    };
+    let colors = colorMap[colorScheme];
 
     states.sort();
     let labels = states.map(s => stateMap[s]);
@@ -80,7 +77,7 @@ class ListData {
       datasets.push({
         label: labels[i],
         backgroundColor: color[i],
-        data: ((data[i] / sumData) * 100).toFixed(2)
+        data: ((data[i] / sumData) * 100).toFixed(0)
       });
     }
 

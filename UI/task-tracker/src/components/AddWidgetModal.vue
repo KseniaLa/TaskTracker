@@ -17,11 +17,14 @@
 		</div>
 
 		<div class="select-box">
-			<multiselect v-model="chartValue" :options="chartOptions" :searchable="false" :close-on-select="true" :show-labels="false" placeholder="Chart type">
+			<multiselect v-model="chartValue" :options="chartOptions" :searchable="false" :close-on-select="true" :show-labels="false" track-by="name" label="name" placeholder="Chart type">
         <template slot="singleLabel" slot-scope="props">{{props.option.name}}</template>
         <template slot="option" slot-scope="props">{{props.option.name}}</template>
       </multiselect>
-			<multiselect v-model="colorValue" :options="colorOptions" :searchable="false" :close-on-select="true" :show-labels="false" placeholder="Color scheme"></multiselect>
+			<multiselect v-model="colorValue" :options="colorOptions" :searchable="false" :close-on-select="true" :show-labels="false" track-by="name" label="name" placeholder="Color scheme">
+        <template slot="singleLabel" slot-scope="props">{{props.option.name}}</template>
+        <template slot="option" slot-scope="props">{{props.option.name}}</template>
+      </multiselect>
 		</div>
 
 		<div class="color-box">
@@ -65,13 +68,18 @@ export default {
       colorValue: "",
       priorityValue: [],
       stateValue: [],
-      borderColor: "#0000ff",
+      borderColor: "#005eda",
       chartOptions: [
         { name: "List chart", id: 0 },
         { name: "Pie chart", id: 1 },
         { name: "Bar chart", id: 2 }
       ],
-      colorOptions: ["1", "2", "3"],
+      colorOptions: [
+        { name: "Default", id: 0 },
+        { name: "Grayscale", id: 1 },
+        { name: "Blue", id: 2 },
+        { name: "Bright", id: 3 }
+      ],
       priorityOptions: [
         { name: "Low", id: 0 },
         { name: "Medium", id: 1 },
@@ -94,7 +102,7 @@ export default {
           states: this.stateValue.map(s => s.id),
           priorities: this.priorityValue.map(p => p.id),
           chartType: this.chartValue.id,
-          colorScheme: this.colorValue,
+          colorScheme: this.colorValue.id,
           borderColor: this.borderColor
         };
         let success = await WidgetRepository.instance.addWidget(
@@ -162,6 +170,7 @@ export default {
   position: relative;
   display: inline-block;
   width: 32px;
+  margin-left: 5px;
 }
 
 .dropdown-content {
