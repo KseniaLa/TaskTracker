@@ -57,7 +57,9 @@ export default {
   padding: 5px;
   border: 1px solid #e8e9eb;
   width: 100%;
-  height: 80px;
+	height: 80px;
+	cursor: pointer;
+
 
 	@media screen and (max-width: 1200px) {
     grid-template-areas:

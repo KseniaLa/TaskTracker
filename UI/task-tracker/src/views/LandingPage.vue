@@ -49,7 +49,7 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: #005eda;
+  background: #5396ee;
   height: 100%;
 }
 
@@ -59,7 +59,7 @@ export default {
   align-items: center;
   justify-content: center;
   padding: 60px;
-  background: #005eda;
+  background: #5396ee;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
   @media screen and (max-width: 500px) {
@@ -74,13 +74,14 @@ export default {
 
 .two-colored-button {
   padding: 20px;
-  margin: 10px;
+  margin: 15px;
   border-radius: 10px;
   font-size: 20px;
   transition: 500ms;
   border: none;
-  background-color: #024daf;
+  background-color: #2765b6;
   color: #ffffff;
+  cursor: pointer;
 
   &:hover {
     background-color: #ffffff;

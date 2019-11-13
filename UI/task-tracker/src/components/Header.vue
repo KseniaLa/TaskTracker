@@ -23,7 +23,7 @@ export default {
 	align-items: center;
 	justify-content: space-between;
   padding: 10px;
-  background-color: #005eda;
+  background-color: #5396ee;
   color: #ffffff;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 

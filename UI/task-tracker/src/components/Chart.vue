@@ -98,6 +98,7 @@ export default {
   color: #ff0000;
   border: solid 1px #ff0000;
   outline: none;
+  cursor: pointer;
 
   &:hover {
     background-color: #fcd2d2;
