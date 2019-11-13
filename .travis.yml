@@ -25,3 +25,5 @@ matrix:
       before_install: cd Server/TaskTracker
       script:
         - dotnet restore
+        - dotnet build
+        - cd Server/LogMicroservice
