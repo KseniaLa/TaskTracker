@@ -26,6 +26,9 @@ matrix:
       script:
         - dotnet restore
         - dotnet build
-        - cd ../Server/LogMicroservice
+        - cd ../LogMicroservice
+        - dotnet restore
+        - dotnet build
+        - cd ../ApiGateway
         - dotnet restore
         - dotnet build
