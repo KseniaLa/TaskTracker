@@ -3,19 +3,19 @@ class Logger {
     this._log = log;
   }
 
-  info(isServerConnected, message) {
+  info(message, isServerConnected = false) {
     if (isServerConnected) {
       this._log.info(message);
     }
   }
 
-  warn(isServerConnected, message) {
+  warn(message, isServerConnected = false) {
     if (isServerConnected) {
       this._log.warn(message);
     }
   }
 
-  error(isServerConnected, message) {
+  error(message, isServerConnected = false) {
     if (isServerConnected) {
       this._log.error(message);
     }

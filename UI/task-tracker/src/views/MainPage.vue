@@ -26,7 +26,7 @@ export default {
     }
   },
   mounted: function() {
-    this.$log.info(!this.isDemo, `Main page loaded. Running in ${this.isDemo ? 'Demo' : 'Real'} mode`);
+    this.$log.info(`Main page loaded. Running in ${this.isDemo ? 'Demo' : 'Real'} mode`, !this.isDemo);
   }
 };
 </script>

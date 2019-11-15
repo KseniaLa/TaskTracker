@@ -1,18 +1,18 @@
 <template>
-	<div class="task-list">
-	  <div class="section-header">
-			<span>Tasks</span>
-			<button class="add-button"  v-on:click="openModal">Add</button>
-		</div>
-		<div class="task-set">
-			<div v-for="task in tasks" v-bind:key="task.id">
-				<TaskListItem :task="task"/>
-			</div>
-		</div>
+  <div class="task-list">
+    <div class="section-header">
+      <span>Tasks</span>
+      <button class="add-button" v-on:click="openModal">Add</button>
+    </div>
+    <div class="task-set">
+      <div v-for="task in tasks" v-bind:key="task.id">
+        <TaskListItem :task="task" />
+      </div>
+    </div>
 
-		<modal name="task" height="90%" width="50%" @before-open="beforeOpen">
-			<TaskModal :isEdit="isEdit" :task="task" v-on:tasks-refresh="getData"/>
-		</modal>
+    <modal name="task" height="90%" width="50%" @before-open="beforeOpen">
+      <TaskModal :isEdit="isEdit" :task="task" v-on:tasks-refresh="getData" />
+    </modal>
   </div>
 </template>
 
@@ -63,13 +63,14 @@ export default {
     }
   },
   mounted: function() {
-    this.$log.info(!this.isDemo,
+    this.$log.info(
       `Start retrieving tasks data. Running in ${
         this.isDemo ? "Demo" : "Real"
-      } mode`
+      } mode`,
+      !this.isDemo
     );
     this.getData();
-    this.$log.info(!this.isDemo, "Finish retrieving tasks data.");
+    this.$log.info("Finish retrieving tasks data.", !this.isDemo);
   }
 };
 </script>

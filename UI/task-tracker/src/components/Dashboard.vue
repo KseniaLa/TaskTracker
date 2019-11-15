@@ -64,9 +64,9 @@ export default {
     }
   },
   mounted: function() {
-    this.$log.info(!this.isDemo, `Start retrieving widgets data. Running in ${this.isDemo ? 'Demo' : 'Real'} mode`);
+    this.$log.info(`Start retrieving widgets data. Running in ${this.isDemo ? 'Demo' : 'Real'} mode`, !this.isDemo);
     this.getData();
-    this.$log.info(!this.isDemo, 'Finish retrieving widgets data.');
+    this.$log.info('Finish retrieving widgets data.', !this.isDemo);
   }
 };
 </script>
