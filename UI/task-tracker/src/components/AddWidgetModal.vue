@@ -141,9 +141,10 @@ export default {
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 
 <style lang="scss">
+@import '../styles/mixins.scss';
+
 .modal {
-  display: flex;
-  flex-direction: column;
+  @include flex-item(column);
   padding: 10px;
   height: 100%;
   z-index: 1000000000;
@@ -161,8 +162,7 @@ export default {
 }
 
 .color-box {
-  display: flex;
-  flex-direction: row;
+  @include flex-item(row);
   align-items: center;
 }
 
@@ -179,7 +179,7 @@ export default {
   position: absolute;
   background-color: #f9f9f9;
   min-width: 120px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 8px 16px 0px #00000033;
   padding: 12px 16px;
   z-index: 1;
 }

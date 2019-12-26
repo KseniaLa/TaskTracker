@@ -102,7 +102,7 @@ export default {
   &::-webkit-scrollbar-thumb {
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px #a0a0a0;
-    background-color: rgb(161, 161, 161);
+    background-color: #a1a1a1;
   }
 }
 

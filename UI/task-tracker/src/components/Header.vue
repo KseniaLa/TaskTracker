@@ -17,15 +17,17 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../styles/constants.scss';
+
 .app-header {
   display: flex;
   flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
   padding: 10px;
-  background-color: #5396ee;
+  background-color: $base-color;
   color: #ffffff;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	box-shadow: 0 4px 8px 0 #00000033, 0 6px 20px 0 #00000030;
 
 	@media screen and (max-width: 400px) {
     flex-direction: column;

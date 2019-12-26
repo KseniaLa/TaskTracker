@@ -44,23 +44,24 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../styles/constants.scss';
+@import '../styles/mixins.scss';
+
 .landing-page-container {
-  display: flex;
-  flex-direction: column;
+  @include flex-item(column);
   align-items: center;
   justify-content: center;
-  background: #5396ee;
+  background: $base-color;
   height: 100%;
 }
 
 .landing-page-content {
-  display: flex;
-  flex-direction: column;
+  @include flex-item(column);
   align-items: center;
   justify-content: center;
   padding: 60px;
-  background: #5396ee;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background: $base-color;
+  box-shadow: 0 4px 8px 0 #00000033, 0 6px 20px 0 #00000030;
 
   @media screen and (max-width: 500px) {
     padding: 30px;
@@ -91,8 +92,7 @@ export default {
 }
 
 .radiogroup-container {
-  display: flex;
-  flex-direction: row;
+  @include flex-item(row);
   margin: 10px;
 
   @media screen and (max-width: 500px) {

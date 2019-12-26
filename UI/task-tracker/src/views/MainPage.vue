@@ -32,9 +32,10 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../styles/mixins.scss';
+
 .sections-container {
-	display: flex;
-	flex-direction: row;
+	@include flex-item(row);
 	height: 100%;
 }
 </style>

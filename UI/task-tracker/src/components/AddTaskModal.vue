@@ -129,9 +129,10 @@ export default {
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 
 <style lang="scss">
+@import '../styles/mixins.scss';
+
 .task-modal {
-  display: flex;
-  flex-direction: column;
+  @include flex-item(column);
   padding: 10px;
   z-index: 1000000000;
 }
@@ -169,8 +170,7 @@ export default {
 }
 
 .select-box {
-  display: flex;
-  flex-direction: row;
+  @include flex-item(row);
   margin-bottom: 10px;
 }
 
