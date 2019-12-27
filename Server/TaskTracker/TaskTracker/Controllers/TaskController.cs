@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Common.Constants;
 using Microsoft.AspNetCore.Mvc;
 using TaskTracker.DataPresentation.Models;
 using TaskTracker.Services.Interfaces;
@@ -28,7 +29,7 @@ namespace TaskTracker.Controllers
                try
                {
                     var tasks = await _taskService.GetTasks();
-                    return Ok(new { tasks });
+                    return Ok(tasks);
                }
                catch
                {

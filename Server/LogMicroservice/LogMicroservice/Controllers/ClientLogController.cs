@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Common.Constants;
 using LogMicroservice.DataPresentation.Models;
 using LogMicroservice.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;

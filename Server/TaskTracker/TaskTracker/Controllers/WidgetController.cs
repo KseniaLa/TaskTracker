@@ -27,7 +27,7 @@ namespace TaskTracker.Controllers
                try
                {
                     var widgets = await _widgetService.GetWidgets();
-                    return Ok(new { widgets });
+                    return Ok(widgets);
                }
                catch
                {

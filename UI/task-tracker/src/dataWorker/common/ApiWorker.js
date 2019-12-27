@@ -32,7 +32,7 @@ class ApiWorker {
       return { data: [], success: false };
     }
 
-    return { data: result.data.tasks, success: true };
+    return { data: result.data, success: true };
   }
 
   async deleteTask(id) {
@@ -60,7 +60,7 @@ class ApiWorker {
       return { data: [], success: false };
     }
 
-    return { data: result.data.widgets, success: true };
+    return { data: result.data, success: true };
   }
 
   async addWidget(widget) {

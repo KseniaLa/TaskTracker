@@ -5,13 +5,15 @@ VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskTracker", "TaskTracker\TaskTracker.csproj", "{CB7111D9-E442-496B-9A27-B0E9FDB60563}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskTracker.DataAccess", "TaskTracker.DataAccess\TaskTracker.DataAccess.csproj", "{ED021415-8797-4C1C-A169-72F77A7BBB2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskTracker.DataAccess", "TaskTracker.DataAccess\TaskTracker.DataAccess.csproj", "{ED021415-8797-4C1C-A169-72F77A7BBB2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskTracker.Config", "TaskTracker.Config\TaskTracker.Config.csproj", "{F8CB9F07-90DE-44D5-9A65-9E4B1FC57DC5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskTracker.Config", "TaskTracker.Config\TaskTracker.Config.csproj", "{F8CB9F07-90DE-44D5-9A65-9E4B1FC57DC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskTracker.Services", "TaskTracker.Services\TaskTracker.Services.csproj", "{0323272E-BDEC-45A8-845B-8EC58EAE9BD9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskTracker.Services", "TaskTracker.Services\TaskTracker.Services.csproj", "{0323272E-BDEC-45A8-845B-8EC58EAE9BD9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskTracker.DataPresentation", "TaskTracker.DataPresentation\TaskTracker.DataPresentation.csproj", "{90C04488-9ADB-4BC7-ACB3-D68F617E1F2F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskTracker.DataPresentation", "TaskTracker.DataPresentation\TaskTracker.DataPresentation.csproj", "{90C04488-9ADB-4BC7-ACB3-D68F617E1F2F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "..\Common\Common\Common.csproj", "{CA7762C9-6CFC-45DC-B032-E4B7CB71AAE0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{90C04488-9ADB-4BC7-ACB3-D68F617E1F2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90C04488-9ADB-4BC7-ACB3-D68F617E1F2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90C04488-9ADB-4BC7-ACB3-D68F617E1F2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA7762C9-6CFC-45DC-B032-E4B7CB71AAE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA7762C9-6CFC-45DC-B032-E4B7CB71AAE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA7762C9-6CFC-45DC-B032-E4B7CB71AAE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA7762C9-6CFC-45DC-B032-E4B7CB71AAE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
