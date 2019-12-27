@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LogMicroservice.Controllers
 {
-     [Route("api/log")]
+     [Route(Constants.LOG_ROOT)]
      public class ClientLogController : Controller
      {
           private readonly IClientLogService _logService;
@@ -22,7 +22,7 @@ namespace LogMicroservice.Controllers
           }
 
           // POST api/log/client
-          [HttpPost("client")]
+          [HttpPost(Constants.ADD_CLIENT_LOG)]
           public async Task<IActionResult> SaveClientLogs([FromBody]ClientLogModel logs)
           {
                if (logs == null || logs.Logs == null)

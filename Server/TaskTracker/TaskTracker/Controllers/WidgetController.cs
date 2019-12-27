@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Common.Constants;
 using Microsoft.AspNetCore.Mvc;
 using TaskTracker.DataPresentation.Models;
 using TaskTracker.Services.Interfaces;
@@ -10,7 +11,7 @@ using TaskTracker.Services.Interfaces;
 
 namespace TaskTracker.Controllers
 {
-     [Route("api/widget")]
+     [Route(Constants.WIDGET_ROOT)]
      public class WidgetController : Controller
      {
           private readonly IWidgetService _widgetService;
@@ -29,7 +30,7 @@ namespace TaskTracker.Controllers
           }
 
           // POST api/widget/add
-          [HttpPost("add")]
+          [HttpPost(Constants.ADD_ITEM)]
           public async Task<IActionResult> AddWidget([FromBody]Widget value)
           {
                await _widgetService.AddWidget(value);
@@ -38,7 +39,7 @@ namespace TaskTracker.Controllers
           }
 
           // DELETE api/widget/delete/5
-          [HttpDelete("delete/{id}")]
+          [HttpDelete(Constants.DELETE_ITEM)]
           public async Task<IActionResult> DeleteWWidget(int id)
           {
                await _widgetService.DeleteWidget(id);

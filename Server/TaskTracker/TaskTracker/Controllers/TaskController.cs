@@ -12,7 +12,7 @@ using TaskTracker.Services.Interfaces;
 
 namespace TaskTracker.Controllers
 {
-     [Route("api/task")]
+     [Route(Constants.TASK_ROOT)]
      public class TaskController : Controller
      {
           private readonly ITaskService _taskService;
@@ -31,7 +31,7 @@ namespace TaskTracker.Controllers
           }
 
           // POST api/task/add
-          [HttpPost("add")]
+          [HttpPost(Constants.ADD_ITEM)]
           public async Task<IActionResult> SaveTask([FromBody]DataPresentation.Models.Task value)
           {
                if (value.Id < 0)
@@ -47,7 +47,7 @@ namespace TaskTracker.Controllers
           }
 
           // DELETE api/task/delete/5
-          [HttpDelete("delete/{id}")]
+          [HttpDelete(Constants.DELETE_ITEM)]
           public async Task<IActionResult> DeleteTask(int id)
           {
                await _taskService.DeleteTask(id);

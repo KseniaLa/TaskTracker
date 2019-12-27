@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Common.Constants;
+using Common.Extensions;
 using LogMicroservice.Config;
 using LogMicroservice.DataAccess;
 using LogMicroservice.DataAccess.Repositories;
@@ -48,8 +50,10 @@ namespace LogMicroservice
                  .WithScopedLifetime()
                );
 
-               services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
+               services.AddMvc(options =>
+               {
+                    options.UseCentralRoutePrefix(new RouteAttribute(Constants.GLOBAL_PREFIX));
+               }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
           }
 
           // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
