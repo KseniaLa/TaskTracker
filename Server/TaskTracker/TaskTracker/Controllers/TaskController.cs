@@ -26,38 +26,23 @@ namespace TaskTracker.Controllers
           [HttpGet]
           public async Task<IActionResult> GetTasks()
           {
-               try
-               {
-                    var tasks = await _taskService.GetTasks();
-                    return Ok(tasks);
-               }
-               catch
-               {
-                    return BadRequest();
-               }
+               var tasks = await _taskService.GetTasks();
+               return Ok(tasks);
           }
 
           // POST api/task/add
           [HttpPost("add")]
           public async Task<IActionResult> SaveTask([FromBody]DataPresentation.Models.Task value)
           {
-               try
+               if (value.Id < 0)
                {
-                    if (value.Id < 0)
-                    {
-                         await _taskService.AddTask(value);
-                    }
-                    else
-                    {
-                         await _taskService.UpdateTask(value);
-                    }
-                    
+                    await _taskService.AddTask(value);
                }
-               catch
+               else
                {
-                    return BadRequest();
+                    await _taskService.UpdateTask(value);
                }
-               
+
                return Ok();
           }
 
@@ -65,14 +50,7 @@ namespace TaskTracker.Controllers
           [HttpDelete("delete/{id}")]
           public async Task<IActionResult> DeleteTask(int id)
           {
-               try
-               {
-                    await _taskService.DeleteTask(id);
-               }
-               catch
-               {
-                    return BadRequest();
-               }
+               await _taskService.DeleteTask(id);
 
                return Ok();
           }

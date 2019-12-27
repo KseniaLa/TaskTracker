@@ -13,6 +13,7 @@ using Microsoft.Extensions.Options;
 using TaskTracker.Config;
 using TaskTracker.DataAccess;
 using TaskTracker.DataAccess.Repositories;
+using TaskTracker.Middleware;
 using TaskTracker.Services;
 using TaskTracker.Services.Interfaces;
 
@@ -61,6 +62,8 @@ namespace TaskTracker
                app.UseCors(
                     options => options.WithOrigins("http://localhost:8081").AllowAnyMethod().AllowAnyOrigin().AllowAnyHeader()
                );
+
+               app.UseMiddleware<ExceptionMiddleware>();
 
                app.UseMvc();
           }

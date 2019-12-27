@@ -24,29 +24,15 @@ namespace TaskTracker.Controllers
           [HttpGet]
           public async Task<IActionResult> GetWidgets()
           {
-               try
-               {
-                    var widgets = await _widgetService.GetWidgets();
-                    return Ok(widgets);
-               }
-               catch
-               {
-                    return BadRequest();
-               }
+               var widgets = await _widgetService.GetWidgets();
+               return Ok(widgets);
           }
 
           // POST api/widget/add
           [HttpPost("add")]
           public async Task<IActionResult> AddWidget([FromBody]Widget value)
           {
-               try
-               {
-                    await _widgetService.AddWidget(value);
-               }
-               catch
-               {
-                    return BadRequest();
-               }
+               await _widgetService.AddWidget(value);
 
                return Ok();
           }
@@ -55,14 +41,7 @@ namespace TaskTracker.Controllers
           [HttpDelete("delete/{id}")]
           public async Task<IActionResult> DeleteWWidget(int id)
           {
-               try
-               {
-                    await _widgetService.DeleteWidget(id);
-               }
-               catch
-               {
-                    return BadRequest();
-               }
+               await _widgetService.DeleteWidget(id);
 
                return Ok();
           }

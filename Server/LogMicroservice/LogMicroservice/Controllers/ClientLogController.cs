@@ -30,14 +30,7 @@ namespace LogMicroservice.Controllers
                     return Ok();
                }
 
-               try
-               {
-                    await _logService.AddLogs(logs.Logs);
-               }
-               catch
-               {
-                    return BadRequest();
-               }
+               await _logService.AddLogs(logs.Logs);
 
                return Ok();
           }

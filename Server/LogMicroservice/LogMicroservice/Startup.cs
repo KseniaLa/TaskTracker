@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using LogMicroservice.Config;
 using LogMicroservice.DataAccess;
 using LogMicroservice.DataAccess.Repositories;
+using LogMicroservice.Middleware;
 using LogMicroservice.Services;
 using LogMicroservice.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
@@ -62,6 +63,8 @@ namespace LogMicroservice
                app.UseCors(
                     options => options.WithOrigins("http://localhost:8081").AllowAnyMethod().AllowAnyOrigin().AllowAnyHeader()
                );
+
+               app.UseMiddleware<ExceptionMiddleware>();
 
                app.UseMvc();
           }
