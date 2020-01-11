@@ -10,24 +10,16 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
-    <PackageReference Include="Scrutor" Version="2.2.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
+    <PackageReference Include="Scrutor" Version="3.1.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Common\Common.csproj" />
-    <ProjectReference Include="..\TaskTracker.Config\TaskTracker.Config.csproj" />
-    <ProjectReference Include="..\TaskTracker.DataAccess\TaskTracker.DataAccess.csproj" />
     <ProjectReference Include="..\TaskTracker.DataPresentation\TaskTracker.DataPresentation.csproj" />
     <ProjectReference Include="..\TaskTracker.Middleware\TaskTracker.Middleware.csproj" />
     <ProjectReference Include="..\TaskTracker.Services\TaskTracker.Services.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Update="appsettings.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
 
 </Project>
