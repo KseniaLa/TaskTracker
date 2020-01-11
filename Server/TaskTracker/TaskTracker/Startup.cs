@@ -12,6 +12,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using TaskMicroservice.Services;
+using TaskMicroservice.Services.Interfaces;
 using TaskTracker.Config;
 using TaskTracker.DataAccess;
 using TaskTracker.DataAccess.Repositories;

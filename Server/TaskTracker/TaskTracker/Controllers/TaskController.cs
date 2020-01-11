@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Common.Constants;
 using Microsoft.AspNetCore.Mvc;
+using TaskMicroservice.Services.Interfaces;
 using TaskTracker.DataPresentation.Models;
 using TaskTracker.Services.Interfaces;
 

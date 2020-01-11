@@ -6,10 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 using TaskTracker.DataAccess;
 using TaskTracker.DataPresentation.Models;
+using TaskTracker.Services;
 using TaskTracker.Services.Interfaces;
+using WidgetMicroservice.Services.Interfaces;
 using Task = System.Threading.Tasks.Task;
+using WidgetDb = TaskTracker.DataAccess.Entities.Widget;
 
-namespace TaskTracker.Services
+namespace WidgetMicroservice.Services
 {
      public class WidgetService : BaseService, IWidgetService, IScopedService
      {
@@ -20,7 +23,7 @@ namespace TaskTracker.Services
 
           public async Task AddWidget(Widget widget)
           {
-               var dbWidget = new DataAccess.Entities.Widget
+               var dbWidget = new WidgetDb
                {
                     Title = widget.Title,
                     StatesData = widget.States,

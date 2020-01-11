@@ -20,6 +20,7 @@
     <ProjectReference Include="..\TaskTracker.DataPresentation\TaskTracker.DataPresentation.csproj" />
     <ProjectReference Include="..\TaskTracker.Middleware\TaskTracker.Middleware.csproj" />
     <ProjectReference Include="..\TaskTracker.Services\TaskTracker.Services.csproj" />
+    <ProjectReference Include="..\WidgetMicroservice.Services\WidgetMicroservice.Services.csproj" />
   </ItemGroup>
 
 </Project>

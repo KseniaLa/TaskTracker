@@ -4,10 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TaskMicroservice.Services.Interfaces;
 using TaskTracker.DataAccess;
+using TaskTracker.Services;
 using TaskTracker.Services.Interfaces;
+using TaskModel = TaskTracker.DataPresentation.Models.Task;
+using TaskDb = TaskTracker.DataAccess.Entities.Task;
 
-namespace TaskTracker.Services
+namespace TaskMicroservice.Services
 {
      public class TaskService : BaseService, ITaskService, IScopedService
      {
@@ -16,9 +20,9 @@ namespace TaskTracker.Services
 
           }
 
-          public async Task AddTask(DataPresentation.Models.Task task)
+          public async Task AddTask(TaskModel task)
           {
-               var dbTask = new DataAccess.Entities.Task
+               var dbTask = new TaskDb
                {
                     Title = task.Title,
                     Description = task.Description,
@@ -37,11 +41,11 @@ namespace TaskTracker.Services
                await Db.Save();
           }
 
-          public async Task<List<DataPresentation.Models.Task>> GetTasks()
+          public async Task<List<TaskModel>> GetTasks()
           {
                var rawTasks = await Db.Tasks.GetAll().ToListAsync();
 
-               return rawTasks.Select(t => new DataPresentation.Models.Task
+               return rawTasks.Select(t => new TaskModel
                {
                     Id = t.Id,
                     Title = t.Title,
@@ -52,12 +56,12 @@ namespace TaskTracker.Services
                }).ToList();
           }
 
-          public async Task UpdateTask(DataPresentation.Models.Task task)
+          public async Task UpdateTask(TaskModel task)
           {
                var editTask = await Db.Tasks.GetItem(task.Id);
 
                if (editTask == null) return;
-               
+
                editTask.Title = task.Title;
                editTask.Description = task.Description;
                editTask.Priority = task.Priority;

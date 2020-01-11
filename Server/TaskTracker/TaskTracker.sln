@@ -19,6 +19,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WidgetMicroservice", "Widge
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskTracker.Middleware", "TaskTracker.Middleware\TaskTracker.Middleware.csproj", "{2844625A-C083-4874-87FA-DC17A4477F74}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WidgetMicroservice.Services", "WidgetMicroservice.Services\WidgetMicroservice.Services.csproj", "{BD1276C5-F6A4-477C-85CE-7BFB4A0E7886}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskMicroservice.Services", "TaskMicroservice.Services\TaskMicroservice.Services.csproj", "{1C54224D-8137-426B-9B25-A8081D5D5AD5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +61,14 @@ Global
 		{2844625A-C083-4874-87FA-DC17A4477F74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2844625A-C083-4874-87FA-DC17A4477F74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2844625A-C083-4874-87FA-DC17A4477F74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD1276C5-F6A4-477C-85CE-7BFB4A0E7886}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD1276C5-F6A4-477C-85CE-7BFB4A0E7886}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD1276C5-F6A4-477C-85CE-7BFB4A0E7886}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD1276C5-F6A4-477C-85CE-7BFB4A0E7886}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C54224D-8137-426B-9B25-A8081D5D5AD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C54224D-8137-426B-9B25-A8081D5D5AD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C54224D-8137-426B-9B25-A8081D5D5AD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C54224D-8137-426B-9B25-A8081D5D5AD5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

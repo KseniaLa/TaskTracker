@@ -18,6 +18,8 @@ using TaskTracker.DataAccess.Repositories;
 using TaskTracker.Middleware;
 using TaskTracker.Services;
 using TaskTracker.Services.Interfaces;
+using WidgetMicroservice.Services;
+using WidgetMicroservice.Services.Interfaces;
 
 namespace WidgetMicroservice
 {
