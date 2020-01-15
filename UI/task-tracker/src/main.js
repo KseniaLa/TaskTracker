@@ -10,6 +10,7 @@ import log from "loglevel";
 import remote from "loglevel-plugin-remote";
 import vDialogs from 'v-dialogs';
 import Logger from "./utils/Logger.js";
+import { API_BASE, CLIENT_LOG } from "../src/dataWorker/common/ApiConstants.js";
 
 Icon.register({
   plus: {
@@ -46,7 +47,7 @@ Vue.use(require("vue-moment"));
 
 remote.apply(log, {
   format: remote.json,
-  url: "http://localhost:49546/api/log/client",
+  url: `${API_BASE}${CLIENT_LOG}`,
   timestamp: () => new Date().toISOString(),
   interval: 10000
 });

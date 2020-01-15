@@ -1,4 +1,12 @@
 import axios from "axios";
+import {
+  API_BASE,
+  TASK_PREFIX,
+  WIDGET_PREFIX,
+  ADD,
+  EDIT,
+  DELETE
+} from "./ApiConstants.js";
 
 class ApiWorker {
   constructor() {}
@@ -6,9 +14,13 @@ class ApiWorker {
   async addTask(task) {
     let data = JSON.stringify(task);
 
+    let action = task.id > 0 ? EDIT : ADD;
+
+    let url = `${API_BASE}${TASK_PREFIX}${action}`;
+
     let result = null;
     try {
-      result = await axios.post("http://localhost:49546/api/task/add", data, {
+      result = await axios.post(url, data, {
         headers: {
           "Content-Type": "application/json"
         }
@@ -26,8 +38,11 @@ class ApiWorker {
 
   async getTasks() {
     let result = null;
+
+    let url = `${API_BASE}${TASK_PREFIX}`;
+
     try {
-      result = await axios.get("http://localhost:49546/api/task");
+      result = await axios.get(url);
     } catch {
       return { data: [], success: false };
     }
@@ -37,10 +52,11 @@ class ApiWorker {
 
   async deleteTask(id) {
     let result = null;
+
+    let url = `${API_BASE}${TASK_PREFIX}${DELETE}/${id}`;
+
     try {
-      result = await axios.delete(
-        `http://localhost:49546/api/task/delete/${id}`
-      );
+      result = await axios.delete(url);
     } catch {
       return false;
     }
@@ -54,8 +70,11 @@ class ApiWorker {
 
   async getWidgets() {
     let result = null;
+
+    let url = `${API_BASE}${WIDGET_PREFIX}`;
+
     try {
-      result = await axios.get("http://localhost:49546/api/widget");
+      result = await axios.get(url);
     } catch {
       return { data: [], success: false };
     }
@@ -66,9 +85,11 @@ class ApiWorker {
   async addWidget(widget) {
     let data = JSON.stringify(widget);
 
+    let url = `${API_BASE}${WIDGET_PREFIX}${ADD}`;
+
     let result = null;
     try {
-      result = await axios.post("http://localhost:49546/api/widget/add", data, {
+      result = await axios.post(url, data, {
         headers: {
           "Content-Type": "application/json"
         }
@@ -86,10 +107,11 @@ class ApiWorker {
 
   async deleteWidget(id) {
     let result = null;
+
+    let url = `${API_BASE}${WIDGET_PREFIX}${DELETE}/${id}`;
+
     try {
-      result = await axios.delete(
-        `http://localhost:49546/api/widget/delete/${id}`
-      );
+      result = await axios.delete(url);
     } catch {
       return false;
     }

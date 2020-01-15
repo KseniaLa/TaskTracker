@@ -12,6 +12,7 @@ namespace Common.Constants
           public const string WIDGET_ROOT = "widget";
           public const string LOG_ROOT = "log";
 
+          public const string EDIT_ITEM = "edit";
           public const string ADD_ITEM = "add";
           public const string DELETE_ITEM = "delete/{id}";
 

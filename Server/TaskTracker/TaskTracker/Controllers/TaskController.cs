@@ -33,16 +33,18 @@ namespace TaskTracker.Controllers
 
           // POST api/task/add
           [HttpPost(Constants.ADD_ITEM)]
-          public async Task<IActionResult> SaveTask([FromBody]DataPresentation.Models.Task value)
+          public async Task<IActionResult> AddTask([FromBody]DataPresentation.Models.Task value)
           {
-               if (value.Id < 0)
-               {
-                    await _taskService.AddTask(value);
-               }
-               else
-               {
-                    await _taskService.UpdateTask(value);
-               }
+               await _taskService.AddTask(value);
+
+               return Ok();
+          }
+
+          // POST api/task/edit
+          [HttpPost(Constants.EDIT_ITEM)]
+          public async Task<IActionResult> EditTask([FromBody]DataPresentation.Models.Task value)
+          {
+               await _taskService.UpdateTask(value);
 
                return Ok();
           }
