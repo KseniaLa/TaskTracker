@@ -6,7 +6,6 @@ using Common.Constants;
 using Microsoft.AspNetCore.Mvc;
 using TaskMicroservice.Services.Interfaces;
 using TaskTracker.DataPresentation.Models;
-using TaskTracker.Services.Interfaces;
 
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860

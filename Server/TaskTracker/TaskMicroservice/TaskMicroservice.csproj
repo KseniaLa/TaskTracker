@@ -18,11 +18,9 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Common\Common.csproj" />
     <ProjectReference Include="..\TaskMicroservice.Services\TaskMicroservice.Services.csproj" />
-    <ProjectReference Include="..\TaskTracker.Config\TaskTracker.Config.csproj" />
     <ProjectReference Include="..\TaskTracker.DataAccess\TaskTracker.DataAccess.csproj" />
     <ProjectReference Include="..\TaskTracker.DataPresentation\TaskTracker.DataPresentation.csproj" />
     <ProjectReference Include="..\TaskTracker.Middleware\TaskTracker.Middleware.csproj" />
-    <ProjectReference Include="..\TaskTracker.Services\TaskTracker.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>

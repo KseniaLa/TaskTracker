@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Common.Configuration;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -18,7 +19,7 @@ namespace LogMicroservice.DataAccess
 
           private LogDbContext Create(string basePath, string environmentName)
           {
-               var builder = Config.Config.GetBuilder(basePath);
+               var builder = Config.GetBuilder(basePath);
 
                var config = builder.Build();
                var connectionString = config.GetConnectionString("DefaultConnection");
@@ -41,7 +42,7 @@ namespace LogMicroservice.DataAccess
 
                var optionsBuilder = new DbContextOptionsBuilder();
                optionsBuilder.UseSqlServer(connectionString);
-               return new LogDbContext(optionsBuilder.Options, new Config.Config());
+               return new LogDbContext(optionsBuilder.Options, new Config());
           }
      }
 }

@@ -24,7 +24,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Common\Common.csproj" />
-    <ProjectReference Include="..\LogMicroservice.Config\LogMicroservice.Config.csproj" />
     <ProjectReference Include="..\LogMicroservice.DataAccess\LogMicroservice.DataAccess.csproj" />
     <ProjectReference Include="..\LogMicroservice.DataPresentation\LogMicroservice.DataPresentation.csproj" />
     <ProjectReference Include="..\LogMicroservice.Services\LogMicroservice.Services.csproj" />

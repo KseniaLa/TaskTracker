@@ -1,4 +1,4 @@
-﻿using LogMicroservice.Config;
+﻿using Common.Configuration;
 using LogMicroservice.DataAccess.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;

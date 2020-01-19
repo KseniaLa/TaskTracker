@@ -1,4 +1,5 @@
-﻿using LogMicroservice.Config;
+﻿using Common.Configuration;
+using Common.DependencyInjection;
 using LogMicroservice.DataAccess;
 using LogMicroservice.DataAccess.Entities;
 using LogMicroservice.DataPresentation.Models;

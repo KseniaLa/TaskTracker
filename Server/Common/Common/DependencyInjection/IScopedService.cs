@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace LogMicroservice.Services.Interfaces
+namespace Common.DependencyInjection
 {
      public interface IScopedService
      {

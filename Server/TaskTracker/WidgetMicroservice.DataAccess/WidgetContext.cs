@@ -1,8 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Common.Configuration;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using TaskTracker.Config;
 using WidgetMicroservice.DataAccess.Entities;
 
 namespace WidgetMicroservice.DataAccess

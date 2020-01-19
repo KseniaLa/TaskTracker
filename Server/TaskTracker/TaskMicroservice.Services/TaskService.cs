@@ -6,10 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using TaskMicroservice.Services.Interfaces;
 using TaskTracker.DataAccess;
-using TaskTracker.Services;
-using TaskTracker.Services.Interfaces;
 using TaskModel = TaskTracker.DataPresentation.Models.Task;
 using TaskDb = TaskTracker.DataAccess.Entities.Task;
+using Common.DependencyInjection;
 
 namespace TaskMicroservice.Services
 {

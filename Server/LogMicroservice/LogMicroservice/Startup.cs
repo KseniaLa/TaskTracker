@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Common.Configuration;
 using Common.Constants;
+using Common.DependencyInjection;
 using Common.Extensions;
-using LogMicroservice.Config;
 using LogMicroservice.DataAccess;
 using LogMicroservice.DataAccess.Repositories;
 using LogMicroservice.Middleware;
@@ -35,7 +36,7 @@ namespace LogMicroservice
           {
                services.AddCors();
 
-               services.AddTransient<IConfig, Config.Config>();
+               services.AddTransient<IConfig, Common.Configuration.Config>();
                services.AddTransient<ILogDbContext, LogDbContext>();
                services.AddDbContext<LogDbContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")), ServiceLifetime.Singleton);

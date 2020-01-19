@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Common.Configuration;
 using Common.Constants;
+using Common.DependencyInjection;
 using Common.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -10,16 +12,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using TaskMicroservice.Services;
 using TaskMicroservice.Services.Interfaces;
-using TaskTracker.Config;
 using TaskTracker.DataAccess;
 using TaskTracker.DataAccess.Repositories;
 using TaskTracker.Middleware;
-using TaskTracker.Services;
-using TaskTracker.Services.Interfaces;
+
 
 namespace TaskTracker
 {
@@ -37,7 +35,7 @@ namespace TaskTracker
           {
                services.AddCors();
 
-               services.AddTransient<IConfig, Config.Config>();
+               services.AddTransient<IConfig, Common.Configuration.Config>();
                services.AddTransient<ITaskTrackerContext, TaskTrackerContext>();
                services.AddDbContext<TaskTrackerContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")), ServiceLifetime.Scoped);
