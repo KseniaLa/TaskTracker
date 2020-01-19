@@ -4,7 +4,8 @@
 			<span>Dashboard</span>
 			<button class="add-button" v-on:click="openModal">Add</button>
 		</div>
-		<div class="chart-area">
+    <div v-if="isLoading"><progress class="progress is-small is-info" max="100">15%</progress></div>
+		<div v-else class="chart-area">
 			<div v-for="widget in widgets" v-bind:key="widget.id">
 				<div class="chart-item">
 					<chart :id="widget.id" :item="widget" v-on:delete-widget="deleteWidget"></chart>
@@ -48,11 +49,13 @@ export default {
       if (!widgets.success) {
         this.$dlg.toast("Failed to get widgets", toastConfig);
       }
+      this.isLoading = false;
     }
   },
   data: function() {
     return {
       widgets: [],
+      isLoading: true
     };
   },
   computed: {    

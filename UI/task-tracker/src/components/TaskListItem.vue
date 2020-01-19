@@ -1,14 +1,12 @@
 <template>
 	<div class="task-item" v-on:click="edit">
-		<div class="title">{{task.title}}</div>
+		<div class="task-title">{{task.title}}</div>
 		<div class="date">{{task.date | moment("DD MMM YY")}}</div>
 		<div class="priority">
-			<div v-bind:class="['round', priorityClass]"></div>
-			<span class="round-title">{{priority}}</span>
+			<span v-bind:class="['tag', priorityClass]">{{priority}}</span>
 		</div>
 		<div class="state">
-			<div v-bind:class="['round', stateClass]"></div>
-			<span class="round-title">{{state}}</span>
+			<span class="tag">{{state}}</span>
 		</div>
 		<div class="description">{{task.description}}</div>
 	</div>
@@ -60,7 +58,7 @@ export default {
   padding: 5px;
   border: 1px solid $sub-border-color;
   width: 100%;
-	height: 80px;
+	height: 110px;
 	cursor: pointer;
 
 
@@ -73,11 +71,11 @@ export default {
   }
 
 	@media screen and (max-width: 900px) {
-    grid-template-columns: 70% 15% 15%;
+    grid-template-columns: 60% 20% 20%;
 		grid-template-areas:
 			"title priority state";
 		grid-template-rows: 100%;
-		height: 30px;
+		height: 40px;
   }
 
 	&:hover{
@@ -85,7 +83,7 @@ export default {
 	}
 }
 
-.title {
+.task-title {
   grid-area: title;
 	flex: 1;
   white-space: nowrap;
@@ -132,28 +130,5 @@ export default {
 	@media screen and (max-width: 900px) {
 		display: none;
 	}
-}
-
-.low {
-	background-color: #e4e4e4
-}
-.medium {
-	background-color: #3fc800
-}
-.high {
-	background-color: #e49c00
-}
-.critical {
-	background-color: #ff0000
-}
-
-.todo {
-	background-color: #e4e4e4
-}
-.progress {
-	background-color: #1729cc
-}
-.done {
-	background-color: #1c7900
 }
 </style>

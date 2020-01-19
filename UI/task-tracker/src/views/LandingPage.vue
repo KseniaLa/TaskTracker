@@ -12,7 +12,7 @@
             <span class="checkmark"></span>
           </label>
         </div>
-    
+      
 		  <button class="two-colored-button" v-on:click="goToMainPage">Go to MainPage</button>
     </div>
 		

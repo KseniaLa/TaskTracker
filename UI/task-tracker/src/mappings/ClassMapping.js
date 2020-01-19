@@ -5,10 +5,10 @@ let stateClassMap = {
 };
 
 let priorityClassMap = {
-  0: "low",
-  1: "medium",
-  2: "high",
-  3: "critical"
+  0: "is-info",
+  1: "is-success",
+  2: "is-warning",
+  3: "is-danger"
 };
 
 export { stateClassMap, priorityClassMap };

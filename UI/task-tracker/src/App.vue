@@ -22,6 +22,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "~bulma/css/bulma.css";
+
 html { height:100%; }
 body{
   height:100%;

@@ -1,5 +1,5 @@
 <template>
-	<div class="modal">
+	<div class="widget-modal">
 	  <div class="modal-title">
 			Add Widget
 		</div>
@@ -143,7 +143,7 @@ export default {
 <style lang="scss">
 @import '../styles/mixins.scss';
 
-.modal {
+.widget-modal {
   @include flex-item(column);
   padding: 10px;
   height: 100%;

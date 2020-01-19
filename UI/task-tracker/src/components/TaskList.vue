@@ -5,7 +5,8 @@
       <button class="add-button" v-on:click="openModal">Add</button>
     </div>
     <div class="task-set">
-      <div v-for="task in tasks" v-bind:key="task.id">
+      <div v-if="isLoading"><progress class="progress is-small is-info" max="100">15%</progress></div>
+      <div v-else v-for="task in tasks" v-bind:key="task.id">
         <TaskListItem :task="task" />
       </div>
     </div>
@@ -43,6 +44,7 @@ export default {
       if (!tasks.success) {
         this.$dlg.toast("Failed to load tasks", toastConfig);
       }
+      this.isLoading = false;
       if (isDelete && id > 0) {
         this.$bus.$emit(`task${id}`);
       } else {
@@ -53,6 +55,7 @@ export default {
   data: function() {
     return {
       isEdit: Boolean,
+      isLoading: true,
       task: Object,
       tasks: []
     };
