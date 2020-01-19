@@ -72,11 +72,13 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../styles/constants.scss';
+@import '../styles/mixins.scss';
+
 .dashboard {
-  display: flex;
-  flex-direction: column;
+  @include flex-item(column);
   width: 60%;
-  border-right: solid 1px #a8a8a8;
+  border-right: solid 1px $border-color;
   height: 100%;
 }
 
@@ -95,14 +97,13 @@ export default {
   }
 
   &::-webkit-scrollbar {
-    width: 8px;
-    background-color: #f5f5f5;
+    width: $scrollbar-width;
+    background-color: $scrollbar-background;
   }
 
   &::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px #a0a0a0;
-    background-color: #a1a1a1;
+    border-radius: $scrollbar-radius;
+    background-color: $scrollbar-thumb;
   }
 }
 

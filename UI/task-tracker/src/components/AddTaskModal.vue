@@ -129,6 +129,7 @@ export default {
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 
 <style lang="scss">
+@import '../styles/constants.scss';
 @import '../styles/mixins.scss';
 
 .task-modal {
@@ -140,7 +141,7 @@ export default {
 .modal-title {
   margin-bottom: 10px;
   font-size: 22px;
-  color: #005eda;
+  color: $modal-text-color;
 }
 
 .modal-input {

@@ -46,6 +46,9 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../styles/constants.scss';
+@import '../styles/mixins.scss';
+
 .task-item {
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
@@ -55,7 +58,7 @@ export default {
     "priority state . ."
     "description description description description";
   padding: 5px;
-  border: 1px solid #e8e9eb;
+  border: 1px solid $sub-border-color;
   width: 100%;
 	height: 80px;
 	cursor: pointer;
@@ -93,19 +96,17 @@ export default {
 }
 .date {
   grid-area: date;
-	color: #8b8b8b;
+	color: $sub-text-color;
 	padding: 5px;
 }
 .priority {
-	display: flex;
-	flex-direction: row;
+	@include flex-item(row);
 	align-items: center;
   grid-area: priority;
 	padding: 5px;
 }
 .state {
-	display: flex;
-	flex-direction: row;
+	@include flex-item(row);
 	align-items: center;
   grid-area: state;
 	padding: 5px;
@@ -116,7 +117,7 @@ export default {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-	color: #8b8b8b;
+	color: $sub-text-color;
 	padding: 5px;
 }
 
