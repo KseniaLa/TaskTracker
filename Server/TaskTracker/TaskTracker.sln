@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskTracker", "TaskTracker\TaskTracker.csproj", "{CB7111D9-E442-496B-9A27-B0E9FDB60563}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskMicroservice", "TaskMicroservice\TaskMicroservice.csproj", "{CB7111D9-E442-496B-9A27-B0E9FDB60563}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskTracker.DataAccess", "TaskTracker.DataAccess\TaskTracker.DataAccess.csproj", "{ED021415-8797-4C1C-A169-72F77A7BBB2C}"
 EndProject
@@ -15,13 +15,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskTracker.DataPresentatio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "..\Common\Common\Common.csproj", "{CA7762C9-6CFC-45DC-B032-E4B7CB71AAE0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WidgetMicroservice", "WidgetMicroservice\WidgetMicroservice.csproj", "{E6549BF2-6513-46DB-89AE-51C788DC168C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WidgetMicroservice", "WidgetMicroservice\WidgetMicroservice.csproj", "{E6549BF2-6513-46DB-89AE-51C788DC168C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskTracker.Middleware", "TaskTracker.Middleware\TaskTracker.Middleware.csproj", "{2844625A-C083-4874-87FA-DC17A4477F74}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskTracker.Middleware", "TaskTracker.Middleware\TaskTracker.Middleware.csproj", "{2844625A-C083-4874-87FA-DC17A4477F74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WidgetMicroservice.Services", "WidgetMicroservice.Services\WidgetMicroservice.Services.csproj", "{BD1276C5-F6A4-477C-85CE-7BFB4A0E7886}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WidgetMicroservice.Services", "WidgetMicroservice.Services\WidgetMicroservice.Services.csproj", "{BD1276C5-F6A4-477C-85CE-7BFB4A0E7886}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskMicroservice.Services", "TaskMicroservice.Services\TaskMicroservice.Services.csproj", "{1C54224D-8137-426B-9B25-A8081D5D5AD5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskMicroservice.Services", "TaskMicroservice.Services\TaskMicroservice.Services.csproj", "{1C54224D-8137-426B-9B25-A8081D5D5AD5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
