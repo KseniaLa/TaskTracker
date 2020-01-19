@@ -26,7 +26,12 @@ matrix:
       script:
         - dotnet restore
         - dotnet build
-        - cd ../TaskTracker
+
+    - language: csharp
+      mono: none
+      dotnet: 2.1.502
+      before_install: cd Server/TaskTracker
+      script:
         - dotnet restore
         - dotnet build
 
