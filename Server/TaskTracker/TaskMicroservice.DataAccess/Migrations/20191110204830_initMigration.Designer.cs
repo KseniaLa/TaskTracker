@@ -5,13 +5,14 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using TaskMicroservice.DataAccess;
 using TaskTracker.DataAccess;
 
 namespace TaskTracker.DataAccess.Migrations
 {
     [DbContext(typeof(TaskTrackerContext))]
-    [Migration("20191112183258_taskSeed")]
-    partial class taskSeed
+    [Migration("20191110204830_initMigration")]
+    partial class initMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -44,12 +45,6 @@ namespace TaskTracker.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Tasks");
-
-                    b.HasData(
-                        new { Id = 1, DateTime = new DateTime(2019, 11, 12, 21, 32, 58, 165, DateTimeKind.Local), Description = "Test task description", Priority = 0, State = 0, Title = "Test task" },
-                        new { Id = 2, DateTime = new DateTime(2019, 11, 12, 21, 32, 58, 166, DateTimeKind.Local), Description = "description", Priority = 1, State = 1, Title = "Hello task" },
-                        new { Id = 3, DateTime = new DateTime(2019, 11, 12, 21, 32, 58, 166, DateTimeKind.Local), Description = "task description", Priority = 3, State = 1, Title = "Critical task" }
-                    );
                 });
 
             modelBuilder.Entity("TaskTracker.DataAccess.Entities.Widget", b =>

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace TaskTracker.DataAccess.Entities
+namespace TaskMicroservice.DataAccess.Entities
 {
      public abstract class Entity
      {

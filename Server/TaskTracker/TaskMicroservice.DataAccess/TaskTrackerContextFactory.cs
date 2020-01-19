@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace TaskTracker.DataAccess
+namespace TaskMicroservice.DataAccess
 {
      public class TaskTrackerContextFactory : IDesignTimeDbContextFactory<TaskTrackerContext>
      {

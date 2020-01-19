@@ -2,9 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using TaskTracker.DataAccess.Entities;
+using TaskMicroservice.DataAccess.Entities;
 
-namespace TaskTracker.DataAccess
+namespace TaskMicroservice.DataAccess
 {
      public interface ITaskTrackerContext
      {

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using TaskTracker.DataAccess.Repositories;
+using TaskMicroservice.DataAccess.Repositories;
 
-namespace TaskTracker.DataAccess
+namespace TaskMicroservice.DataAccess
 {
      public class TaskTrackerUnitOfWork : IUnitOfWork
      {

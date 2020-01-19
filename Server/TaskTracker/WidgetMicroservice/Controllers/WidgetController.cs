@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Common.Constants;
 using Microsoft.AspNetCore.Mvc;
-using TaskTracker.DataPresentation.Models;
+using WidgetMicroservice.DataPresentation.Models;
 using WidgetMicroservice.Services.Interfaces;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860

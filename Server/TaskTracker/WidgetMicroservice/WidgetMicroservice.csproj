@@ -17,8 +17,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Common\Common.csproj" />
-    <ProjectReference Include="..\TaskTracker.DataPresentation\TaskTracker.DataPresentation.csproj" />
-    <ProjectReference Include="..\TaskTracker.Middleware\TaskTracker.Middleware.csproj" />
     <ProjectReference Include="..\WidgetMicroservice.Services\WidgetMicroservice.Services.csproj" />
   </ItemGroup>
 

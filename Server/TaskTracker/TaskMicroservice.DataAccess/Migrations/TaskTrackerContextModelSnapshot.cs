@@ -3,17 +3,15 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using TaskTracker.DataAccess;
+using TaskMicroservice.DataAccess;
 
 namespace TaskTracker.DataAccess.Migrations
 {
     [DbContext(typeof(TaskTrackerContext))]
-    [Migration("20191110204830_initMigration")]
-    partial class initMigration
+    partial class TaskTrackerContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,35 +42,12 @@ namespace TaskTracker.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Tasks");
-                });
 
-            modelBuilder.Entity("TaskTracker.DataAccess.Entities.Widget", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("BorderColor")
-                        .IsRequired()
-                        .HasMaxLength(30);
-
-                    b.Property<int>("ChartType");
-
-                    b.Property<int>("ColorScheme");
-
-                    b.Property<string>("Priorities")
-                        .IsRequired();
-
-                    b.Property<string>("States")
-                        .IsRequired();
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(50);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Widgets");
+                    b.HasData(
+                        new { Id = 1, DateTime = new DateTime(2020, 1, 19, 15, 55, 39, 674, DateTimeKind.Local), Description = "Test task description", Priority = 0, State = 0, Title = "Test task" },
+                        new { Id = 2, DateTime = new DateTime(2020, 1, 19, 15, 55, 39, 676, DateTimeKind.Local), Description = "description", Priority = 1, State = 1, Title = "Hello task" },
+                        new { Id = 3, DateTime = new DateTime(2020, 1, 19, 15, 55, 39, 676, DateTimeKind.Local), Description = "task description", Priority = 3, State = 1, Title = "Critical task" }
+                    );
                 });
 #pragma warning restore 612, 618
         }

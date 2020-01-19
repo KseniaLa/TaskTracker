@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using TaskTracker.DataPresentation.Models;
+using WidgetMicroservice.DataPresentation.Models;
 using Task = System.Threading.Tasks.Task;
 
 namespace WidgetMicroservice.Services.Interfaces

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TaskTracker.DataAccess.Repositories
+namespace TaskMicroservice.DataAccess.Repositories
 {
      public class GenericRepository<T> : IGenericRepository<T> where T : class
      {

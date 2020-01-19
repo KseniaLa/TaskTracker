@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Common.Constants;
 using Microsoft.AspNetCore.Mvc;
 using TaskMicroservice.Services.Interfaces;
-using TaskTracker.DataPresentation.Models;
+using TaskModel =  TaskMicroservice.DataPresentation.Models.Task;
 
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -32,7 +32,7 @@ namespace TaskTracker.Controllers
 
           // POST api/task/add
           [HttpPost(Constants.ADD_ITEM)]
-          public async Task<IActionResult> AddTask([FromBody]DataPresentation.Models.Task value)
+          public async Task<IActionResult> AddTask([FromBody]TaskModel value)
           {
                await _taskService.AddTask(value);
 
@@ -41,7 +41,7 @@ namespace TaskTracker.Controllers
 
           // POST api/task/edit
           [HttpPost(Constants.EDIT_ITEM)]
-          public async Task<IActionResult> EditTask([FromBody]DataPresentation.Models.Task value)
+          public async Task<IActionResult> EditTask([FromBody]TaskModel value)
           {
                await _taskService.UpdateTask(value);
 

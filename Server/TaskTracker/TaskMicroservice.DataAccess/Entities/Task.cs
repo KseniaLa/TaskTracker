@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace TaskTracker.DataAccess.Entities
+namespace TaskMicroservice.DataAccess.Entities
 {
      public class Task : Entity
      {

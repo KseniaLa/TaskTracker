@@ -6,8 +6,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Common\Common.csproj" />
-    <ProjectReference Include="..\TaskTracker.DataAccess\TaskTracker.DataAccess.csproj" />
-    <ProjectReference Include="..\TaskTracker.DataPresentation\TaskTracker.DataPresentation.csproj" />
+    <ProjectReference Include="..\TaskMicroservice.DataAccess\TaskMicroservice.DataAccess.csproj" />
+    <ProjectReference Include="..\TaskMicroservice.DataPresentation\TaskMicroservice.DataPresentation.csproj" />
   </ItemGroup>
 
 </Project>

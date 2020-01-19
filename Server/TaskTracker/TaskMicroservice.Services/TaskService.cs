@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaskMicroservice.Services.Interfaces;
-using TaskTracker.DataAccess;
-using TaskModel = TaskTracker.DataPresentation.Models.Task;
-using TaskDb = TaskTracker.DataAccess.Entities.Task;
+using TaskModel = TaskMicroservice.DataPresentation.Models.Task;
+using TaskDb = TaskMicroservice.DataAccess.Entities.Task;
 using Common.DependencyInjection;
+using TaskMicroservice.DataAccess;
 
 namespace TaskMicroservice.Services
 {

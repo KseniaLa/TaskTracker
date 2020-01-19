@@ -6,17 +6,17 @@ using Common.Configuration;
 using Common.Constants;
 using Common.DependencyInjection;
 using Common.Extensions;
+using Common.Middleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using TaskMicroservice.DataAccess;
+using TaskMicroservice.DataAccess.Repositories;
 using TaskMicroservice.Services;
 using TaskMicroservice.Services.Interfaces;
-using TaskTracker.DataAccess;
-using TaskTracker.DataAccess.Repositories;
-using TaskTracker.Middleware;
 
 
 namespace TaskTracker
