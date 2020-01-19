@@ -22,6 +22,14 @@ matrix:
     - language: csharp
       mono: none
       dotnet: 2.1.502
+      before_install: cd Server/TaskTracker/TaskMicroservice
+      script:
+        - dotnet restore
+        - dotnet build
+
+    - language: csharp
+      mono: none
+      dotnet: 2.1.502
       before_install: cd Server/TaskTracker/WidgetMicroservice
       script:
         - dotnet restore
@@ -38,7 +46,7 @@ matrix:
     - language: csharp
       mono: none
       dotnet: 2.1.502
-      before_install: cd Server/ApiGateway
+      before_install: cd Server/DashboardMicroservice
       script:
         - dotnet restore
         - dotnet build
@@ -46,7 +54,7 @@ matrix:
     - language: csharp
       mono: none
       dotnet: 2.1.502
-      before_install: cd Server/DashboardMicroservice
+      before_install: cd Server/ApiGateway
       script:
         - dotnet restore
         - dotnet build
