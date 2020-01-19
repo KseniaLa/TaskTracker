@@ -9,7 +9,5 @@ namespace TaskTracker.DataAccess
      public interface ITaskTrackerContext
      {
           DbSet<Task> Tasks { get; set; }
-
-          DbSet<Widget> Widgets { get; set; }
      }
 }

@@ -13,11 +13,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using TaskTracker.Config;
-using TaskTracker.DataAccess;
-using TaskTracker.DataAccess.Repositories;
 using TaskTracker.Middleware;
 using TaskTracker.Services;
 using TaskTracker.Services.Interfaces;
+using WidgetMicroservice.DataAccess;
+using WidgetMicroservice.DataAccess.Repositories;
 using WidgetMicroservice.Services;
 using WidgetMicroservice.Services.Interfaces;
 
@@ -38,12 +38,12 @@ namespace WidgetMicroservice
                services.AddCors();
 
                services.AddTransient<IConfig, Config>();
-               services.AddTransient<ITaskTrackerContext, TaskTrackerContext>();
-               services.AddDbContext<TaskTrackerContext>(options =>
+               services.AddTransient<IWidgetContext, WidgetContext>();
+               services.AddDbContext<WidgetContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")), ServiceLifetime.Scoped);
 
                services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-               services.AddTransient<IUnitOfWork, TaskTrackerUnitOfWork>();
+               services.AddTransient<IUnitOfWork, WidgetUnitOfWork>();
 
                services.Scan(scan => scan
                  .FromAssembliesOf(new List<Type> { typeof(IWidgetService), typeof(WidgetService) })

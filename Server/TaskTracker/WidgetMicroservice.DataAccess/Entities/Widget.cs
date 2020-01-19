@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 
-namespace TaskTracker.DataAccess.Entities
+namespace WidgetMicroservice.DataAccess.Entities
 {
      public class Widget : Entity
      {

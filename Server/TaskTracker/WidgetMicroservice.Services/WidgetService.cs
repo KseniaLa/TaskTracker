@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TaskTracker.DataAccess;
 using TaskTracker.DataPresentation.Models;
-using TaskTracker.Services;
 using TaskTracker.Services.Interfaces;
+using WidgetMicroservice.DataAccess;
+using WidgetMicroservice.DataAccess.Entities;
 using WidgetMicroservice.Services.Interfaces;
 using Task = System.Threading.Tasks.Task;
-using WidgetDb = TaskTracker.DataAccess.Entities.Widget;
+using Widget = TaskTracker.DataPresentation.Models.Widget;
+using WidgetDb = WidgetMicroservice.DataAccess.Entities.Widget;
 
 namespace WidgetMicroservice.Services
 {

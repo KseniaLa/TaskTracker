@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using TaskTracker.DataAccess.Repositories;
+using WidgetMicroservice.DataAccess.Repositories;
 
-namespace TaskTracker.DataAccess
+namespace WidgetMicroservice.DataAccess
 {
-     public class TaskTrackerUnitOfWork : IUnitOfWork
+     public class WidgetUnitOfWork : IUnitOfWork
      {
-          private readonly TaskTrackerContext _db;
+          private readonly WidgetContext _db;
           private readonly IServiceProvider _serviceProvider;
 
-          public IGenericRepository<Entities.Task> Tasks => GetGenericRepository<Entities.Task>();
+          public IGenericRepository<Entities.Widget> Widgets => GetGenericRepository<Entities.Widget>();
 
-          public TaskTrackerUnitOfWork(TaskTrackerContext context, IServiceProvider serviceProvider)
+          public WidgetUnitOfWork(WidgetContext context, IServiceProvider serviceProvider)
           {
                _db = context;
                _serviceProvider = serviceProvider;

@@ -21,7 +21,6 @@ namespace TaskTracker.DataAccess
           }
 
           public DbSet<Task> Tasks { get; set; }
-          public DbSet<Widget> Widgets { get; set; }
 
           protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
           {
