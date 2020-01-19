@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using TaskTracker.DataAccess;
 
-namespace TaskTracker.Services
+namespace TaskMicroservice.Services
 {
      public abstract class BaseService
      {
