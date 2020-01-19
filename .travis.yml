@@ -26,9 +26,27 @@ matrix:
       script:
         - dotnet restore
         - dotnet build
-        - cd ../LogMicroservice
+
+    - language: csharp
+      mono: none
+      dotnet: 2.1.502
+      before_install: cd Server/LogMicroservice
+      script:
         - dotnet restore
         - dotnet build
-        - cd ../ApiGateway
+
+    - language: csharp
+      mono: none
+      dotnet: 2.1.502
+      before_install: cd Server/ApiGateway
+      script:
+        - dotnet restore
+        - dotnet build
+
+    - language: csharp
+      mono: none
+      dotnet: 2.1.502
+      before_install: cd Server/DashboardMicroservice
+      script:
         - dotnet restore
         - dotnet build
