@@ -22,7 +22,7 @@ matrix:
     - language: csharp
       mono: none
       dotnet: 2.1.502
-      before_install: cd Server/TaskTracker
+      before_install: cd Server/TaskTracker/WidgetMicroservice
       script:
         - dotnet restore
         - dotnet build
