@@ -22,14 +22,6 @@ matrix:
     - language: csharp
       mono: none
       dotnet: 2.1.502
-      before_install: cd Server/Common
-      script:
-        - dotnet restore
-        - dotnet build
-
-    - language: csharp
-      mono: none
-      dotnet: 2.1.502
       before_install: cd Server/TaskTracker
       script:
         - dotnet restore
@@ -38,11 +30,8 @@ matrix:
     - language: csharp
       mono: none
       dotnet: 2.1.502
-      before_install: cd Server/Common
+      before_install: cd Server/LogMicroservice
       script:
-        - dotnet restore
-        - dotnet build
-        - cd ../LogMicroservice
         - dotnet restore
         - dotnet build
 
