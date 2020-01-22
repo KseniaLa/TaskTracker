@@ -71,7 +71,9 @@ class BarData {
 class ListData {
   getData(labels, color, data) {
     let sumData = data.reduce((a, b) => a + b, 0);
-
+    if (sumData <= 0) {
+      sumData = Infinity;
+    }
     let datasets = [];
     for (let i = 0; i < labels.length; i++) {
       datasets.push({
