@@ -1,9 +1,9 @@
 <template>
-	<header class="app-header">
-		<div class="app-name">
+	<header class="app-header level is-marginless">
+		<div class="app-name level-left">
 			<router-link to="/">TaskTracker</router-link>
 		</div>
-		<div v-if="isDemo" class="demo-badge">Demo</div>
+		<div v-if="isDemo" class="demo-badge level-right">Demo</div>
 	</header>
 </template>
 
@@ -20,19 +20,10 @@ export default {
 @import '../styles/constants.scss';
 
 .app-header {
-  display: flex;
-  flex-direction: row;
-	align-items: center;
-	justify-content: space-between;
   padding: 10px;
   background-color: $base-color;
   color: #ffffff;
 	box-shadow: 0 4px 8px 0 #00000033, 0 6px 20px 0 #00000030;
-
-	@media screen and (max-width: 400px) {
-    flex-direction: column;
-		justify-content: center;
-  }
 }
 
 .app-name {
@@ -42,6 +33,10 @@ export default {
     color: #ffffff;
 		font-size: 50px;
 		text-decoration: none;
+
+		&:hover	{
+			color: #ffffff;
+		}
   }
 }
 

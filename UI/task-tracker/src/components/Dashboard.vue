@@ -100,13 +100,11 @@ export default {
   }
 
   &::-webkit-scrollbar {
-    width: $scrollbar-width;
-    background-color: $scrollbar-background;
+    @include scrollbar();
   }
 
   &::-webkit-scrollbar-thumb {
-    border-radius: $scrollbar-radius;
-    background-color: $scrollbar-thumb;
+    @include scrollbar-thumb();
   }
 }
 

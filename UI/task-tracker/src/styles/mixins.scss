@@ -1,4 +1,16 @@
+@import './constants.scss';
+
 @mixin flex-item($direction) {
   display: flex;
   flex-direction: $direction;
+}
+
+@mixin scrollbar() {
+  width: $scrollbar-width;
+  background-color: $scrollbar-background;
+}
+
+@mixin scrollbar-thumb() {
+  border-radius: $scrollbar-radius;
+  background-color: $scrollbar-thumb;
 }

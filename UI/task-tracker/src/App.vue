@@ -22,12 +22,21 @@ export default {
 </script>
 
 <style lang="scss">
+@import './styles/mixins.scss';
 @import "~bulma/css/bulma.css";
 
 html { height:100%; }
 body{
   height:100%;
   margin: 0px;
+
+  &::-webkit-scrollbar {
+    @include scrollbar();
+  }
+
+  &::-webkit-scrollbar-thumb {
+    @include scrollbar-thumb();
+  }
 }
 
 #app {
@@ -43,6 +52,6 @@ div.v-dialog-toast__container .v-dialog-toast__content {
     padding: 12px 10px 0 70px;
     font-size: 14px;
     overflow: hidden;
-    min-height: 68px !important;
+    min-height: 68px;
 }
 </style>

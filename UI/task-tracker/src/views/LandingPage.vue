@@ -122,7 +122,7 @@ export default {
 
 .checkmark {
   position: absolute;
-  top: 0;
+  top: 10px;
   left: 0;
   height: 40px;
   width: 40px;
