@@ -6,8 +6,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Common\Common.csproj" />
-    <ProjectReference Include="..\WidgetMicroservice.DataAccess\WidgetMicroservice.DataAccess.csproj" />
-    <ProjectReference Include="..\WidgetMicroservice.DataPresentation\WidgetMicroservice.DataPresentation.csproj" />
   </ItemGroup>
 
 </Project>

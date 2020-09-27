@@ -1,17 +1,15 @@
-﻿using System;
+﻿using Common.Constants;
+using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Common.Constants;
-using Microsoft.AspNetCore.Mvc;
 using WidgetMicroservice.DataPresentation.Models;
 using WidgetMicroservice.Services.Interfaces;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace WidgetMicroservice.Controllers
 {
-     [Route("widget1")]
+     [Route(Constants.WIDGET_ROOT)]
      public class WidgetController : Controller
      {
           private readonly IWidgetService _widgetService;

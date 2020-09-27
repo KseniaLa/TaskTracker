@@ -30,7 +30,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 64973
+          "Port": 51280
         }
       ],
       "UpstreamPathTemplate": "/api/widget",
@@ -42,7 +42,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 64973
+          "Port": 51280
         }
       ],
       "UpstreamPathTemplate": "/api/widget/{everything}",
