@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using TaskMicroservice.DataAccess;
 using TaskMicroservice.DataAccess.Repositories;
 using TaskMicroservice.Services;
@@ -53,16 +54,20 @@ namespace TaskTracker
                services.AddMvc(options =>
                {
                     options.UseCentralRoutePrefix(new RouteAttribute(Constants.GLOBAL_PREFIX));
-               }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+               }).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
           }
 
           // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-          public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+          public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
           {
                if (env.IsDevelopment())
                {
                     app.UseDeveloperExceptionPage();
                }
+
+               app.UseRouting();
+
+               app.UseAuthorization();
 
                app.UseCors(
                     options => options.WithOrigins("http://localhost:8081").AllowAnyMethod().AllowAnyOrigin().AllowAnyHeader()
@@ -70,7 +75,10 @@ namespace TaskTracker
 
                app.UseMiddleware<ExceptionMiddleware>();
 
-               app.UseMvc();
+               app.UseEndpoints(endpoints =>
+               {
+                    endpoints.MapControllers();
+               });
           }
      }
 }

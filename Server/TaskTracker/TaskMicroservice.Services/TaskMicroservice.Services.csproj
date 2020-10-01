@@ -1,11 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\Common\Common.csproj" />
     <ProjectReference Include="..\TaskMicroservice.DataAccess\TaskMicroservice.DataAccess.csproj" />
     <ProjectReference Include="..\TaskMicroservice.DataPresentation\TaskMicroservice.DataPresentation.csproj" />
   </ItemGroup>
