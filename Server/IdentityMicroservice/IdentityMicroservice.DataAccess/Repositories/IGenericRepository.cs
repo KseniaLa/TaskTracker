@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,6 +12,8 @@ namespace IdentityMicroservice.DataAccess.Repositories
           Task Add(T item);
 
           IQueryable<T> GetAll();
+
+          IQueryable<T> FindBy(Expression<Func<T, bool>> predicate);
 
           void Delete(int id);
 

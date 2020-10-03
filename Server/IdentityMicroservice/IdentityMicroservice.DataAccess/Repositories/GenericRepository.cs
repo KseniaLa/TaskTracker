@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -24,6 +25,12 @@ namespace IdentityMicroservice.DataAccess.Repositories
           public IQueryable<T> GetAll()
           {
                return _dbSet;
+          }
+
+          public IQueryable<T> FindBy(Expression<Func<T, bool>> predicate)
+          {
+               IQueryable<T> query = _dbSet.Where(predicate);
+               return query;
           }
 
           public void Delete(int id)

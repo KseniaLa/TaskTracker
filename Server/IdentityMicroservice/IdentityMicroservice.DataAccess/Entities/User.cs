@@ -18,5 +18,8 @@ namespace IdentityMicroservice.DataAccess.Entities
           [Required]
           [MaxLength(100)]
           public string PasswordHash { get; set; }
+
+          [Required]
+          public bool IsAdmin { get; set; }
      }
 }
