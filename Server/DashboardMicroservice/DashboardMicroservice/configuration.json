@@ -10,7 +10,11 @@
         }
       ],
       "UpstreamPathTemplate": "/api/task",
-      "UpstreamHttpMethod": [ "Get" ]
+      "UpstreamHttpMethod": [ "Get" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
     },
     {
       "DownstreamPathTemplate": "/api/task/{everything}",
@@ -22,7 +26,11 @@
         }
       ],
       "UpstreamPathTemplate": "/api/task/{everything}",
-      "UpstreamHttpMethod": [ "Post", "Delete", "Options" ]
+      "UpstreamHttpMethod": [ "Post", "Delete", "Options" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
     },
     {
       "DownstreamPathTemplate": "/api/widget",
@@ -34,7 +42,11 @@
         }
       ],
       "UpstreamPathTemplate": "/api/widget",
-      "UpstreamHttpMethod": [ "Get" ]
+      "UpstreamHttpMethod": [ "Get" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
     },
     {
       "DownstreamPathTemplate": "/api/widget/{everything}",
@@ -46,7 +58,11 @@
         }
       ],
       "UpstreamPathTemplate": "/api/widget/{everything}",
-      "UpstreamHttpMethod": [ "Post", "Delete", "Options" ]
+      "UpstreamHttpMethod": [ "Post", "Delete", "Options" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
     },
     {
       "DownstreamPathTemplate": "/api/log/client",
