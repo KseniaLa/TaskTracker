@@ -42,7 +42,11 @@ class ApiWorker {
     let url = `${API_BASE}${TASK_PREFIX}`;
 
     try {
-      result = await axios.get(url);
+      result = await axios.get(url, {
+        headers: {
+          Authorization: "Bearer " + ""
+        }
+      });
     } catch {
       return { data: [], success: false };
     }
