@@ -39,9 +39,9 @@ namespace IdentityMicroservice.TokenManagement
           {
                return new[]
                {
-                    new Claim("id", user.Id.ToString()),
-                    new Claim("login", user.Login),
-                    new Claim(ClaimTypes.Role, user.IsAdmin ? Roles.Administrator : Roles.User)
+                    new Claim("Id", user.Id.ToString()),
+                    new Claim("Login", user.Login),
+                    new Claim("Role", user.IsAdmin ? Roles.Administrator : Roles.User)
                };
           }
 
