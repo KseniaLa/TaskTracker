@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -19,25 +20,17 @@ namespace DashboardMicroservice
 {
      public class Startup
      {
-          public Startup(IHostingEnvironment env)
+          public Startup(IConfiguration configuration)
           {
-               var builder = new Microsoft.Extensions.Configuration.ConfigurationBuilder();
-               builder.SetBasePath(env.ContentRootPath)
-                      //add configuration.json  
-                      .AddJsonFile("configuration.json", optional: false, reloadOnChange: true)
-                      .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                      .AddEnvironmentVariables();
-
-               Configuration = builder.Build();
+               Configuration = configuration;
           }
 
-          public IConfigurationRoot Configuration { get; }
+          public IConfiguration Configuration { get; }
 
           // This method gets called by the runtime. Use this method to add services to the container.
           public void ConfigureServices(IServiceCollection services)
           {
-               services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
+               services.AddControllers();
                services.AddOcelot(Configuration);
 
                var jwtSection = Configuration.GetSection("Jwt");
@@ -61,20 +54,23 @@ namespace DashboardMicroservice
                          ValidateAudience = false
                     };
                });
+
+               services.AddCors();
           }
 
           // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-          public async void Configure(IApplicationBuilder app, IHostingEnvironment env)
+          public async void Configure(IApplicationBuilder app, IWebHostEnvironment env)
           {
                if (env.IsDevelopment())
                {
                     app.UseDeveloperExceptionPage();
                }
 
+               app.UseCors(
+                    options => options.WithOrigins("http://localhost:8081").AllowAnyMethod().AllowAnyOrigin().AllowAnyHeader()
+               );
+
                app.UseAuthentication();
-
-               app.UseMvc();
-
                await app.UseOcelot();
           }
      }
