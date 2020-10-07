@@ -1,23 +1,21 @@
 <template>
-	<main class="landing-page-container">
+  <main class="landing-page-container">
     <div class="landing-page-content">
-      <label class="select-title">Select site mode</label>
-        <div class="radiogroup-container">
-          <label class="container">Demo
-            <input type="radio" checked="checked" name="radio" v-bind:value="true" v-model="isDemo">
-            <span class="checkmark"></span>
-          </label>
-          <label class="container">Real
-            <input type="radio" name="radio" v-bind:value="false" v-model="isDemo">
-            <span class="checkmark"></span>
-          </label>
+      <label class="select-title">Sign In</label>
+      <div v-if="isLogin">
+        <input type="text" placeholder="login" />
+        <input type="password" placeholder="password" />
+        <button class v-on:click="goToMainPage">Sign in</button>
+      </div>
+        <div v-else>
+            <input type="text" placeholder="name" />
+            <input type="text" placeholder="login" />
+        <input type="password" placeholder="password" />
+        <button class v-on:click="goToMainPage">Sign up</button>
         </div>
-      
-		  <button class="two-colored-button" v-on:click="goToMainPage">Continue</button>
+      <button class v-on:click="swithToSignUp">Sign up</button>
     </div>
-		
-	</main>
-    
+  </main>
 </template>
 
 <script>
@@ -26,32 +24,29 @@ import router from "../router";
 export default {
   data() {
     return {
-      isDemo: true 
-    }
+      isLogin: true
+    };
   },
   methods: {
     goToMainPage: function() {
       this.$store.commit("setDemo", this.isDemo);
       this.$store.commit("setLanding", false);
-
-      if (this.isDemo) {
-        router.push("main");
-      }
-      else {
-        router.push("login");
-      }
+      router.push("main");
+    },
+    swithToSignUp: function() {
+        this.isLogin = false;
     }
   },
   mounted: function() {
-    this.$log.info('Application (Landing page) loaded.', !this.isDemo);
+    this.$log.info("Application (Landing page) loaded.", !this.isDemo);
     this.$store.commit("setLanding", true);
   }
 };
 </script>
 
 <style lang="scss">
-@import '../styles/constants.scss';
-@import '../styles/mixins.scss';
+@import "../styles/constants.scss";
+@import "../styles/mixins.scss";
 
 .landing-page-container {
   @include flex-item(column);
@@ -76,7 +71,7 @@ export default {
 
 .select-title {
   font-size: 40px;
-  color:#ffffff;
+  color: #ffffff;
 }
 
 .two-colored-button {
@@ -155,14 +150,11 @@ export default {
 }
 
 .container .checkmark:after {
- 	top: 10px;
-	left: 10px;
-	width: 20px;
-	height: 20px;
-	border-radius: 50%;
-	background: white;
+  top: 10px;
+  left: 10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: white;
 }
-
 </style>
-
-
