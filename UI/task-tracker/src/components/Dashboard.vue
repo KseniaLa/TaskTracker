@@ -43,7 +43,7 @@ export default {
       this.getData();
     },
     getData: async function() {
-      let widgets = await WidgetRepository.instance.getWidgets(this.isDemo);
+      let widgets = await WidgetRepository.instance.getWidgets(this.isDemo, this.$store.state.authToken);
       this.widgets = widgets.data;
       this.$store.commit("setWidgets", widgets.data);
       if (!widgets.success) {

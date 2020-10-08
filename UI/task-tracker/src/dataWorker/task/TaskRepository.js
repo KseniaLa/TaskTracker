@@ -29,10 +29,10 @@ class TaskRepository {
     return await this._context.addTask(task);
   }
 
-  async getTasks(isDemo) {
+  async getTasks(isDemo, token) {
     let worker = this._factory.getWorker(isDemo);
     this._context.setWorker(worker);
-    return await this._context.getTasks();
+    return await this._context.getTasks(token);
   }
 
   async deleteTask(isDemo, id) {

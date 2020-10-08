@@ -36,7 +36,7 @@ class ApiWorker {
     }
   }
 
-  async getTasks() {
+  async getTasks(authToken) {
     let result = null;
 
     let url = `${API_BASE}${TASK_PREFIX}`;
@@ -44,7 +44,7 @@ class ApiWorker {
     try {
       result = await axios.get(url, {
         headers: {
-          Authorization: "Bearer " + ""
+          Authorization: "Bearer " + authToken
         }
       });
     } catch {
@@ -72,13 +72,17 @@ class ApiWorker {
     }
   }
 
-  async getWidgets() {
+  async getWidgets(authToken) {
     let result = null;
 
     let url = `${API_BASE}${WIDGET_PREFIX}`;
 
     try {
-      result = await axios.get(url);
+      result = await axios.get(url, {
+        headers: {
+          Authorization: "Bearer " + authToken
+        }
+      });
     } catch {
       return { data: [], success: false };
     }

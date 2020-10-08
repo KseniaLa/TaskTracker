@@ -8,6 +8,7 @@ export default new Vuex.Store({
   state: {
     isDemo: false,
     isLanding: true,
+    authToken: null,
     tasks: [],
     widgets: []
   },
@@ -19,6 +20,9 @@ export default new Vuex.Store({
     setLanding(state, isLanding) {
       state.isLanding = isLanding;
     },
+    setAuthToken(state, token) {
+      state.authToken = token;
+    },
     setTasks(state, tasks) {
       state.tasks = tasks;
     },
@@ -29,6 +33,7 @@ export default new Vuex.Store({
   actions: {
     isDemo: state => state.isDemo,
     isLanding: state => state.isLanding,
+    authToken: state => state.authToken,
     tasks: state => state.tasks,
     widgets: state => state.widgets
   }

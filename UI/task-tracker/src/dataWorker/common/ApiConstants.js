@@ -5,4 +5,7 @@ export const ADD = "/add";
 export const EDIT = "/edit";
 export const DELETE = "/delete";
 
+export const USER = "users";
+export const LOGIN = "/login";
+
 export const CLIENT_LOG = "log/client";

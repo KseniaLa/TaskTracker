@@ -3,15 +3,15 @@
     <div class="landing-page-content">
       <label class="select-title">Sign In</label>
       <div v-if="isLogin">
-        <input type="text" placeholder="login" />
-        <input type="password" placeholder="password" />
-        <button class v-on:click="goToMainPage">Sign in</button>
+        <input type="text" v-model="login" placeholder="login" />
+        <input type="password" v-model="password" placeholder="password" />
+        <button class v-on:click="authenticate">Sign in</button>
       </div>
         <div v-else>
             <input type="text" placeholder="name" />
             <input type="text" placeholder="login" />
         <input type="password" placeholder="password" />
-        <button class v-on:click="goToMainPage">Sign up</button>
+        <button class v-on:click="createUser">Sign up</button>
         </div>
       <button class v-on:click="swithToSignUp">Sign up</button>
     </div>
@@ -20,18 +20,29 @@
 
 <script>
 import router from "../router";
+import AccountWorker from "../dataWorker/common/AccountWorker.js";
+import { toastConfig } from "../utils/Config.js";
 
 export default {
   data() {
     return {
-      isLogin: true
+      isLogin: true,
+      login: "",
+      password: "",
+      accountWorker: new AccountWorker()
     };
   },
   methods: {
-    goToMainPage: function() {
-      this.$store.commit("setDemo", this.isDemo);
-      this.$store.commit("setLanding", false);
-      router.push("main");
+    authenticate: async function() {
+      let creds = { login: this.login, password: this.password};
+      let tokenResponce = await this.accountWorker.authenticate(creds);
+      if (tokenResponce.success && tokenResponce.token) {
+        this.$store.commit("setAuthToken", tokenResponce.token);
+        router.push("main");
+      }
+      else {
+        this.$dlg.toast("Failed to sign in. Invalid login or password", toastConfig);
+      }
     },
     swithToSignUp: function() {
         this.isLogin = false;

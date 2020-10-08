@@ -15,8 +15,8 @@ class WidgetWorker {
     return await this._worker.addWidget(widget);
   }
 
-  async getWidgets() {
-    return await this._worker.getWidgets();
+  async getWidgets(token) {
+    return await this._worker.getWidgets(token);
   }
 
   async deleteWidget(id) {
