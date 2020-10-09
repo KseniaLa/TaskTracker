@@ -24,9 +24,21 @@ namespace IdentityMicroservice.Controllers
           }
 
           [HttpPost]
-          public void RegisterUser([FromBody] RegisterModel value)
+          public async Task<IActionResult> RegisterUser([FromBody] RegisterModel value)
           {
+               var usr = await _userService.Register(new User 
+               { 
+                    Name = value.Name,
+                    Login = value.Login,
+                    Password = value.Password
+               });
 
+               if (usr != null)
+               {
+                    return Ok();
+               }
+
+               return BadRequest();
           }
 
           [HttpPost("login")]

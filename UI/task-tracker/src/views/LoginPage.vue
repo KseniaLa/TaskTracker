@@ -7,13 +7,13 @@
         <input type="password" v-model="password" placeholder="password" />
         <button class v-on:click="authenticate">Sign in</button>
       </div>
-        <div v-else>
-            <input type="text" placeholder="name" />
-            <input type="text" placeholder="login" />
-        <input type="password" placeholder="password" />
+      <div v-else>
+        <input type="text" v-model="regName" placeholder="name" />
+        <input type="text" v-model="regLogin" placeholder="login" />
+        <input type="password" v-model="regPassword" placeholder="password" />
         <button class v-on:click="createUser">Sign up</button>
-        </div>
-      <button class v-on:click="swithToSignUp">Sign up</button>
+      </div>
+      <button class v-on:click="switchForms">{{isLogin ? "Sign up" : "Sign in"}}</button>
     </div>
   </main>
 </template>
@@ -29,23 +29,40 @@ export default {
       isLogin: true,
       login: "",
       password: "",
+      regName: "",
+      regLogin: "",
+      regPassword: "",
       accountWorker: new AccountWorker()
     };
   },
   methods: {
     authenticate: async function() {
-      let creds = { login: this.login, password: this.password};
+      let creds = { login: this.login, password: this.password };
       let tokenResponce = await this.accountWorker.authenticate(creds);
       if (tokenResponce.success && tokenResponce.token) {
         this.$store.commit("setAuthToken", tokenResponce.token);
         router.push("main");
-      }
-      else {
-        this.$dlg.toast("Failed to sign in. Invalid login or password", toastConfig);
+      } else {
+        this.$dlg.toast(
+          "Failed to sign in. Invalid login or password",
+          toastConfig
+        );
       }
     },
-    swithToSignUp: function() {
-        this.isLogin = false;
+    createUser: async function() {
+      let user = { name: this.regName, login: this.regLogin, password: this.regPassword };
+      let tokenResponce = await this.accountWorker.createUser(user);
+      if (tokenResponce.success) {
+        
+      } else {
+        this.$dlg.toast(
+          "Failed to create user",
+          toastConfig
+        );
+      }
+    },
+    switchForms: function() {
+      this.isLogin = !this.isLogin;
     }
   },
   mounted: function() {

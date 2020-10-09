@@ -17,13 +17,13 @@ class AccountWorker {
         }
       });
     } catch {
-      return false;
+      return { success: false };
     }
 
     if (result.status === 200) {
-      return true;
+      return { success: true };
     } else {
-      return false;
+      return { success: false };
     }
   }
 

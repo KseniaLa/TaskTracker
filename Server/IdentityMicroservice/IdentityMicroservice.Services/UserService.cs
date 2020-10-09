@@ -14,6 +14,10 @@ namespace IdentityMicroservice.Services
 {
      public class UserService : BaseService, IUserService, IScopedService
      {
+          private readonly int _iterationsCount = 10000;
+          private readonly int _saltSize = 16;
+          private readonly int _hashedPassSize = 49;
+
           public UserService(IUnitOfWork unitOfWork) : base(unitOfWork)
           {
 
@@ -28,7 +32,7 @@ namespace IdentityMicroservice.Services
                }
 
                var searchUser = await Db.Users.FindBy(u => u.Login == registrationInfo.Login).FirstOrDefaultAsync();
-               bool userExists = searchUser != null;
+               var userExists = searchUser != null;
                if (!userExists)
                {
                     var user = new User
@@ -75,43 +79,41 @@ namespace IdentityMicroservice.Services
 
           private string HashPassword(string password)
           {
-               return password;
-               //byte[] salt;
-               //byte[] buffer;
-               //using (var bytes = new Rfc2898DeriveBytes(password, _saltSize, _iterationsCount))
-               //{
-               //     salt = bytes.Salt;
-               //     buffer = bytes.GetBytes(32);
-               //}
-               //byte[] dst = new byte[_hashedPassSize];
-               //Buffer.BlockCopy(salt, 0, dst, 1, 16);
-               //Buffer.BlockCopy(buffer, 0, dst, 17, 32);
-               //return Convert.ToBase64String(dst);
+               byte[] salt;
+               byte[] buffer;
+               using (var bytes = new Rfc2898DeriveBytes(password, _saltSize, _iterationsCount))
+               {
+                    salt = bytes.Salt;
+                    buffer = bytes.GetBytes(32);
+               }
+               byte[] dst = new byte[_hashedPassSize];
+               Buffer.BlockCopy(salt, 0, dst, 1, 16);
+               Buffer.BlockCopy(buffer, 0, dst, 17, 32);
+               return Convert.ToBase64String(dst);
           }
 
           private bool VerifyPassword(string hashedPassword, string password)
           {
-               return hashedPassword == password;
-               //if (string.IsNullOrEmpty(hashedPassword) || string.IsNullOrEmpty(password))
-               //{
-               //     return false;
-               //}
-               //byte[] src = Convert.FromBase64String(hashedPassword);
-               //if ((src.Length != _hashedPassSize) || (src[0] != 0))
-               //{
-               //     return false;
-               //}
+               if (string.IsNullOrEmpty(hashedPassword) || string.IsNullOrEmpty(password))
+               {
+                    return false;
+               }
+               var src = Convert.FromBase64String(hashedPassword);
+               if ((src.Length != _hashedPassSize) || (src[0] != 0))
+               {
+                    return false;
+               }
 
-               //byte[] currentPasswordBuffer;
-               //byte[] salt = new byte[_saltSize];
-               //Buffer.BlockCopy(src, 1, salt, 0, _saltSize);
-               //byte[] hashedPasswordBuffer = new byte[32];
-               //Buffer.BlockCopy(src, 17, hashedPasswordBuffer, 0, 32);
-               //using (Rfc2898DeriveBytes bytes = new Rfc2898DeriveBytes(password, salt, _iterationsCount))
-               //{
-               //     currentPasswordBuffer = bytes.GetBytes(32);
-               //}
-               //return CompareArrays(hashedPasswordBuffer, currentPasswordBuffer);
+               byte[] currentPasswordBuffer;
+               var salt = new byte[_saltSize];
+               Buffer.BlockCopy(src, 1, salt, 0, _saltSize);
+               var hashedPasswordBuffer = new byte[32];
+               Buffer.BlockCopy(src, 17, hashedPasswordBuffer, 0, 32);
+               using (Rfc2898DeriveBytes bytes = new Rfc2898DeriveBytes(password, salt, _iterationsCount))
+               {
+                    currentPasswordBuffer = bytes.GetBytes(32);
+               }
+               return CompareArrays(hashedPasswordBuffer, currentPasswordBuffer);
           }
 
           private bool CompareArrays(byte[] arr1, byte[] arr2)
@@ -129,6 +131,5 @@ namespace IdentityMicroservice.Services
                }
                return true;
           }
-
      }
 }
