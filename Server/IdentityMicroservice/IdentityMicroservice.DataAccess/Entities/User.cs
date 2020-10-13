@@ -21,5 +21,12 @@ namespace IdentityMicroservice.DataAccess.Entities
 
           [Required]
           public bool IsAdmin { get; set; }
+
+          [Required]
+          [MaxLength(100)]
+          public string RefreshToken { get; set; }
+
+          [Required]
+          public DateTime RefreshTokenExpiryTime { get; set; }
      }
 }

@@ -15,12 +15,10 @@ namespace IdentityMicroservice.Controllers
     public class IdentityController : ControllerBase
     {
           private readonly IUserService _userService;
-          private readonly IJwtBuilder _jwtBuilder;
 
-          public IdentityController(IUserService userService, IJwtBuilder jwtBuilder)
+          public IdentityController(IUserService userService)
           {
                _userService = userService;
-               _jwtBuilder = jwtBuilder;
           }
 
           [HttpPost]
@@ -46,11 +44,19 @@ namespace IdentityMicroservice.Controllers
           {
                var user = await _userService.TryAuthenticate(value.Login, value.Password);
 
-               if (user == null) return BadRequest();
+               if (user == null) return Unauthorized();
 
-               var token = _jwtBuilder.GetToken(user);
-
-               return Ok(new { token, name = user.Name, login = user.Login, isAdmin = user.IsAdmin });
+               return Ok(user);
           }
-    }
+
+          [HttpPost("refresh")]
+          public async Task<IActionResult> RefreshToken([FromBody] TokenModel value)
+          {
+               var user = await _userService.RefreshToken(value.AccessToken, value.RefreshToken);
+
+               if (user == null) return Unauthorized();
+
+               return Ok(user);
+          }
+     }
 }

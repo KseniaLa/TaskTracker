@@ -25,6 +25,18 @@
       "UpstreamHttpMethod": [ "Post", "Options" ]
     },
     {
+      "DownstreamPathTemplate": "/api/users/refresh",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 59938
+        }
+      ],
+      "UpstreamPathTemplate": "/api/users/refresh",
+      "UpstreamHttpMethod": [ "Post", "Options" ]
+    },
+    {
       "DownstreamPathTemplate": "/api/task",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [

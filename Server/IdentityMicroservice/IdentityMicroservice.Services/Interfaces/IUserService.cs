@@ -12,5 +12,7 @@ namespace IdentityMicroservice.Services.Interfaces
           Task<UserModel> TryAuthenticate(string email, string password);
 
           Task<User> Register(UserModel registrationInfo);
+
+          Task<UserModel> RefreshToken(string accessToken, string refreshToken);
      }
 }

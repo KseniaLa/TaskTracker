@@ -2,9 +2,11 @@
 using IdentityMicroservice.DataAccess;
 using IdentityMicroservice.DataAccess.Entities;
 using IdentityMicroservice.Services.Interfaces;
+using IdentityMicroservice.TokenManagement;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,9 +20,11 @@ namespace IdentityMicroservice.Services
           private readonly int _saltSize = 16;
           private readonly int _hashedPassSize = 49;
 
-          public UserService(IUnitOfWork unitOfWork) : base(unitOfWork)
-          {
+          private readonly IJwtBuilder _jwtBuilder;
 
+          public UserService(IUnitOfWork unitOfWork, IJwtBuilder jwtBuilder) : base(unitOfWork)
+          {
+               _jwtBuilder = jwtBuilder;
           }
 
           public async Task<User> Register(UserModel registrationInfo)
@@ -62,19 +66,65 @@ namespace IdentityMicroservice.Services
                     }
                     var user = await Db.Users.FindBy(u => u.Login == login).FirstOrDefaultAsync();
                     if (user == null) return null;
-                    return VerifyPassword(user.PasswordHash, password) 
-                         ? new UserModel 
-                         { 
-                              Id = user.Id,
-                              Name = user.Name,
-                              Login = user.Login,
-                              IsAdmin = user.IsAdmin
-                         } : null;
+
+                    if (!IsValidPassword(user.PasswordHash, password)) return null;
+
+                    var userModel = new UserModel
+                    {
+                         Id = user.Id,
+                         Name = user.Name,
+                         Login = user.Login,
+                         IsAdmin = user.IsAdmin
+                    };
+
+                    var accessToken = _jwtBuilder.GetAccessToken(userModel);
+
+                    var refreshToken = _jwtBuilder.GenerateRefreshToken();
+
+                    user.RefreshToken = refreshToken;
+                    user.RefreshTokenExpiryTime = DateTime.Now.AddDays(7); //!!!!!
+
+                    await Db.Save();
+
+                    userModel.AccessToken = accessToken;
+                    userModel.RefreshToken = refreshToken;
+
+                    return userModel;
                }
                catch (Exception)
                {
                     return null;
                }
+          }
+
+          public async Task<UserModel> RefreshToken(string accessToken, string refreshToken)
+          {
+               var principal = _jwtBuilder.GetPrincipalFromExpiredToken(accessToken);
+               var login = principal.Claims.FirstOrDefault(c => c.Type == "Login")?.Value;
+               var user = await Db.Users.FindBy(u => u.Login == login).FirstOrDefaultAsync();
+               if (user == null || user.RefreshToken != refreshToken || user.RefreshTokenExpiryTime <= DateTime.Now)
+               {
+                    return null;
+               }
+
+               var userModel = new UserModel
+               {
+                    Id = user.Id,
+                    Name = user.Name,
+                    Login = user.Login,
+                    IsAdmin = user.IsAdmin
+               };
+
+               var newAccessToken = _jwtBuilder.GetAccessToken(userModel);
+               var newRefreshToken = _jwtBuilder.GenerateRefreshToken();
+
+               user.RefreshToken = newRefreshToken;
+               await Db.Save();
+
+               userModel.AccessToken = newAccessToken;
+               userModel.RefreshToken = newRefreshToken;
+               
+               return userModel;
           }
 
           private string HashPassword(string password)
@@ -92,7 +142,7 @@ namespace IdentityMicroservice.Services
                return Convert.ToBase64String(dst);
           }
 
-          private bool VerifyPassword(string hashedPassword, string password)
+          private bool IsValidPassword(string hashedPassword, string password)
           {
                if (string.IsNullOrEmpty(hashedPassword) || string.IsNullOrEmpty(password))
                {
