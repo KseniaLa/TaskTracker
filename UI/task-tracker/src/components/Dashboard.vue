@@ -36,7 +36,7 @@ export default {
       this.$modal.show("widget");
     },
     deleteWidget: async function(id) {
-      let success = await WidgetRepository.instance.deleteWidget(this.isDemo, id);
+      let success = await WidgetRepository.instance.deleteWidget(this.isDemo, id, this.$store.state.authToken);
       if (!success) {
         this.$dlg.toast("Failed to delete widget", toastConfig);
       }

@@ -107,7 +107,8 @@ export default {
         };
         let success = await WidgetRepository.instance.addWidget(
           this.isDemo,
-          widget
+          widget,
+          this.$store.state.authToken
         );
         if (!success) {
           this.$dlg.toast("Failed to add widget", toastConfig);

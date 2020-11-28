@@ -11,16 +11,16 @@ class TaskWorker {
     return this._worker;
   }
 
-  async addTask(task) {
-    return await this._worker.addTask(task);
+  async addTask(task, token) {
+    return await this._worker.addTask(task, token);
   }
 
   async getTasks(token) {
     return await this._worker.getTasks(token);
   }
 
-  async deleteTask(id) {
-    return await this._worker.deleteTask(id);
+  async deleteTask(id, token) {
+    return await this._worker.deleteTask(id, token);
   }
 }
 

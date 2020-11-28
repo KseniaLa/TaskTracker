@@ -79,7 +79,7 @@ export default {
           state: this.stateValue.id,
           date: this.dueDate
         };
-        let success = await TaskRepository.instance.addTask(this.isDemo, task);
+        let success = await TaskRepository.instance.addTask(this.isDemo, task, this.$store.state.authToken);
         if (!success) {
           this.$dlg.toast("Failed to add task", toastConfig);
         }
@@ -92,7 +92,8 @@ export default {
     deleteTask: async function() {
       let success = await TaskRepository.instance.deleteTask(
         this.isDemo,
-        this.taskId
+        this.taskId,
+        this.$store.state.authToken
       );
       if (!success) {
         this.$dlg.toast("Failed to delete task", toastConfig);

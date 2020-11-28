@@ -43,7 +43,9 @@ class AccountWorker {
       return { token: null, success: false };
     }
 
-    return { token: result.data.token, success: true };
+    console.log(result.data);
+
+    return { token: result.data.accessToken, success: true };
   }
 }
 

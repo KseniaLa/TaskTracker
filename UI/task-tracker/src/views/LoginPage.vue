@@ -2,18 +2,18 @@
   <main class="landing-page-container">
     <div class="landing-page-content">
       <label class="select-title">Sign In</label>
-      <div v-if="isLogin">
-        <input type="text" v-model="login" placeholder="login" />
-        <input type="password" v-model="password" placeholder="password" />
-        <button class v-on:click="authenticate">Sign in</button>
+      <div v-if="isLogin" class="input-container">
+        <input type="text" v-model="login" class="login-input" placeholder="login" />
+        <input type="password" v-model="password" class="login-input" placeholder="password" />
+        <button class="two-colored-login-button" v-on:click="authenticate">Sign in</button>
       </div>
-      <div v-else>
-        <input type="text" v-model="regName" placeholder="name" />
-        <input type="text" v-model="regLogin" placeholder="login" />
-        <input type="password" v-model="regPassword" placeholder="password" />
-        <button class v-on:click="createUser">Sign up</button>
+      <div v-else class="input-container">
+        <input type="text" v-model="regName" class="login-input" placeholder="name" />
+        <input type="text" v-model="regLogin" class="login-input" placeholder="login" />
+        <input type="password" v-model="regPassword" class="login-input" placeholder="password" />
+        <button class="two-colored-login-button" v-on:click="createUser">Sign up</button>
       </div>
-      <button class v-on:click="switchForms">{{isLogin ? "Sign up" : "Sign in"}}</button>
+      <button class="two-colored-login-button login-swith-button" v-on:click="switchForms">{{isLogin ? "Sign up" : "Sign in"}}</button>
     </div>
   </main>
 </template>
@@ -53,7 +53,7 @@ export default {
       let user = { name: this.regName, login: this.regLogin, password: this.regPassword };
       let tokenResponce = await this.accountWorker.createUser(user);
       if (tokenResponce.success) {
-        
+        console.log("ok");
       } else {
         this.$dlg.toast(
           "Failed to create user",
@@ -102,11 +102,11 @@ export default {
   color: #ffffff;
 }
 
-.two-colored-button {
-  padding: 20px;
-  margin: 15px;
-  border-radius: 10px;
-  font-size: 20px;
+.two-colored-login-button {
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+  font-size: 15px;
   transition: 500ms;
   border: none;
   background-color: #2765b6;
@@ -120,6 +120,15 @@ export default {
   }
 }
 
+.login-swith-button {
+  background-color: #4e78af;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .radiogroup-container {
   @include flex-item(row);
   margin: 10px;
@@ -127,6 +136,17 @@ export default {
   @media screen and (max-width: 500px) {
     flex-direction: column;
   }
+}
+
+.login-input {
+  margin-bottom: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  text-decoration: none;
+  outline: none;
+  font-size: 15px;
+  box-shadow: none;
+  resize: none;
 }
 
 .container {

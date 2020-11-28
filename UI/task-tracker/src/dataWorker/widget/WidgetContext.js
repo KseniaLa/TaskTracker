@@ -7,16 +7,16 @@ class WidgetContext {
     this._worker = worker;
   }
 
-  async addWidget(widget) {
-    return await this._worker.addWidget(widget);
+  async addWidget(widget, authToken) {
+    return await this._worker.addWidget(widget, authToken);
   }
 
   async getWidgets(token) {
     return await this._worker.getWidgets(token);
   }
 
-  async deleteWidget(id) {
-    return await this._worker.deleteWidget(id);
+  async deleteWidget(id, authToken) {
+    return await this._worker.deleteWidget(id, authToken);
   }
 }
 

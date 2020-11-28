@@ -5,16 +5,16 @@ class WidgetApiWorker {
     this._apiWorker = new ApiWorker();
   }
 
-  async addWidget(task) {
-    return await this._apiWorker.addWidget(task);
+  async addWidget(task, authToken) {
+    return await this._apiWorker.addWidget(task, authToken);
   }
 
   async getWidgets(token) {
     return await this._apiWorker.getWidgets(token);
   }
 
-  async deleteWidget(id) {
-    return await this._apiWorker.deleteWidget(id);
+  async deleteWidget(id, authToken) {
+    return await this._apiWorker.deleteWidget(id, authToken);
   }
 }
 

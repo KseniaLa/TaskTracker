@@ -11,7 +11,7 @@ import {
 class ApiWorker {
   constructor() {}
 
-  async addTask(task) {
+  async addTask(task, authToken) {
     let data = JSON.stringify(task);
 
     let action = task.id > 0 ? EDIT : ADD;
@@ -22,7 +22,8 @@ class ApiWorker {
     try {
       result = await axios.post(url, data, {
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + authToken
         }
       });
     } catch {
@@ -54,13 +55,15 @@ class ApiWorker {
     return { data: result.data, success: true };
   }
 
-  async deleteTask(id) {
+  async deleteTask(id, authToken) {
     let result = null;
 
     let url = `${API_BASE}${TASK_PREFIX}${DELETE}/${id}`;
 
     try {
-      result = await axios.delete(url);
+      result = await axios.delete(url, {
+        Authorization: "Bearer " + authToken
+      });
     } catch {
       return false;
     }
@@ -90,7 +93,7 @@ class ApiWorker {
     return { data: result.data, success: true };
   }
 
-  async addWidget(widget) {
+  async addWidget(widget, authToken) {
     let data = JSON.stringify(widget);
 
     let url = `${API_BASE}${WIDGET_PREFIX}${ADD}`;
@@ -99,7 +102,8 @@ class ApiWorker {
     try {
       result = await axios.post(url, data, {
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + authToken
         }
       });
     } catch {
@@ -113,13 +117,15 @@ class ApiWorker {
     }
   }
 
-  async deleteWidget(id) {
+  async deleteWidget(id, authToken) {
     let result = null;
 
     let url = `${API_BASE}${WIDGET_PREFIX}${DELETE}/${id}`;
 
     try {
-      result = await axios.delete(url);
+      result = await axios.delete(url, {
+        Authorization: "Bearer " + authToken
+      });
     } catch {
       return false;
     }

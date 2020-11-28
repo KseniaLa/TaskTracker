@@ -23,10 +23,10 @@ class TaskRepository {
     throw "Cannot change property";
   }
 
-  async addTask(isDemo, task) {
+  async addTask(isDemo, task, token) {
     let worker = this._factory.getWorker(isDemo);
     this._context.setWorker(worker);
-    return await this._context.addTask(task);
+    return await this._context.addTask(task, token);
   }
 
   async getTasks(isDemo, token) {
@@ -35,10 +35,10 @@ class TaskRepository {
     return await this._context.getTasks(token);
   }
 
-  async deleteTask(isDemo, id) {
+  async deleteTask(isDemo, id, token) {
     let worker = this._factory.getWorker(isDemo);
     this._context.setWorker(worker);
-    return await this._context.deleteTask(id);
+    return await this._context.deleteTask(id, token);
   }
 }
 

@@ -23,10 +23,10 @@ class WidgetRepository {
     throw "Cannot change property";
   }
 
-  async addWidget(isDemo, widget) {
+  async addWidget(isDemo, widget, authToken) {
     let worker = this._factory.getWorker(isDemo);
     this._context.setWorker(worker);
-    return await this._context.addWidget(widget);
+    return await this._context.addWidget(widget, authToken);
   }
 
   async getWidgets(isDemo, token) {
@@ -35,10 +35,10 @@ class WidgetRepository {
     return await this._context.getWidgets(token);
   }
 
-  async deleteWidget(isDemo, id) {
+  async deleteWidget(isDemo, id, authToken) {
     let worker = this._factory.getWorker(isDemo);
     this._context.setWorker(worker);
-    return await this._context.deleteWidget(id);
+    return await this._context.deleteWidget(id, authToken);
   }
 }
 
