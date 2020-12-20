@@ -1,19 +1,24 @@
-FROM microsoft/dotnet:2.1-aspnetcore-runtime AS base
-WORKDIR /app
-EXPOSE 80
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
+WORKDIR /app 
 
-FROM microsoft/dotnet:2.1-sdk AS build
-WORKDIR /src
-COPY "ApiGateway.csproj" "ApiGateway.csproj"
-RUN dotnet restore "ApiGateway.csproj"
-COPY . .
-WORKDIR "/src"
-RUN dotnet build "ApiGateway.csproj" -c Release -o /app
+# copy csproj and restore as distinct layers
+COPY ApiGateway/*.sln ./ApiGateway/
+COPY ApiGateway/ApiGateway/*.csproj ./ApiGateway/ApiGateway/
 
-FROM build AS publish
-RUN dotnet publish "ApiGateway.csproj" -c Release -o /app
+#restore packages
+WORKDIR /app/ApiGateway
+RUN dotnet restore 
 
-FROM base AS final
-WORKDIR /app
-COPY --from=publish /app .
+WORKDIR /app 
+
+# copy everything else and build app
+COPY ApiGateway/ApiGateway/. ./ApiGateway/ApiGateway/
+
+WORKDIR /app/ApiGateway/ApiGateway
+RUN dotnet publish -c Release -o out 
+
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1 AS runtime
+WORKDIR /app 
+
+COPY --from=build /app/ApiGateway/ApiGateway/out ./
 ENTRYPOINT ["dotnet", "ApiGateway.dll"]

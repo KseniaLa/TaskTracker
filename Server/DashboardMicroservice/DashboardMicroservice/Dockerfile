@@ -1,19 +1,24 @@
-FROM microsoft/dotnet:2.1-aspnetcore-runtime AS base
-WORKDIR /app
-EXPOSE 80
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
+WORKDIR /app 
 
-FROM microsoft/dotnet:2.1-sdk AS build
-WORKDIR /src
-COPY "DashboardMicroservice.csproj" "DashboardMicroservice.csproj"
-RUN dotnet restore "DashboardMicroservice.csproj"
-COPY . .
-WORKDIR "/src"
-RUN dotnet build "DashboardMicroservice.csproj" -c Release -o /app
+# copy csproj and restore as distinct layers
+COPY DashboardMicroservice/*.sln ./DashboardMicroservice/
+COPY DashboardMicroservice/DashboardMicroservice/*.csproj ./DashboardMicroservice/DashboardMicroservice/
 
-FROM build AS publish
-RUN dotnet publish "DashboardMicroservice.csproj" -c Release -o /app
+#restore packages
+WORKDIR /app/DashboardMicroservice
+RUN dotnet restore 
 
-FROM base AS final
-WORKDIR /app
-COPY --from=publish /app .
+WORKDIR /app 
+
+# copy everything else and build app
+COPY DashboardMicroservice/DashboardMicroservice/. ./DashboardMicroservice/DashboardMicroservice/
+
+WORKDIR /app/DashboardMicroservice/DashboardMicroservice
+RUN dotnet publish -c Release -o out 
+
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1 AS runtime
+WORKDIR /app 
+
+COPY --from=build /app/DashboardMicroservice/DashboardMicroservice/out ./
 ENTRYPOINT ["dotnet", "DashboardMicroservice.dll"]
