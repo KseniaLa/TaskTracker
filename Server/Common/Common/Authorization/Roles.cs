@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace IdentityMicroservice.TokenManagement
+namespace Common.Authorization
 {
      public class Roles
      {

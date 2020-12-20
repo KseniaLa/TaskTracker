@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Common.Authorization;
 using Common.Constants;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TaskMicroservice.Services.Interfaces;
 using TaskModel =  TaskMicroservice.DataPresentation.Models.Task;
@@ -23,6 +26,7 @@ namespace TaskTracker.Controllers
           }
 
           // GET: api/task
+          [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
           [HttpGet]
           public async Task<IActionResult> GetTasks()
           {
@@ -31,6 +35,7 @@ namespace TaskTracker.Controllers
           }
 
           // POST api/task/add
+          [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = Roles.Administrator)]
           [HttpPost(Constants.ADD_ITEM)]
           public async Task<IActionResult> AddTask([FromBody]TaskModel value)
           {
@@ -40,6 +45,7 @@ namespace TaskTracker.Controllers
           }
 
           // POST api/task/edit
+          [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = Roles.Administrator)]
           [HttpPost(Constants.EDIT_ITEM)]
           public async Task<IActionResult> EditTask([FromBody]TaskModel value)
           {
@@ -49,6 +55,7 @@ namespace TaskTracker.Controllers
           }
 
           // DELETE api/task/delete/5
+          [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = Roles.Administrator)]
           [HttpDelete(Constants.DELETE_ITEM)]
           public async Task<IActionResult> DeleteTask(int id)
           {

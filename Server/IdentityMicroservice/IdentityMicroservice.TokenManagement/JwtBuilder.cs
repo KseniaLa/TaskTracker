@@ -1,4 +1,5 @@
-﻿using IdentityMicroservice.DataPresentation.Models;
+﻿using Common.Authorization;
+using IdentityMicroservice.DataPresentation.Models;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Tokens;
@@ -70,7 +71,8 @@ namespace IdentityMicroservice.TokenManagement
                {
                     new Claim("Id", user.Id.ToString()),
                     new Claim("Login", user.Login),
-                    new Claim("Role", user.IsAdmin ? Roles.Administrator : Roles.User)
+                    new Claim("Role", user.IsAdmin ? Roles.Administrator : Roles.User),
+                    new Claim(ClaimTypes.Role, user.IsAdmin ? Roles.Administrator : Roles.User)
                };
           }
 

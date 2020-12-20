@@ -1,4 +1,7 @@
-﻿using Common.Constants;
+﻿using Common.Authorization;
+using Common.Constants;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -20,6 +23,7 @@ namespace WidgetMicroservice.Controllers
           }
 
           // GET: api/widget
+          [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
           [HttpGet]
           public async Task<IActionResult> GetWidgets()
           {
@@ -28,6 +32,7 @@ namespace WidgetMicroservice.Controllers
           }
 
           // POST api/widget/add
+          [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = Roles.Administrator)]
           [HttpPost(Constants.ADD_ITEM)]
           public async Task<IActionResult> AddWidget([FromBody]Widget value)
           {
@@ -37,6 +42,7 @@ namespace WidgetMicroservice.Controllers
           }
 
           // DELETE api/widget/delete/5
+          [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = Roles.Administrator)]
           [HttpDelete(Constants.DELETE_ITEM)]
           public async Task<IActionResult> DeleteWWidget(int id)
           {
