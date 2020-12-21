@@ -2,14 +2,16 @@ FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
 WORKDIR /app 
 
 # copy csproj and restore as distinct layers
-COPY WebLearning/*.sln ./WebLearning/
-COPY WebLearning/WebLearning/*.csproj ./WebLearning/WebLearning/
-COPY WebLearning/WebLearning.DataPresentation/*.csproj ./WebLearning/WebLearning.DataPresentation/
+COPY WidgetMicroservice/*.sln ./WidgetMicroservice/
+COPY WidgetMicroservice/WidgetMicroservice/*.csproj ./WidgetMicroservice/WidgetMicroservice/
+COPY WidgetMicroservice/WidgetMicroservice.DataAccess/*.csproj ./WidgetMicroservice/WidgetMicroservice.DataAccess/
+COPY WidgetMicroservice/WidgetMicroservice.DataPresentation/*.csproj ./WidgetMicroservice/WidgetMicroservice.DataPresentation/
+COPY WidgetMicroservice/WidgetMicroservice.Services/*.csproj ./WidgetMicroservice/WidgetMicroservice.Services/
 COPY Common/*.sln ./Common/
 COPY Common/Common/*.csproj ./Common/Common/
 
 #restore packages
-WORKDIR /app/WebLearning
+WORKDIR /app/WidgetMicroservice
 RUN dotnet restore 
 
 WORKDIR /app/Common
@@ -18,15 +20,17 @@ RUN dotnet restore
 WORKDIR /app 
 
 # copy everything else and build app
-COPY WebLearning/WebLearning/. ./WebLearning/WebLearning/
-COPY WebLearning/WebLearning.DataPresentation/. ./WebLearning/WebLearning.DataPresentation/
+COPY WidgetMicroservice/WidgetMicroservice/. ./WidgetMicroservice/WidgetMicroservice/
+COPY WidgetMicroservice/WidgetMicroservice.DataAccess/. ./WidgetMicroservice/WidgetMicroservice.DataAccess/
+COPY WidgetMicroservice/WidgetMicroservice.DataPresentation/. ./WidgetMicroservice/WidgetMicroservice.DataPresentation/
+COPY WidgetMicroservice/WidgetMicroservice.Services/. ./WidgetMicroservice/WidgetMicroservice.Services/
 COPY Common/Common/. ./Common/Common/
 
-WORKDIR /app/WebLearning/WebLearning
+WORKDIR /app/WidgetMicroservice/WidgetMicroservice
 RUN dotnet publish -c Release -o out 
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1 AS runtime
 WORKDIR /app 
 
-COPY --from=build /app/WebLearning/WebLearning/out ./
-ENTRYPOINT ["dotnet", "WebLearning.dll"]
+COPY --from=build /app/WidgetMicroservice/WidgetMicroservice/out ./
+ENTRYPOINT ["dotnet", "WidgetMicroservice.dll"]
