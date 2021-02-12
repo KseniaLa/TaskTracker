@@ -1,0 +1,47 @@
+version: '3.4'
+
+services:
+  apigateway:
+    image: apigateway
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    ports:
+      - "5100:80"
+    depends_on:
+      - dashboard_mic
+      - identity-mic
+      - log-mic
+      - task-mic
+      - widget-mic
+      
+  dashboard_mic:
+    image: dashboard_mic
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    ports:
+      - "5101:80"
+    depends_on:
+      - identity-mic
+      - log-mic
+      - task-mic
+      - widget-mic
+
+  identity-mic:
+    image: identity_mic
+    ports:
+      - "5102:80"
+      
+  log-mic:
+    image: log_mic
+    ports:
+      - "5103:80"
+
+  task-mic:
+    image: tasktracker_mic
+    ports:
+      - "5104:80"
+      
+  widget-mic:
+    image: widget_mic
+    ports:
+      - "5105:80"

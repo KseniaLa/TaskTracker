@@ -5,8 +5,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost1",
-          "Port": 59938
+          "Host": "identity-mic",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/users",
@@ -17,8 +17,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost1",
-          "Port": 59938
+          "Host": "identity-mic",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/users/login",
@@ -29,8 +29,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost1",
-          "Port": 59938
+          "Host": "identity-mic",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/users/refresh",
@@ -41,8 +41,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 61153
+          "Host": "dashboard_mic",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/task",
@@ -57,8 +57,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 61153
+          "Host": "dashboard_mic",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/task/{everything}",
@@ -76,8 +76,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 61153
+          "Host": "dashboard_mic",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/widget",
@@ -92,8 +92,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 61153
+          "Host": "dashboard_mic",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/widget/{everything}",
@@ -111,8 +111,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 59949
+          "Host": "log-mic",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/log/client",

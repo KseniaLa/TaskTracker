@@ -5,8 +5,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost1",
-          "Port": 52779
+          "Host": "task-mic",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/task",
@@ -21,8 +21,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost1",
-          "Port": 52779
+          "Host": "task-mic",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/task/{everything}",
@@ -40,8 +40,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 51280
+          "Host": "widget-mic",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/widget",
@@ -56,8 +56,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 51280
+          "Host": "widget-mic",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/widget/{everything}",
@@ -75,8 +75,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 59949
+          "Host": "log-mic",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/log/client",
