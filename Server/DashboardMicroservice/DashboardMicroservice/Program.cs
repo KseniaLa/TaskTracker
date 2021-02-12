@@ -25,7 +25,7 @@ namespace DashboardMicroservice
                    config
                      .SetBasePath(hostingContext.HostingEnvironment.ContentRootPath)
                      .AddJsonFile("appsettings.json", true, true)
-                     .AddJsonFile("configuration.json", true, true)
+                     .AddJsonFile($"configuration.{hostingContext.HostingEnvironment.EnvironmentName}.json", true, true)
                      .AddEnvironmentVariables();
               })
               .ConfigureWebHostDefaults(webBuilder =>

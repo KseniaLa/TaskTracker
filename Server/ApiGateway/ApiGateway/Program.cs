@@ -25,7 +25,7 @@ namespace ApiGateway
                    config
                      .SetBasePath(hostingContext.HostingEnvironment.ContentRootPath)
                      .AddJsonFile("appsettings.json", true, true)
-                     .AddJsonFile("configuration.json", false, true)
+                     .AddJsonFile($"configuration.{hostingContext.HostingEnvironment.EnvironmentName}.json", false, true)
                      .AddEnvironmentVariables();
               })
               .ConfigureWebHostDefaults(webBuilder =>

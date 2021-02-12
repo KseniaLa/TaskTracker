@@ -25,7 +25,6 @@ namespace TaskTracker.Controllers
                _taskService = taskService;
           }
 
-          // GET: api/task
           [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
           [HttpGet]
           public async Task<IActionResult> GetTasks()
@@ -34,7 +33,6 @@ namespace TaskTracker.Controllers
                return Ok(tasks);
           }
 
-          // POST api/task/add
           [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = Roles.Administrator)]
           [HttpPost(Constants.ADD_ITEM)]
           public async Task<IActionResult> AddTask([FromBody]TaskModel value)
@@ -44,7 +42,6 @@ namespace TaskTracker.Controllers
                return Ok();
           }
 
-          // POST api/task/edit
           [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = Roles.Administrator)]
           [HttpPost(Constants.EDIT_ITEM)]
           public async Task<IActionResult> EditTask([FromBody]TaskModel value)
@@ -54,7 +51,6 @@ namespace TaskTracker.Controllers
                return Ok();
           }
 
-          // DELETE api/task/delete/5
           [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = Roles.Administrator)]
           [HttpDelete(Constants.DELETE_ITEM)]
           public async Task<IActionResult> DeleteTask(int id)

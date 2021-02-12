@@ -1,0 +1,90 @@
+{
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/api/task",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost1",
+          "Port": 52779
+        }
+      ],
+      "UpstreamPathTemplate": "/api/task",
+      "UpstreamHttpMethod": [ "Get" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/task/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost1",
+          "Port": 52779
+        }
+      ],
+      "UpstreamPathTemplate": "/api/task/{everything}",
+      "UpstreamHttpMethod": [ "Post", "Delete", "Options" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "Role": "Administrator"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/widget",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 51280
+        }
+      ],
+      "UpstreamPathTemplate": "/api/widget",
+      "UpstreamHttpMethod": [ "Get" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/widget/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 51280
+        }
+      ],
+      "UpstreamPathTemplate": "/api/widget/{everything}",
+      "UpstreamHttpMethod": [ "Post", "Delete", "Options" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "Role": "Administrator"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/log/client",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 59949
+        }
+      ],
+      "UpstreamPathTemplate": "/api/log/client",
+      "UpstreamHttpMethod": [ "Post", "Options" ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "RequestIdKey": "OcRequestId",
+    "AdministrationPath": "/administration"
+  }
+}

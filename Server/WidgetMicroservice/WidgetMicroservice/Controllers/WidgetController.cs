@@ -22,7 +22,6 @@ namespace WidgetMicroservice.Controllers
                _widgetService = widgetService;
           }
 
-          // GET: api/widget
           [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
           [HttpGet]
           public async Task<IActionResult> GetWidgets()
@@ -31,7 +30,6 @@ namespace WidgetMicroservice.Controllers
                return Ok(widgets);
           }
 
-          // POST api/widget/add
           [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = Roles.Administrator)]
           [HttpPost(Constants.ADD_ITEM)]
           public async Task<IActionResult> AddWidget([FromBody]Widget value)
@@ -41,7 +39,6 @@ namespace WidgetMicroservice.Controllers
                return Ok();
           }
 
-          // DELETE api/widget/delete/5
           [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = Roles.Administrator)]
           [HttpDelete(Constants.DELETE_ITEM)]
           public async Task<IActionResult> DeleteWWidget(int id)
