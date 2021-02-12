@@ -161,7 +161,7 @@ export default {
   border-radius: 5px;
   text-decoration: none;
   outline: none;
-  font-size: 15px;
+  font-size: 10px;
   margin-bottom: 10px;
 }
 
